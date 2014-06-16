@@ -1,0 +1,131 @@
+<!doctypehtml>
+<?php
+include('include/functions.php');
+$option=show_option();
+$option=$option->fetch_all();
+?>
+<html>
+<title>
+<?php show_title();?>
+</title>
+<head>
+<meta name='keywords' content='<?php echo $option[0][1];?>' />
+<meta name='description' content='<?php echo $option[0][2];?>' />
+<meta http-equiv='content-type' content='text/html;charset=utf-8'>
+<link rel='stylesheet' href='style/main.css' /> 
+<link rel='stylesheet' href='phzoom/phzoom.css' /> 
+<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="phzoom/phzoom.js"></script>
+<script type='text/javascript' src='js/main.js' ></script>
+<script type="text/javascript"> 
+var scrollFunc=function(e){ 
+    ee=e || window.event; 
+    var t1=document.getElementById("wheelDelta"); 
+    var t2=document.getElementById("detail"); 
+    if(e.wheelDelta){//IE/Opera/Chrome 
+	
+        t1.value=e.wheelDelta; 
+		if(t1.value<0)
+		{document.getElementById("navibar").style.height="0px";
+		}
+		else if(t1.value>0)
+		{document.getElementById("navibar").style.height="50px";
+		}
+
+    }else if(e.detail){//Firefox 
+        t2.value=e.detail; 
+    } 
+} 
+/*注册事件*/ 
+if(document.addEventListener){ 
+    document.addEventListener('DOMMouseScroll',scrollFunc,false); 
+}//W3C 
+window.onmousewheel=document.onmousewheel=scrollFunc;//IE/Opera/Chrome 
+</script> 
+
+</head>
+<body>
+<?php 
+$url=$_SERVER['PHP_SELF'];
+$url=explode('/',$url);
+$url=end($url);
+if($url=='index.php'|$url=='about.php')
+{?>
+		<header>
+				<div id='name'><h1>Brague</h1></div>
+				<div id='hitokoto'><h2><?php hitokoto();?></h2></div>
+				<div id='brague_logo'><img src='image/brague_logo.png' ?></div>
+
+				</header>
+
+				<div class='wipe-overlay'></div>
+				<?php };?>
+				<div id='mousewheel'><label for="wheelDelta">滚动值:</label>(IE/Opera)<input type="text" id="wheelDelta"/> 
+				<label for="detail">滚动值:(Firefox)</label><input type="text" id="detail"/> 
+				</div>
+
+<nav id='navibar'>
+<ul>
+<li>
+<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>'>Home</a>
+</li>
+<li>
+<a href='#'>bmenu2</a>
+<ul>
+<li><a href=''></a></li>
+<li><a href=''></a></li>
+<li><a href=''></a></li>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+</ul>
+</li>
+<li>
+<a href='#'>bmenu3</a>
+<ul>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+</ul>
+</li>
+<li>
+<a href='http://blog.uuuuj.com'>About</a>
+<ul>
+<li><a href='http://blog.uuuuj.com'></a></li>
+</ul>
+</li>
+<li>
+<div class='foot'> Powered by <a href='http://www.uuuuj.com'>Brague</a></div>
+</ul>
+</nav>
+<!--<nav id='navibar2'>
+<ul>
+<li>
+<a href='<?php/** echo 'http://'.$_SERVER['HTTP_HOST'];**/?>'>Home</a>
+</li>
+<li>
+<a href='#'>bmenu2</a>
+<ul>
+<li><a href='#'>menu2</a></li>
+<li><a href='#'>menu2</a></li>
+<li><a href='#'>menu2</a></li>
+</ul>
+</li>
+<li>
+<a href='#'>bmenu3</a>
+<ul>
+<li><a href='#'>menu3</a></li>
+<li><a href='#'>menu2</a></li>
+</ul>
+</li>
+<li>
+<a href='http://blog.uuuuj.com'>About</a>
+<ul>
+<li><a href='http://blog.uuuuj.com'>WordPress</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+--!>
+
