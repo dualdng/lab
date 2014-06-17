@@ -4,7 +4,7 @@ $id=$_GET['id'];
 include('header.php');
 hit_count($id,$no);
 ?>
-<article>
+<article class="main_content">
 <div id='page'>
 <div id='article'><?php single_post($no);?>
 <!--duoshuo start-->
@@ -27,4 +27,5 @@ var duoshuoQuery = {short_name:"tinty"};
 </div>
 <div id='share'></div>
 </article>
+</div>
 <?php include('footer.php');?>
