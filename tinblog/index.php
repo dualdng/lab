@@ -11,6 +11,5 @@
 <div id='pagenavi'><?php pagenavi_index();?></div>
 </div>
 </article>
-</div><!-- /container -->
 <?php include('footer.php');?>
 

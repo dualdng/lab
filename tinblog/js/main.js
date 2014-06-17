@@ -1,15 +1,14 @@
 $(document).ready(function($){
 	$(function(){
 			
-			$('#article a').phzoom({});
-var H=$('nav').offset().top;
+/**var H=$('nav').offset().top;*/
 		$(window).scroll(function()
 			{
 				var scroh=$(this).scrollTop();
-				if(scroh>=H)
+				if(scroh>=0)
 		{
-		$('#navibar2').css({'display':'none'})
-			$('header').fadeOut('slow');
+		$('.bg-img:first-child').css({'-webkit-transform':'translateY(-80%)'});
+		$('.bg-img:last-child').css({'-webkit-transform':'translateY(100%)'});
 		}
 		
 		/**			else

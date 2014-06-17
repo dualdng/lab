@@ -13,26 +13,26 @@
 <link rel="stylesheet" type="text/css" href="style/normalize.css" />
 <link rel="stylesheet" type="text/css" href="style/demo.css" />
 <link rel="stylesheet" type="text/css" href="style/component.css" />
+<script type='text/javascript' src='js/jquery-2.1.0.min.js'></script>
+<script type='text/javascript' src='js/main.js'></script>
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
-<body class="demo-3">
-<div id="container" class="container intro-effect-sliced">
-<!-- Top Navigation -->
+<body>
 <?php 
 $url=$_SERVER['PHP_SELF'];
 $url=explode('/',$url);
 $url=end($url);
 if($url=='index.php'||$url=='about.php'||$url='single.php')
 {?>
-<header class="header">
-<div class="bg-img"><img src="image/3.jpg" alt="Background Image" /></div>
+<header>
+<div class="bg-img"></div>
 <div class="main_title">
 <h1>Brague</h1>
 <span><?php line_api();?></span>
 </div>
-<div class="bg-img"><img src="image/3.jpg" alt="Background Image" /></div>
+<div class="bg-img"></div>
 </header>
 <button class="trigger" data-info="Click to see the header effect"><span>Trigger</span></button>
 <?php }?>
