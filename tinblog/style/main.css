@@ -65,10 +65,9 @@ head {
 	left:5%;
 	top:30%;
 	width:35%;
-		  -webkit-transition: -webkit-transform .9s;
+		  -webkit-transition: top .9s;
 	-webkit-transform: opacity 7s;
 	z-index:500;
-	color:#61a64b;
 }
 
 
@@ -126,13 +125,13 @@ margin:1%;
 width:150px;
 }
 .user {
-		clear:both;
+		float:right;
 }
 
 .date {
 		margin-bottom:2%;
 }
-.tag{padding-bottom:1%;}
+.tag{padding-bottom:1%;clear:both;}
 a.ta0{border-bottom:3px solid #61a64b;}
 a.ta1{border-bottom:3px solid #66ccff;}
 a.ta2{border-bottom:3px solid red;}

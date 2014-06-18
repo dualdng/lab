@@ -194,7 +194,7 @@ function set_option($title,$keywords,$description)
 		{
 				echo 'can\'t connect the database;';
 		};
-		$query='update b_option set title=\''.$title.'\',keywords=\''.$keywords.'\',$description=\''.$description.'\'';
+		$query='update b_option set title=\''.$title.'\',keywords=\''.$keywords.'\',description=\''.$description.'\'';
 		$result=$db->query($query);
 		return $result;
 		$db->close();

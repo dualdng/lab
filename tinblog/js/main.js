@@ -7,7 +7,7 @@ $(document).ready(function($){
 		{
 		$('.bg-img:first-child').css({'-webkit-transform':'translateY(-80%)','border-bottom':'1px solid #ebeaea'});
 		$('.bg-img:last-child').css({'-webkit-transform':'translateY(100%)'});
-		$('.main_title').css({'-webkit-transform':'translate(0%,-350%)'});
+		$('.main_title').css({'top':'1%'});
 		$('.main_title span').html('<span style=\'color:#61a64b\'>L</span>ife <span style=\'color:#66ccff\'>i</span>s <span style=\'color:pink\'>a</span> <span style=\'color:red\'>c</span>olor <span style=\'color:yellow\'>b</span>lind');
 		}
 			})
