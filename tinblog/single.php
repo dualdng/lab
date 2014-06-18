@@ -5,6 +5,8 @@ include('header.php');
 hit_count($id,$no);
 ?>
 <article class="main_content">
+<div class='double'><button class='d_button' onclick='javascript:double();'>双栏</button>
+<button class='d_button' onclick='javascript:one();'>单栏</button></div>
 <div id='page'>
 <div id='article'><?php single_post($no);?>
 <!--duoshuo start-->

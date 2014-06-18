@@ -63,21 +63,28 @@ function post_list()//show post's list on index.php
 						{
 				$tag=explode(',',$res[$i][4]);
 				$num=count($tag);
-			/**	echo '<div id=\'page2\'>';**/
+			echo '<div class=\'article\'>';
 		/**	echo '<div class=\'hit_count\'>'.$res[$i][9].'</div>';**/
 				while($res[$i][5]==1)//image
 				{
 						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
-						preg_match($ruls,$str,$matches);
+						preg_match_all($ruls,$str,$matches);
+						$c=count($matches[0]);
 						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 								if(empty($res[$i][8]))
 						{
-								echo '<div class=\'content\'><a href=\''.$matches[1].'\'>'.@$matches[0].'</a></div>';
+								for($b=0;$b<$c;$b++)
+								{
+								echo '<div class=\'content\'><a href=\''.$matches[1][$b].'\'>'.@$matches[0][$b].'</a></div>';
+								}
 						}
 						else
 						{
-								echo '<div class=\'content\'><a href=\''.$matches[1].'\'>'.$res[$i][8].@$matches[0].'</div>';
+								for($b=0;$b<$c;$b++)
+								{
+								echo '<div class=\'content\'><a href=\''.$matches[1][$b].'\'>'.$res[$i][8].@$matches[0][$b].'</div>';
+								}
 						}
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
@@ -156,8 +163,8 @@ function post_list()//show post's list on index.php
 						break;
 				}
 						}
-		/**		echo '</div>';**/
-		}
+			echo '</div>';		
+			}
 }
 function single_post($no)
 {
@@ -299,6 +306,7 @@ function tag_list($tag)
 		{
 				$tag=explode(',',$res[$i][4]);
 				$num=count($tag);
+				echo '<div class=\'article\'>';
 				while($res[$i][5]==1)//image
 				{
 						$ruls='/<img[^>]+\/>/iu';
@@ -389,6 +397,7 @@ function tag_list($tag)
 								</div>';
 						break;
 				}
+				echo '</div>';
 
 		}
 }
@@ -439,6 +448,7 @@ function cata_list($cata)
 		{
 				$tag=explode(',',$res[$i][4]);
 				$num=count($tag);
+				echo '<div class=\'article\'>';
 				while($res[$i][5]==1)//image
 				{
 						$ruls='/<img[^>]+\/>/iu';
@@ -529,6 +539,7 @@ function cata_list($cata)
 								</div>';
 						break;
 				}
+				echo '</div>';
 
 		}
 }

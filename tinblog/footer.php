@@ -1,3 +1,4 @@
+<footer>
 <nav id='navibar'>
 <ul>
 <li>
@@ -33,6 +34,7 @@
 Powered by <a href='http://www.uuuuj.com'>Brague</a></div>
 </ul>
 </nav>
+</footer>
 
 </body>
 </html>

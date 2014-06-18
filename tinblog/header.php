@@ -10,8 +10,6 @@
 <meta name="keywords" content="title, header, effect, scroll, inspiration, medium, web design" />
 <meta name="author" content="Codrops" />
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css" href="style/normalize.css" />
-<link rel="stylesheet" type="text/css" href="style/demo.css" />
 <link rel="stylesheet" type="text/css" href="style/component.css" />
 <script type='text/javascript' src='js/jquery-2.1.0.min.js'></script>
 <script type='text/javascript' src='js/main.js'></script>
@@ -29,7 +27,7 @@ if($url=='index.php'||$url=='about.php'||$url='single.php')
 <header>
 <div class="bg-img"></div>
 <div class="main_title">
-<h1>Brague</h1>
+<h1><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>'>Brague</a></h1>
 <span><?php line_api();?></span>
 </div>
 <div class="bg-img"></div>
