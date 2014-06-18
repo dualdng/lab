@@ -5,13 +5,15 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 <meta name="viewport" content="width=device-width, initial-scale=1"> 
-<title>Inspiration for Article Intro Effects | Demo 3</title>
-<meta name="description" content="Inspiration for Article Intro Effects" />
-<meta name="keywords" content="title, header, effect, scroll, inspiration, medium, web design" />
-<meta name="author" content="Codrops" />
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" type="text/css" href="style/component.css" />
+<title><?php show_title();?></title>
+<meta name="description" content="<?php echo $option[0][2];?>" />
+<meta name="keywords" content="<?php echo $option[0][1];?>" />
+<meta name="author" content="Tinty" />
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="stylesheet" type="text/css" href="style/main.css" />
+<link rel='stylesheet' href='phzoom/phzoom.css' />
 <script type='text/javascript' src='js/jquery-2.1.0.min.js'></script>
+<script type="text/javascript" src="phzoom/phzoom.js"></script>
 <script type='text/javascript' src='js/main.js'></script>
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
