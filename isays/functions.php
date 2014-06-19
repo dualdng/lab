@@ -7,9 +7,9 @@ function show_pic()
 {
 		global $result;
 		$num=count($result);
-		for($i=0;$i<$num;$++)
+		for($i=0;$i<$num;$i++)
 		{
-				echo $result[$i][0];
+				echo '<img src=\''.$result[$i][0].'\'/>';
 		}
 }
 ?>
