@@ -1,0 +1,17 @@
+. {
+		margin:0;
+}
+body {
+		color:#61a64b;
+}
+#content {
+		width:80%;
+		margin:0 auto;
+		-webkit-column-width:250px;
+}
+#content img {
+		width:300px;
+		height:auto;
+}
+#pic {
+}

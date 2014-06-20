@@ -9,7 +9,7 @@ function show_pic()
 		$num=count($result);
 		for($i=0;$i<$num;$i++)
 		{
-				echo '<img src=\''.$result[$i][0].'\'/>';
+				echo '<a href=\''.$result[$i][0].'\'><img src=\''.$result[$i][0].'\'/></a>';
 		}
 }
 ?>
