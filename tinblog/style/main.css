@@ -131,7 +131,7 @@ width:150px;
 .date {
 		margin-bottom:2%;
 }
-.tag{padding-bottom:1%;clear:both;}
+.tag{padding-bottom:1%;}
 a.ta0{border-bottom:3px solid #61a64b;}
 a.ta1{border-bottom:3px solid #66ccff;}
 a.ta2{border-bottom:3px solid red;}
@@ -231,6 +231,9 @@ border-radius: 20px;
 #side .widget_tag span{color:#61a64b;margin:2% 0;}
 #pagenavi{clear:both;}
 #share{clear:both;}
+#widget ul {
+		margin-left:-15%;
+}
 #widget ul li{list-style:none;float:left;margin-right:8%;}
 
 /** font-image **/
