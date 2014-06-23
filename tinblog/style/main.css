@@ -180,6 +180,7 @@ display:none;
 
 #status .user {
 margin-bottom:2%;
+clear:both;
 }
 #status .tag {
 display:none;
