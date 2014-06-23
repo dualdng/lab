@@ -179,8 +179,7 @@ display:none;
 }
 
 #status .user {
-margin-bottom:2%;
-clear:both;
+margin-top:-2%;
 }
 #status .tag {
 display:none;
