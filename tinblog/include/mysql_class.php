@@ -49,7 +49,7 @@ class mysql_con
 				$res=$this->query($query);
 				return $res;
 		}
-		function close()
+		function __destruct()	
 		{
 				$this->db->close();
 		}
