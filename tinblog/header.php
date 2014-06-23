@@ -12,9 +12,14 @@
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="style/main.css" />
 <link rel='stylesheet' href='phzoom/phzoom.css' />
+<link rel="stylesheet" href="admin/editor/plugins/code/prettify.css" />
 <script type='text/javascript' src='js/jquery-2.1.0.min.js'></script>
 <script type="text/javascript" src="phzoom/phzoom.js"></script>
 <script type='text/javascript' src='js/main.js'></script>
+<script charset="utf-8" src="admin/editor/kindeditor.js"></script>
+<script charset="utf-8" src="admin/editor/plugins/code/code.js"></script>
+<script charset="utf-8" src="admin/editor/plugins/code/prettify.js"></script>
+
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -24,7 +29,7 @@
 $url=$_SERVER['PHP_SELF'];
 $url=explode('/',$url);
 $url=end($url);
-if($url=='index.php'||$url=='about.php'||$url='single.php')
+if($url=='index.php'||$url=='about.php')
 {?>
 <header>
 <div class="bg-img"></div>
@@ -34,6 +39,5 @@ if($url=='index.php'||$url=='about.php'||$url='single.php')
 </div>
 <div class="bg-img"></div>
 </header>
-<button class="trigger" data-info="Click to see the header effect"><span>Trigger</span></button>
 <?php }?>
 

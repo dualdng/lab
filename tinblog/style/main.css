@@ -70,7 +70,29 @@ head {
 	z-index:500;
 }
 
+#banner {height:50px;line-height:50px;background:#fff;
+		border:1px solid #ebeaea;
+		padding:0 1%;
+}
 
+a#a:link {
+		color:#61a64b;
+}
+a#b:link {
+		color:#66ccff;
+}
+a#a:visited {
+		color:#61a64b;
+}
+a#b:visited {
+		color:#66ccff;
+}
+a#a:hover {
+		color:#66ccff;
+}
+a#b:hover {
+		color:#61a64b;
+}
 /* Content */
 .main_content {
 		font-size:16px;
@@ -164,6 +186,9 @@ background:pink;
 width:100%;
 float:left;
 -webkit-transition:width .8s;
+-moz-transition:width .8s;
+-o-transition:width .8s;
+transition:width .8s;
 }
 .article {
 		background:#fff;

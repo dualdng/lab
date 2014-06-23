@@ -1,22 +1,22 @@
 <?php
 include('../include/mysql_con.php');
 	$content = '';
-	if (!empty($_GET['content'])) {
+	if (!empty($_POST['content'])) {
 		if (get_magic_quotes_gpc()) {
-			$content = stripslashes($_GET['content']);
+			$content = $_POST['content'];
 		} else {
-			$content = $_GET['content'];
+			$content = addslashes($_POST['content']);
 		}
 	}
-$title=$_GET['title'];
-$excerpt=$_GET['excerpt'];
-$catagory_id=$_GET['catagory'];
-$tag=$_GET['tag'];
-$post_type=$_GET['type'];
-$user_id=$_GET['user_id'];
-if(isset($_GET['status']))
+$title=$_POST['title'];
+$excerpt=$_POST['excerpt'];
+$catagory_id=$_POST['catagory'];
+$tag=$_POST['tag'];
+$post_type=$_POST['type'];
+$user_id=$_POST['user_id'];
+if(isset($_POST['status']))
 {
-$status=$_GET['status'];
+$status=$_POST['status'];
 }
 else
 {

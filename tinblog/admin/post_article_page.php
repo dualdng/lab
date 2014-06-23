@@ -32,7 +32,7 @@
 <meta http-equiv='content-type' content='text/html;charset=utf-8'>
 </head>
 <body>
-<form class='form'name="article" method="get" action="post_article.php">
+<form class='form'name="article" method="post" action="post_article.php">
 title:<input type='text' id='title' name='title'></input><br />
 conntent:<textarea id='editor_id' name='content' style='width:700px;height:300px;'></textarea><br />
 excerpt:<textarea id='except' name='excerpt'></textarea><br />

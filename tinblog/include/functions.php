@@ -172,6 +172,7 @@ function single_post($no)
 		global $res;
 		$tag=explode(',',$res[$no][4]);
 		$num=count($tag);
+			echo '<div class=\'article\'>';
 				while($res[$no][5]==1)//image
 				{
 						echo '<div id=\'single\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'>'.$res[$no][1].'</div>
@@ -235,6 +236,7 @@ function single_post($no)
 								</div>';
 						break;
 				}
+				echo '</div>';
 /**
 		global $res;
 		echo $res[$no][1].'<br />';
