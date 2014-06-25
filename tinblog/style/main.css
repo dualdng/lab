@@ -69,6 +69,8 @@ head {
 	-webkit-transform: opacity 7s;
 	z-index:500;
 }
+.main_title span {
+}
 
 #banner {height:50px;line-height:50px;background:#fff;
 		border:1px solid #ebeaea;
@@ -98,7 +100,7 @@ a#b:hover {
 		font-size:16px;
 margin: 0 auto;
 width:60%;
-margin-top:4%;
+margin-top:7%;
 margin-bottom:5%;
 }
 
@@ -150,6 +152,20 @@ width:150px;
 		float:right;
 }
 
+.user a:link {
+		color:red;
+		border-bottom:3px solid #61a64b;
+}
+
+.user a:visited {
+		color:red;
+		border-bottom:3px solid #61a64b;
+}
+
+.user a:hover {
+		color:#61a64b;
+		border-bottom:3px solid red;
+}
 .date {
 		margin-bottom:2%;
 }
@@ -163,7 +179,7 @@ display:none;
 }
 
 #status .user {
-margin-bottom:2%;
+margin-top:-2%;
 }
 #status .tag {
 display:none;
