@@ -5,8 +5,8 @@ function rand_pic()
 		type:'POST',
 		success:function(data)
 	{
-		$('.content').empty();
-		$('.content').append(data);
+		$('.pic-contentleft').empty();
+		$('.pic-contentleft').append(data);
 	}
 	})
 };
@@ -18,10 +18,11 @@ $(document).on('click','#loadmore',function()
 				type:'POST',
 				success:function(data)
 				{
-				var result=$(data).find('.content');
+				var result=$(data).find('.pic-contentleft');
 				var nexturl=$(data).find('#loadmore').attr('href');
-				$('#content').append(result);
+				$('.pic-content').append(result);
 				$('#loadmore').attr('href',nexturl);
+
 				}
 		})
 		return false;

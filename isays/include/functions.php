@@ -21,7 +21,7 @@ function show_pic($page)
 			$pageend=$page*10;
 			for($i=$pagebegin;$i<=$pageend;$i++)
 			{
-					echo '<a href=\''.$result[$i][0].'\'><img src=\''.$result[$i][0].'\'/></a>';
+					echo '<div class=\'pic-contentleft\'><a href=\''.$result[$i][0].'\'><img src=\''.$result[$i][0].'\'/></a></div>';
 			}
 		}
 }
@@ -34,7 +34,7 @@ function rand_pic()
 	$rand_array=array_slice($rand_array,0,10);
 	foreach($rand_array as $i)
 	{
-			echo '<a href=\''.$result[$i][0].'\'><img src=\''.$result[$i][0].'\'/></a>';
+			echo '<div class=\'pic-contentleft\'><a href=\''.$result[$i][0].'\'><img src=\''.$result[$i][0].'\'/></a></div>';
 	}
 }
 ?>
