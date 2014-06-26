@@ -12,9 +12,10 @@ else
 <html>
 <head>
 <meta charset='utf-8' >
-<link rel='stylesheet' text='text/css' href='main.css' />
+<link rel='stylesheet' text='text/css' href='pic/pic.css' />
 <link rel='stylesheet' text='text/css' href='phzoom/phzoom.css' />
 <script type='text/javascript' src='jquery-2.1.0.min.js'></script>
+<script type='text/javascript' src='pic/jquery.masonry.min.js'></script>
 <script type='text/javascript' src='phzoom/phzoom.js'></script>
 <script type='text/javascript' src='main.js'></script>
 <script>
@@ -24,12 +25,26 @@ $(document).ready(function()
 }
 )
 </script>
+<script>
+$(function(){
+	var $container = $('.pic-content');
+	$container.imagesLoaded( function(){
+		$container.masonry({
+			itemSelector : '.pic-contentleft',
+			gutterWidth : 20,
+			isAnimated: true,
+		});
+	});
+});
+</script>
+
 <title>
+图片墙|Brague
 </title>
 </head>
 <body>
-<div id='content'>
-<div class='content'><?php show_pic($page);?></div> 
+<div class='pic-content'>
+<?php show_pic($page);?>
 </div>
 <div class='more'>
 <?php
