@@ -12,16 +12,16 @@ else
 <html>
 <head>
 <meta charset='utf-8' >
-<link rel='stylesheet' text='text/css' href='pic/pic.css' />
+<link rel='stylesheet' text='text/css' href='style/main.css' />
 <link rel='stylesheet' text='text/css' href='phzoom/phzoom.css' />
-<script type='text/javascript' src='jquery-2.1.0.min.js'></script>
-<script type='text/javascript' src='pic/jquery.masonry.min.js'></script>
+<script type='text/javascript' src='js/jquery-2.1.0.min.js'></script>
+<script type='text/javascript' src='js/jquery.masonry.min.js'></script>
 <script type='text/javascript' src='phzoom/phzoom.js'></script>
-<script type='text/javascript' src='main.js'></script>
+<script type='text/javascript' src='js/main.js'></script>
 <script>
 $(document).ready(function()
 {
-		$('#content a').phzoom({});
+		$('.pic-content a').phzoom({});
 }
 )
 </script>
@@ -54,5 +54,40 @@ echo '<a id=\'loadmore\' href=\'index.php?page='.($page+1).'\'>';
 </a>
 <a href='javascript:rand_pic();'>试试手气</a>
 </div>
+<nav id='navibar'>
+<ul>
+<li>
+<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>'>Home</a>
+</li>
+<li>
+<a href='#'>Catagory</a>
+<ul>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/catagory_page?cata=LifeTime'>LifeTime</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/catagory_page?cata=Codes'>Codes</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/catagory_page?cata=Movies'>Movies</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/catagory_page?cata=Themes'>Themes</a></li>
+</ul>
+</li>
+<li>
+<a href='http://line.uuuuj.com'>Line</a>
+<ul>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+<li><a href='#'></a></li>
+</ul>
+</li>
+<li>
+<a href='http://blog.uuuuj.com'>Wordpress</a>
+<ul>
+<li><a href='#'></a></li>
+</ul>
+</li>
+<li>
+<div class='foot'>Music <a href='javascript:void(0);'  onclick="document.getElementById('backmusic').play()" >ON&nbsp|</a><a href='javascript:void(0);' onclick="document.getElementById('backmusic').pause()" >&nbspOFF</a><audio id='backmusic'src='http://music.uuuuj.com/dance to the death .mp3'  loop='loop'></audio>
+Powered by <a href='http://www.uuuuj.com'>Brague</a></div>
+</ul>
+</nav>
 </body>
 </html>
