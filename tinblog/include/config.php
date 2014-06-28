@@ -1,6 +1,5 @@
 <?php
 define('url','127.0.0.1');
-define('usrname','blog');
-define('passwd','d3621201,');
-define('database','blog');
-?>
+define('usrname','用户名');
+define('passwd','密码');
+define('database','数据库');
