@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
-$db=new mysqli('127.0.0.1','pic','d3621201,','pic');
+$db=new mysqli('127.0.0.1','用户名','密码','数据库');
 $query='select url from pic';
 $result=$db->query($query);
 $result=$result->fetch_all();
