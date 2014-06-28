@@ -1,7 +1,7 @@
 <?php
 function list_post()
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','用户名','密码','数据库');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
