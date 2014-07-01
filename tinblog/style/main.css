@@ -375,4 +375,20 @@ transform: rotate(-360deg);
 }
 }
 
-
+/** about **/
+#first {
+	height:500px;
+	background:#61a64b;
+}
+#second {
+	height:500px;
+	background:#fff;
+}
+#third {
+	height:500px;
+	background:#ebeaea;
+}
+#forth {
+	height:500px;
+	background:#66ccff;
+}
