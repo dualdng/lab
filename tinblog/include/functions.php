@@ -660,10 +660,12 @@ function show_comments($no)
 		$query='select * from b_comments where no=\''.$no.'\'';
 		$result=$db->fetch_all($query);
 		$rows=count($result);
+		$res_arr=array();
 		for($i=0;$i<$rows;$i++)
 		{
-				if(empty($result[$i][2]))
+				if(!empty($result[$i][2]))
 				{
+						$res_arr[]=$result[$i][]
 						echo '<div class=\'author\'>'.$result[$i][3].'</div>';
 						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s='.$size.'\'/></a></div>';
 						echo '<div class=\'text\'>'.$result[$i][6].'</div>';
