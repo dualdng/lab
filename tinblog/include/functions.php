@@ -654,4 +654,21 @@ function show_user()
 		$result=$db->fetch_all($query);
 		return $result;
 }
+function show_comments($no)
+{
+		global $db;
+		$query='select * from b_comments where no=\''.$no.'\'';
+		$result=$db->fetch_all($query);
+		$rows=count($result);
+		for($i=0;$i<$rows;$i++)
+		{
+				if(empty($result[$i][2]))
+				{
+						echo '<div class=\'author\'>'.$result[$i][3].'</div>';
+						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s='.$size.'\'/></a></div>';
+						echo '<div class=\'text\'>'.$result[$i][6].'</div>';
+				}
+				else
+				{
+		}
 ?>

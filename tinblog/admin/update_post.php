@@ -3,9 +3,9 @@ include('../include/mysql_con.php');
 	$content = '';
 	if (!empty($_GET['content'])) {
 		if (get_magic_quotes_gpc()) {
-			$content = stripslashes($_GET['content']);
-		} else {
 			$content = $_GET['content'];
+		} else {
+			$content = stripslashes($_GET['content']);
 		}
 	}
 $no=$_GET['no'];
