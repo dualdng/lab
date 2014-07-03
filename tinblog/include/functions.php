@@ -657,20 +657,26 @@ function show_user()
 function show_comments($no)
 {
 		global $db;
-		$query='select * from b_comments where no=\''.$no.'\'';
+		$query='select * from b_comments where no=\''.$no.'\' order by pre_post_id asc';
 		$result=$db->fetch_all($query);
 		$rows=count($result);
-		$res_arr=array();
+		$pre_post_id=array();
+		$post_id=array();
 		for($i=0;$i<$rows;$i++)
 		{
-				if(!empty($result[$i][2]))
-				{
-						$res_arr[]=$result[$i][]
-						echo '<div class=\'author\'>'.$result[$i][3].'</div>';
-						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s='.$size.'\'/></a></div>';
-						echo '<div class=\'text\'>'.$result[$i][6].'</div>';
-				}
-				else
-				{
+						$pre_post_id[]=$result[$i][2];
+						$post_id[]=$result[$i][1];
+						if($result[$i][2]!=$result[$i][1])
+						{
+								echo '<div class=\'coments\'>';
+								echo '<div class=\'author\'>'.$result[$i][3].'</div>';
+								echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
+								echo '<div class=\'text\'>'.$result[$i][6].'</div>';
+								echo '</div>';
+						}
 		}
+		print_r($pre_post_id);
+		print_r($post_id);
+}
+				
 ?>

@@ -33,21 +33,21 @@ $filename=end(explode('/',$url));
 <button class='d_button' onclick='javascript:one();'>单栏</button></div>
 <div id='page'>
 <div id='article'><?php single_post($no);?>
-<!--duoshuo start-->
-<div class="ds-thread" data-thread-key="<?php echo $no;?>"
-data-title="<?php echo $res[$no][1];?>" data-url="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"tinty"};
-(function() {
- var ds = document.createElement('script');
- ds.type = 'text/javascript';ds.async = true;
- ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
- ds.charset = 'UTF-8';
- (document.getElementsByTagName('head')[0] 
-  || document.getElementsByTagName('body')[0]).appendChild(ds);
- })();
+<div id="SOHUCS" sid='<?php echo $no;?>'></div>
+<script>
+	(function(){
+			var appid = 'cyrfJEyS0',
+    conf = 'prod_1c7bc3bf2c3ed4a45a7f0bab620800f9';
+    var doc = document,
+    s = doc.createElement('script'),
+    h = doc.getElementsByTagName('head')[0] || doc.head || doc.documentElement;
+    s.type = 'text/javascript';
+    s.charset = 'utf-8';
+    s.src =  'http://assets.changyan.sohu.com/upload/changyan.js?conf='+ conf +'&appid=' + appid;
+    h.insertBefore(s,h.firstChild);
+    window.SCS_NO_IFRAME = true;
+	})()
 </script>
-<!-- duoshuo end -->
 </div>
 <div id='side'><?php include('side.php');?></div>
 </div>
