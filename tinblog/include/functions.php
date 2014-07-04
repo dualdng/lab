@@ -143,15 +143,26 @@ function post_list()//show post's list on index.php
 				}
 				while($res[$i][5]==4)//standard
 				{
+						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
+						$str=$res[$i][7];
+						preg_match_all($ruls,$str,$matches);
+						$c=count($matches[0]);
 						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
-								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
+								for($b=0;$b<$c;$b++)
+								{
+								echo '<div class=\'content\'><a href=\''.$matches[1][$b].'\'>'.@$matches[0][$b].'</a>'.$res[$i][7].'</div>';
+								}
 						}
 						else
 						{
-								echo '<div class=\'content\'>'.$res[$i][8].'</div>';
+								for($b=0;$b<$c;$b++)
+								{
+								echo '<div class=\'content\'><a href=\''.$matches[1][$b].'\'>'.$res[$i][8].@$matches[0][$b].'</div>';
+								}
 						}
+						echo '<div style=\'clear:both\'></div>';
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
