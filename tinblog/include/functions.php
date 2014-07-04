@@ -65,13 +65,13 @@ function post_list()//show post's list on index.php
 				$num=count($tag);
 			echo '<div class=\'article\'>';
 		/**	echo '<div class=\'hit_count\'>'.$res[$i][9].'</div>';**/
-				while($res[$i][5]==1)//image
+				while($res[$i][5]==1)//image   id w为文章唯一字段
 				{
-						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg]))[\'|\"].*?[\/]?>/";
+						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
 						preg_match_all($ruls,$str,$matches);
 						$c=count($matches[0]);
-						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 								if(empty($res[$i][8]))
 						{
 								for($b=0;$b<$c;$b++)
@@ -105,7 +105,7 @@ function post_list()//show post's list on index.php
 						$ruls='/<audio[^>]+>/iu';
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 								if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.@$matches[0].'</div>';
@@ -128,7 +128,7 @@ function post_list()//show post's list on index.php
 				}
 				while($res[$i][5]==3)//status
 				{
-						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
+						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
 								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 								for($a=0;$a<$num;$a++)
@@ -143,7 +143,7 @@ function post_list()//show post's list on index.php
 				}
 				while($res[$i][5]==4)//standard
 				{
-						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
@@ -170,6 +170,7 @@ function post_list()//show post's list on index.php
 function single_post($no)
 {
 		global $res;
+		$row=count($res);
 		$tag=explode(',',$res[$no][4]);
 		$num=count($tag);
 			echo '<div class=\'article\'>';
@@ -252,12 +253,20 @@ function show_title()
 
 		$url=$_SERVER['PHP_SELF'];
 		$filename=end(explode('/',$url));
-		global $no;
+		global $id;
 		global $res;
 		global $option;
 		global $catagory;
 		global $tag;
 		global $db;
+		$row=count($res);
+		for($i=0;$i<$row;$i++)//转换文章id为数组res中的数字索引，主要目的：解决通过数组res数字索引区分文章导致的url一直是变化的，现在就可以直接使用id作为文章的划分，同时又保留了数字索引的方便。
+		{
+				if($res[$i][0]==$id)
+				{
+						$no=$i;
+				}
+		}
 		$query='select * from b_option';
 		$option=$db->fetch_all($query);
 		switch($filename)
@@ -315,7 +324,7 @@ function tag_list($tag)
 						$ruls='/<img[^>]+\/>/iu';
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$matches[0].'</div>';
@@ -324,6 +333,7 @@ function tag_list($tag)
 						{
 								echo '<div class=\'content\'>'.$res[$i][8].$matches[0].'</div>';
 						}
+						echo '<div style=\'clear:both\'></div>';
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 
@@ -342,7 +352,7 @@ function tag_list($tag)
 						$ruls='/<audio[^>]+\/>/iu';
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$matches[0].'</div>';
@@ -365,7 +375,7 @@ function tag_list($tag)
 				}
 				while($res[$i][5]==3)//status
 				{
-						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
+						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
 								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
@@ -380,7 +390,7 @@ function tag_list($tag)
 				}
 				while($res[$i][5]==4)//standard
 				{
-						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
@@ -457,7 +467,7 @@ function cata_list($cata)
 						$ruls='/<img[^>]+\/>/iu';
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$matches[0].'</div>';
@@ -466,6 +476,7 @@ function cata_list($cata)
 						{
 								echo '<div class=\'content\'>'.$res[$i][8].$matches[0].'</div>';
 						}
+						echo '<div style=\'clear:both\'></div>';
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 
@@ -484,7 +495,7 @@ function cata_list($cata)
 						$ruls='/<audio[^>]+\/>/iu';
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$matches[0].'</div>';
@@ -507,7 +518,7 @@ function cata_list($cata)
 				}
 				while($res[$i][5]==3)//status
 				{
-						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
+						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
 								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
@@ -522,7 +533,7 @@ function cata_list($cata)
 				}
 				while($res[$i][5]==4)//standard
 				{
-						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
@@ -622,7 +633,7 @@ function rand_article()
 		$rand_array=array_slice($rand_array,0,5);
 		foreach($rand_array as $i)
 		{
-				echo'<a href=\'single.php?no='.$i.'&id='.$res[$i][0].'\'>'.$res[$i][1].'</a><br />';
+				echo'<a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><br />';
 		}
 }
 function cata_cloud()

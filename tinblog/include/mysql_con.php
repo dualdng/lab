@@ -1,7 +1,7 @@
 <?php
 function list_post()
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -13,7 +13,7 @@ function list_post()
 }
 function user_verify($userid,$passwd)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -50,7 +50,7 @@ function page_amount()
 **/
 function list_catagory()
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -62,7 +62,7 @@ function list_catagory()
 }
 function post_article($title,$content,$excerpt,$user_id,$catagory_id,$tag,$post_type,$status,$hit_count=0)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -76,7 +76,7 @@ function post_article($title,$content,$excerpt,$user_id,$catagory_id,$tag,$post_
 }
 function editor_post()
 {
-$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 if(mysqli_connect_errno())
 {
 echo 'can\'t connect the database;';
@@ -88,7 +88,7 @@ echo 'can\'t connect the database;';
 }
 function update_post($no,$title,$content,$excerpt,$catagory_id,$tag,$post_type,$status)
 {
-$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 if(mysqli_connect_errno())
 {
 		echo 'can\'t connect the database;';
@@ -117,7 +117,7 @@ if(mysqli_connect_errno())
 **/
 function delete_article($no)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -129,7 +129,7 @@ function delete_article($no)
 }
 function update_hit_count($id,$count)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -140,7 +140,7 @@ function update_hit_count($id,$count)
 }
 function most_pop()
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -152,7 +152,7 @@ function most_pop()
 }
 function rand_post()
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -164,7 +164,7 @@ function rand_post()
 }
 function tag_num($tag)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -177,7 +177,7 @@ function tag_num($tag)
 }
 function show_option()
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -189,7 +189,7 @@ function show_option()
 }
 function set_option($title,$keywords,$description)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -201,7 +201,7 @@ function set_option($title,$keywords,$description)
 }
 function show_user()
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -213,7 +213,7 @@ function show_user()
 }
 function set_user($user_id,$user_name,$user_email,$user_des)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -225,7 +225,7 @@ function set_user($user_id,$user_name,$user_email,$user_des)
 }
 function delete_cata($id)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -237,7 +237,7 @@ function delete_cata($id)
 }
 function add_cata($catagory_name)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -250,7 +250,7 @@ function add_cata($catagory_name)
 function set_cata($id,$catagory_name)
 {
 
-        $db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+        $db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -262,7 +262,7 @@ function set_cata($id,$catagory_name)
 }	
 function delete_link($no)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -274,7 +274,7 @@ function delete_link($no)
 }
 function add_link($no,$name,$link,$title)
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -287,7 +287,7 @@ function add_link($no,$name,$link,$title)
 function set_link($no,$name,$link,$title)
 {
 
-        $db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+        $db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
@@ -299,7 +299,7 @@ function set_link($no,$name,$link,$title)
 }
 function show_link()
 {
-		$db=new mysqli('127.0.0.1','blog','d3621201,','blog');
+		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
