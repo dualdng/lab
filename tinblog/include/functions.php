@@ -152,7 +152,7 @@ function post_list()//show post's list on index.php
 						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
-								echo '<div class=\'content\'><a href=\''.@$matches[1].'\'>'.@$matches[0].'</a>'.$res[$i][7].'</div>';
+								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
 						}
 						else
 						{

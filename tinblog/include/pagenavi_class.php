@@ -33,7 +33,7 @@ class pagenavi
 						{
 								while($i==$this->page)
 								{
-										echo $i.'&nbsp';
+										echo '<span>'.$i.'</span>&nbsp';
 										break;
 								}
 								while($i!=$this->page&$i<($this->page+4))
