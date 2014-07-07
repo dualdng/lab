@@ -56,8 +56,8 @@ var duoshuoQuery = {short_name:"tinty"};
  })();
 </script>
 <!-- duoshuo end -->
-<div id='side'><?php include('side.php');?></div>
 </div>
+<div id='side'><?php include('side.php');?></div>
 <div id='share'></div>
 </article>
 </div>
