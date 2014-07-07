@@ -41,6 +41,9 @@ head {
 	right: 0;
 	bottom: 0;
 	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
 	backface-visibility: hidden;
 	background:#fff;
 	z-index:200;
@@ -51,13 +54,22 @@ head {
 .bg-img:first-child {
 		bottom:50%;
 		-webkit-transition: -webkit-transform .9s;
+		-moz-transition: -moz-transform .9s;
+		-o-transition: -o-transform .9s;
+		transition: transform .9s;
 }
 
 .bg-img:last-child {
 		top:50%;
 		position:fixed;
 	-webkit-transition: -webkit-transform .9s;
+	-moz-transition: -moz-transform .9s;
+	-o-transition: -o-transform .9s;
+	transition: transform .9s;
 	-webkit-transform: opacity 7s;
+	-o-transform: opacity 7s;
+	-moz-transform: opacity 7s;
+	transform: opacity 7s;
 }
 
 .main_title {
@@ -66,7 +78,13 @@ head {
 	top:30%;
 	width:35%;
 		  -webkit-transition: top .9s;
+		  -moz-transition: top .9s;
+		  -o-transition: top .9s;
+		  transition: top .9s;
 	-webkit-transform: opacity 7s;
+	-moz-transform: opacity 7s;
+	-o-transform: opacity 7s;
+	transform: opacity 7s;
 	z-index:500;
 }
 .main_title span {
@@ -147,7 +165,10 @@ height:auto;
 #image .content {
 float:left;
 margin:1%;
-width:150px;
+-webkit-column-width:150px;
+-moz-column-width:150px;
+-o-column-width:150px;
+column-width:150px;
 }
 .user {
 		float:right;
@@ -258,17 +279,21 @@ footer {
 margin-left:10%;
 -webkit-transition: 1s; 
 -moz-transition: 1s; 
+-o-transition: 1s; 
 transition: 1s; 
 -webkit-border-radius: 20px; 
 -moz-border-radius: 20px; 
+-o-border-radius: 20px; 
 border-radius: 20px; 
 } 
 #side img:hover { 
 		-webkit-box-shadow: 0 0 20px rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1); 
 		-moz-box-shadow: 0 0 20px rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1); 
+		-o-box-shadow: 0 0 20px rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1); 
 		box-shadow: 0 0 20px rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1); 
 		-webkit-border-radius: 60em; 
 		-moz-border-radius: 60em; 
+		-o-border-radius: 60em; 
 		border-radius: 60em; }
 #side .widget_tag span{color:#61a64b;margin:2% 0;}
 #pagenavi{clear:both;}
@@ -345,10 +370,14 @@ position: absolute;
 top: 0;
 left: 0;
 -webkit-animation: cubemove 1.8s infinite ease-in-out;
+-moz-animation: cubemove 1.8s infinite ease-in-out;
+-o-animation: cubemove 1.8s infinite ease-in-out;
 animation: cubemove 1.8s infinite ease-in-out;
 }
 .cube2 {
 -webkit-animation-delay: -0.9s;
+-moz-animation-delay: -0.9s;
+-o-animation-delay: -0.9s;
 animation-delay: -0.9s;
 }
 @-webkit-keyframes cubemove {

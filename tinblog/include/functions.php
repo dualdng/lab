@@ -72,20 +72,23 @@ function post_list()//show post's list on index.php
 						preg_match_all($ruls,$str,$matches);
 						$c=count($matches[0]);
 						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+								echo '<div class=\'content\'>';
 								if(empty($res[$i][8]))
 						{
 								for($b=0;$b<$c;$b++)
 								{
-								echo '<div class=\'content\'><a href=\''.$matches[1][$b].'\'>'.@$matches[0][$b].'</a></div>';
+								echo '<a href=\''.$matches[1][$b].'\'>'.@$matches[0][$b].'</a>';
 								}
 						}
 						else
 						{
+								echo $res[$i][8];
 								for($b=0;$b<$c;$b++)
 								{
-								echo '<div class=\'content\'><a href=\''.$matches[1][$b].'\'>'.$res[$i][8].@$matches[0][$b].'</div>';
+								echo '<a href=\''.$matches[1][$b].'\'>'.@$matches[0][$b].'</a>';
 								}
 						}
+								echo '</div>';
 						echo '<div style=\'clear:both\'></div>';
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
@@ -145,22 +148,15 @@ function post_list()//show post's list on index.php
 				{
 						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
-						preg_match_all($ruls,$str,$matches);
-						$c=count($matches[0]);
+						preg_match($ruls,$str,$matches);
 						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 						if(empty($res[$i][8]))
 						{
-								for($b=0;$b<$c;$b++)
-								{
-								echo '<div class=\'content\'><a href=\''.$matches[1][$b].'\'>'.@$matches[0][$b].'</a>'.$res[$i][7].'</div>';
-								}
+								echo '<div class=\'content\'><a href=\''.@$matches[1].'\'>'.@$matches[0].'</a>'.$res[$i][7].'</div>';
 						}
 						else
 						{
-								for($b=0;$b<$c;$b++)
-								{
-								echo '<div class=\'content\'><a href=\''.$matches[1][$b].'\'>'.$res[$i][8].@$matches[0][$b].'</div>';
-								}
+								echo '<div class=\'content\'><a href=\''.@$matches[1].'\'>'.$res[$i][8].@$matches[0].'</a></div>';
 						}
 						echo '<div style=\'clear:both\'></div>';
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
@@ -289,7 +285,7 @@ function show_title()
 				echo 'Brague|'.$option[0][2];
 				break;
 				case 'catagory_page.php';
-				echo $catatory.'|Brague';
+				echo $catagory.'|Brague';
 				break;
 				case 'tag_page.php';
 				echo $tag.'|Brague';
@@ -332,18 +328,28 @@ function tag_list($tag)
 				echo '<div class=\'article\'>';
 				while($res[$i][5]==1)//image
 				{
-						$ruls='/<img[^>]+\/>/iu';
+						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
-						preg_match($ruls,$str,$matches);
+						preg_match_all($ruls,$str,$matches);
+						$c=count($matches[0]);
 						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
-						if(empty($res[$i][8]))
+								echo '<div class=\'content\'>';
+								if(empty($res[$i][8]))
 						{
-								echo '<div class=\'content\'>'.$matches[0].'</div>';
+								for($b=0;$b<$c;$b++)
+								{
+								echo '<a href=\''.@$matches[1][$b].'\'>'.@$matches[0][$b].'</a>';
+								}
 						}
 						else
 						{
-								echo '<div class=\'content\'>'.$res[$i][8].$matches[0].'</div>';
+								echo $res[$i][8];
+								for($b=0;$b<$c;$b++)
+								{
+								echo '<a href=\''.@$matches[1][$b].'\'>'.@$matches[0][$b].'</a>';
+								}
 						}
+								echo '</div>';
 						echo '<div style=\'clear:both\'></div>';
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
@@ -475,18 +481,28 @@ function cata_list($cata)
 				echo '<div class=\'article\'>';
 				while($res[$i][5]==1)//image
 				{
-						$ruls='/<img[^>]+\/>/iu';
+						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
-						preg_match($ruls,$str,$matches);
+						preg_match_all($ruls,$str,$matches);
+						$c=count($matches[0]);
 						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
-						if(empty($res[$i][8]))
+								echo '<div class=\'content\'>';
+								if(empty($res[$i][8]))
 						{
-								echo '<div class=\'content\'>'.$matches[0].'</div>';
+								for($b=0;$b<$c;$b++)
+								{
+								echo '<a href=\''.$matches[1][$b].'\'>'.@$matches[0][$b].'</a>';
+								}
 						}
 						else
 						{
-								echo '<div class=\'content\'>'.$res[$i][8].$matches[0].'</div>';
+								echo $res[$i][8];
+								for($b=0;$b<$c;$b++)
+								{
+								echo '<a href=\''.$matches[1][$b].'\'>'.@$matches[0][$b].'</a>';
+								}
 						}
+								echo '</div>';
 						echo '<div style=\'clear:both\'></div>';
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
@@ -679,26 +695,38 @@ function show_user()
 function show_comments($no)
 {
 		global $db;
-		$query='select * from b_comments where no=\''.$no.'\' order by pre_post_id asc';
+		$query='select * from b_comments where no=\''.$no.'\' and pre_post_id=0 order by post_id asc';
 		$result=$db->fetch_all($query);
 		$rows=count($result);
 		$pre_post_id=array();
 		$post_id=array();
 		for($i=0;$i<$rows;$i++)
 		{
-						$pre_post_id[]=$result[$i][2];
-						$post_id[]=$result[$i][1];
-						if($result[$i][2]!=$result[$i][1])
-						{
 								echo '<div class=\'coments\'>';
 								echo '<div class=\'author\'>'.$result[$i][3].'</div>';
 								echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
 								echo '<div class=\'text\'>'.$result[$i][6].'</div>';
 								echo '</div>';
-						}
+								children_comments($result[$i][1]);
 		}
-		print_r($pre_post_id);
-		print_r($post_id);
 }
-				
+function children_comments($post_id)
+{
+		global $db;
+		$query='select * from b_comments where pre_post_id=\''.$post_id.'\' order by post_id asc';
+		$result=$db->fetch_all($query);
+		if(!empty($result))
+		{
+				$rows=count($result);
+				for($i=0;$i<$rows;$i++)
+				{
+						echo '<div class=\'coments_children\'>';
+						echo '<div class=\'author\'>'.$result[$i][3].'</div>';
+						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
+						echo '<div class=\'text\'>'.$result[$i][6].'</div>';
+						echo '</div>';
+						children_comments($result[$i][1]);
+				}
+		}
+}
 ?>

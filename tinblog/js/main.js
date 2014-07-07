@@ -1,4 +1,5 @@
 $(document).ready(function($){
+		$('a:has(img)').phzoom({});
 /**var H=$('nav').offset().top;*/
 		$(window).scroll(function()
 			{
