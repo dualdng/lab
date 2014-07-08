@@ -1,0 +1,10 @@
+<?php
+$url=$_GET['url'];
+$result=file_get_contents($url);
+if(!file_exists('index.html'))
+{
+		$file=@fopen('index.html','W');
+}
+$path='index.html';
+file_put_contents($path,$result);
+?>

@@ -4,7 +4,7 @@ class mysql_con
 		private $db;
 		private $res;
 		private $query;
-		function __construct()
+		function __construct()//init the mysqli connect
 		{
 				$this->db=new mysqli(url,usrname,passwd,database);
 				if(mysqli_connect_errno())
@@ -12,7 +12,7 @@ class mysql_con
 						echo 'can not connect the database';
 				}
 		}
-		function query($query)
+		function query($query)//query the sqls
 		{
 				$res=$this->db->query($query);
 				if(empty($res))
@@ -28,13 +28,13 @@ class mysql_con
 				$res=$res->fetch_all();
 				return $res;
 		}
-		function fetch_assoc($query)//return on result 
+		function fetch_assoc($query)//return one result 
 		{
 				$res=$this->query($query);
 				$res=$res->fetch_assoc();
 				return $res;
 		}
-		function _insert($query)
+		function _insert($query)//insert
 		{
 				$res=$this->query($query);
 				return $res;

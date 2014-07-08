@@ -433,3 +433,16 @@ transform: rotate(-360deg);
 	height:500px;
 	background:#66ccff;
 }
+/**comments**/
+.comments {
+		margin:0 auto;
+		width:100%;
+}
+.comments_children {
+		width:90%;
+		color:#61a64b;
+		margin-left:5%;
+}
+
+
+

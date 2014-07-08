@@ -3,7 +3,7 @@ header("Content-type: text/html; charset=utf-8");
 include('mysql_class.php');
 include('pagenavi_class.php');
 include('config.php');
-		$db=new mysql_con();
+		$db=new mysql_con();//call the class mysql_class
 		$query='select t1.no,t1.title,t2.user_name,t3.catagory_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_catagory t3 on t1.catagory_id=t3.id order by no desc';
 		$res=$db->fetch_all($query);//select all the post
 function pagenavi_index()
@@ -21,7 +21,7 @@ function pagenavi_index()
 		$pagesize=5;
 		$pagenum=ceil($rows/$pagesize);//get the pagenum
 		$url='index.php?';
-		$pagenavi=pagenavi::getInstance();
+		$pagenavi=pagenavi::getInstance();//调用pagenavi_class
 		$pagenavi->_pagenavi($page,$pagesize,$url,$pagenum);
 }
 function hitokoto()//hitokoto api
@@ -31,7 +31,7 @@ function hitokoto()//hitokoto api
 		$tw=json_decode($tw,true);
 		echo $tw['source'].':'.$tw['hitokoto'];
 }
-function line_api()
+function line_api()//line api
 {
 	$url='http://127.0.0.1/gather/include/line_api.php?type=1';
 	$line=file_get_contents($url);
@@ -255,7 +255,7 @@ function single_post($no)
 		**/
 		return $res[$no][1];
 }
-function show_title()
+function show_title()//show the title of html pedding the pagename
 {
 
 		$url=$_SERVER['PHP_SELF'];
@@ -295,7 +295,7 @@ function show_title()
 				break;
 		}
 }
-function tag_list($tag)
+function tag_list($tag)//show the posts who with the same tags
 {
 		global $res;
 		global $tag_num;
@@ -312,7 +312,7 @@ function tag_list($tag)
 
 		for($i=0;$i<$rows;$i++)
 		{
-				$pos=stripos($res[$i][4],$tag);//找出tag是否在字段tag里面，如果在则将该id放进数组temp中
+				$pos=stripos($res[$i][4],$tag);//找出tag是否在字段tag里面，如果在则将该数组的索引放进数组temp中
 				if($pos!==false)
 				{
 						$temp[$i]=$i;
@@ -431,7 +431,7 @@ function tag_list($tag)
 
 		}
 }
-function pagenavi_tag($tag)
+function pagenavi_tag($tag)//the pagenavi of the tag_page
 {
 		if(!isset($_GET['page']))
 		{
@@ -450,7 +450,7 @@ function pagenavi_tag($tag)
 }
 
 
-function cata_list($cata)
+function cata_list($cata)//show the posts who with the same category
 {
 		global $res;
 		global $cata_num;
@@ -584,7 +584,7 @@ function cata_list($cata)
 
 		}
 }
-function pagenavi_cata($cata)
+function pagenavi_cata($cata)//the pagenavi of the category_page
 {
 		if(!isset($_GET['page']))
 		{
@@ -601,7 +601,7 @@ function pagenavi_cata($cata)
 		$pagenavi=pagenavi::getInstance();
 		$pagenavi->_pagenavi($page,$pagesize,$url,$pagenum);
 }
-function get_avatar($email,$size=80)
+function get_avatar($email,$size=80)//get the avatar pedding the user's email
 {
 //	$email=trim($email); // "MyEmailAddress@example.com"
 //	$email=strtolower($email); // "myemailaddress@example.com"
@@ -610,7 +610,7 @@ function get_avatar($email,$size=80)
 //	return $email_url;
 	echo 'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $email ) ) ).'?s='.$size;
 }
-function tag_cloud()
+function tag_cloud()//realized the tag_cloud,this is very important
 {
 		global $res;
 		global $db;
@@ -635,7 +635,7 @@ function tag_cloud()
 				echo'<a href=\'tag_page.php?tag='.$value.'\'>'.$value.'</a>('.$num.')&nbsp&nbsp';
 		}
 }
-function hit_count($id,$no)
+function hit_count($id,$no)//count the post's views and this is not in use
 {
 		global $res;
 		global $db;
@@ -651,7 +651,7 @@ function hit_count($id,$no)
 		$query='update b_article set hit_count=\''.$count.'\'where no=\''.$id.'\'';
 		$result=$db->_update($query);
 }
-function rand_article()
+function rand_article()//show the rand posts on sidebar
 {
 		global $res;
 		$rows=count($res);
@@ -663,7 +663,7 @@ function rand_article()
 				echo'<a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><br />';
 		}
 }
-function cata_cloud()
+function cata_cloud()//show the categorys on sidebar
 {
 		global $db;
 		$query='select * from b_catagory';
@@ -674,7 +674,7 @@ function cata_cloud()
 				echo'<a class=\'icon-flag\' href=\'catagory_page.php?catagory='.$result[$i][1].'\'>'.$result[$i][1].'</a><br />';
 		}
 }
-function links()
+function links()//show the links on sidebar
 {
 		global $db;
 		$query='select no,name,link,title from b_links';
@@ -685,14 +685,14 @@ function links()
 				echo '<li><a class=\'icon-heart2\' href=\''.$result[$i][2].'\' title=\''.$result[$i][3].'\'>'.$result[$i][1].'</a></li>';
 		}
 }
-function show_user()
+function show_user()//show the user's information on sidebar
 {
 		global $db;
 		$query='select user_id,user_name,user_email,user_des from b_user';
 		$result=$db->fetch_all($query);
 		return $result;
 }
-function show_comments($no)
+function show_comments($no)//this is not in use
 {
 		global $db;
 		$query='select * from b_comments where no=\''.$no.'\' and pre_post_id=0 order by post_id asc';
@@ -702,12 +702,12 @@ function show_comments($no)
 		$post_id=array();
 		for($i=0;$i<$rows;$i++)
 		{
-								echo '<div class=\'coments\'>';
+								echo '<div class=\'comments\'>';
 								echo '<div class=\'author\'>'.$result[$i][3].'</div>';
 								echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
 								echo '<div class=\'text\'>'.$result[$i][6].'</div>';
-								echo '</div>';
 								children_comments($result[$i][1]);
+								echo '</div>';
 		}
 }
 function children_comments($post_id)
@@ -720,13 +720,52 @@ function children_comments($post_id)
 				$rows=count($result);
 				for($i=0;$i<$rows;$i++)
 				{
-						echo '<div class=\'coments_children\'>';
+						echo '<div class=\'comments_children\'>';
 						echo '<div class=\'author\'>'.$result[$i][3].'</div>';
 						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
 						echo '<div class=\'text\'>'.$result[$i][6].'</div>';
-						echo '</div>';
 						children_comments($result[$i][1]);
+						echo '</div>';
 				}
 		}
 }
+function show_archive()
+{
+		$month_arr=array('01','02','03','04','05','06','07','08','09','10','11','12');
+		$year_arr=array('14','15','16');
+		echo '<div class=\'article\'>';
+		foreach($month_arr as $value)
+		{
+				echo '2014-'.$value.'<br />';
+				archive('14',$value);
+		}
+		echo '</div>';
+}
+function archive($year,$month)
+{
+		global $db;
+		$query='select no,title,create_date from b_article order by create_date desc';
+		$result=$db->fetch_all($query);
+		$row=count($result);
+		for($i=0;$i<$row;$i++)
+		{
+						if($year==substr($result[$i][2],2,2))
+						{
+										if($month==substr($result[$i][2],5,2))
+										{
+												echo substr($result[$i][2],0,10).'<br />';
+												echo '<a href=\'single.php?id='.$result[$i][0].'\'>'.$result[$i][1].'</a><br />';
+										}
+										else
+										{
+										}
+
+						}
+						else
+						{
+						}
+
+		}
+}
+
 ?>
