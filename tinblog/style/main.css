@@ -190,7 +190,7 @@ column-width:150px;
 .date {
 		margin-bottom:2%;
 }
-.tag{padding-bottom:1%;}
+.tag{padding-bottom:1%;margin-top:1%;}
 a.ta0{border-bottom:3px solid #61a64b;}
 a.ta1{border-bottom:3px solid #66ccff;}
 a.ta2{border-bottom:3px solid red;}
