@@ -156,7 +156,7 @@ function post_list()//show post's list on index.php
 						}
 						else
 						{
-								echo '<div class=\'content\'><a href=\''.@$matches[1].'\'>'.$res[$i][8].@$matches[0].'</a></div>';
+								echo '<div class=\'content\'>'.$res[$i][8].'<a href=\''.@$matches[1].'\'>'.@$matches[0].'</a></div>';
 						}
 						echo '<div style=\'clear:both\'></div>';
 						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
