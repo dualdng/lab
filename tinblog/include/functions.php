@@ -1,5 +1,4 @@
 <?php
-header("Content-type: text/html; charset=utf-8");
 include('mysql_class.php');
 include('pagenavi_class.php');
 include('config.php');
