@@ -1,5 +1,4 @@
 <?php
-header("Content-type: text/html; charset=utf-8");
 include('mysql_class.php');
 include('pagenavi_class.php');
 include('config.php');
@@ -63,7 +62,7 @@ function post_list()//show post's list on index.php
 						{
 				$tag=explode(',',$res[$i][4]);
 				$num=count($tag);
-			echo '<div class=\'article\'>';
+				echo '<div class=\'article\'>';
 		/**	echo '<div class=\'hit_count\'>'.$res[$i][9].'</div>';**/
 				while($res[$i][5]==1)//image   id w为文章唯一字段
 				{
@@ -71,7 +70,7 @@ function post_list()//show post's list on index.php
 						$str=$res[$i][7];
 						preg_match_all($ruls,$str,$matches);
 						$c=count($matches[0]);
-						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.comments_no($res[$i][0]).' Comments</span></div>';
 								echo '<div class=\'content\'>';
 								if(empty($res[$i][8]))
 						{
@@ -108,7 +107,7 @@ function post_list()//show post's list on index.php
 						$ruls='/<audio[^>]+>/iu';
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>300 Views<br />10 Comments</span></div>';
 								if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.@$matches[0].'</div>';
@@ -131,7 +130,7 @@ function post_list()//show post's list on index.php
 				}
 				while($res[$i][5]==3)//status
 				{
-						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
+						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</a><span class=\'views\'>300 Views<br />10 Comments</span></div>
 								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 								for($a=0;$a<$num;$a++)
@@ -149,7 +148,7 @@ function post_list()//show post's list on index.php
 						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
+						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>300 Views<br />10 Comments</span></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
@@ -764,8 +763,13 @@ function archive($year,$month)
 						else
 						{
 						}
-
 		}
 }
-
+function comments_no($thread_key=59,$short_name='tinty') 
+{
+		$url='http://api.duoshuo.com/threads/counts.json?short_name='.$short_name.'&threads='.$thread_key;
+		$res=file_get_contents($url);
+		$res=json_decode($res,true);
+		return $res['response'][$thread_key]['comments'];
+}
 ?>
