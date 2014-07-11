@@ -107,7 +107,7 @@ function post_list()//show post's list on index.php
 						$ruls='/<audio[^>]+>/iu';
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>300 Views<br />10 Comments</span></div>';
+						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.comments_no($res[$i][0]).' Comments</span></div>';
 								if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.@$matches[0].'</div>';
@@ -130,7 +130,7 @@ function post_list()//show post's list on index.php
 				}
 				while($res[$i][5]==3)//status
 				{
-						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</a><span class=\'views\'>300 Views<br />10 Comments</span></div>
+						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.comments_no($res[$i][0]).' Comments</span></div>
 								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 								for($a=0;$a<$num;$a++)
@@ -148,7 +148,7 @@ function post_list()//show post's list on index.php
 						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>300 Views<br />10 Comments</span></div>';
+						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.comments_no($res[$i][0]).' Comments</span></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
@@ -182,7 +182,7 @@ function single_post($no)
 			echo '<div class=\'article\'>';
 				while($res[$no][5]==1)//image
 				{
-						echo '<div id=\'single\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'>'.$res[$no][1].'</div>
+						echo '<div id=\'single\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'>'.$res[$no][1].'<span class=\'views\'>'.$res[$no][9].' Views<br />'.comments_no($res[$no][0]).' Comments</span></div>
 								<div class=\'content\'>'.$res[$no][7].'</div>
 								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$no][3].'\'>'.$res[$no][3].'</a></span></div>
 								<div class=\'tag\'>';
@@ -199,7 +199,7 @@ function single_post($no)
 				}
 				while($res[$no][5]==2)//music
 				{
-						echo '<div id=\'single\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'>'.$res[$no][1].'</div>
+						echo '<div id=\'single\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'>'.$res[$no][1].'<span class=\'views\'>'.$res[$no][9].' Views<br />'.comments_no($res[$no][0]).' Comments</span></div>
 								<div class=\'content\'>'.$res[$no][7].'</div>
 								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$no][3].'\'>'.$res[$no][3].'</span></div>
 								<div class=\'tag\'>';
@@ -215,7 +215,7 @@ function single_post($no)
 				}
 				while($res[$no][5]==3)//status
 				{
-						echo '<div id=\'single\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'>'.$res[$no][7].'</div>
+						echo '<div id=\'single\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'>'.$res[$no][7].'<span class=\'views\'>'.$res[$no][9].' Views<br />'.comments_no($res[$no][0]).' Comments</span></div>
 								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$no][3].'\'>'.$res[$no][3].'</a></span></div>
 								<div class=\'tag\'>';
 								for($a=0;$a<$num;$a++)
@@ -230,7 +230,7 @@ function single_post($no)
 				}
 				while($res[$no][5]==4)//standard
 				{
-						echo '<div id=\'single\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'>'.$res[$no][1].'</div>';
+						echo '<div id=\'single\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'>'.$res[$no][1].'<span class=\'views\'>'.$res[$no][9].' Views<br />'.comments_no($res[$no][0]).' Comments</span></div>';
 						echo '<div class=\'content\'>'.$res[$no][7].'</div>';
 						echo '<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$no][3].'\'>'.$res[$no][3].'</span></div>
 								<div class=\'tag\'>';
@@ -768,7 +768,7 @@ function archive($year,$month)
 function comments_no($thread_key=59,$short_name='tinty') 
 {
 		$url='http://api.duoshuo.com/threads/counts.json?short_name='.$short_name.'&threads='.$thread_key;
-		$res=file_get_contents($url);
+		$res=@file_get_contents($url);
 		$res=json_decode($res,true);
 		return $res['response'][$thread_key]['comments'];
 }

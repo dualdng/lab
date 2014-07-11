@@ -156,6 +156,10 @@ width: 98%;
 .title {
 		font-size:28px;
 		margin:2% 0;
+		background: #f5f5f5;
+		padding: 1%;
+		border: 1px solid #ebeaea;
+		margin-left:-2%;
 }
 .title span {
 		font-size:14px;
@@ -176,6 +180,17 @@ width: 98%;
 .title:hover .views {
 		width:100px;
 }
+#single .views {
+		position: absolute;
+		right: 0;
+		background: #f5f5f5;
+		padding:1% 0;
+		padding-left:0.5%;
+		width:100px;
+		border: 1px solid #ebeaea;
+		overflow:hidden;
+}
+
 
 .content img{
 width:100%;
