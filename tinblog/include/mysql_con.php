@@ -6,7 +6,7 @@ function list_post()
 		{
 				echo 'can\'t connect the database;';
 		}
-		$query='select t1.no,t1.title,t2.user_name,t3.catagory_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_catagory t3 on t1.catagory_id=t3.id order by no desc';
+		$query='select t1.no,t1.title,t2.user_name,t3.category_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_category t3 on t1.category_id=t3.id order by no desc';
 		$result=$db->query($query);
 		return $result;
 		$db->close();
@@ -26,7 +26,7 @@ function user_verify($userid,$passwd)
 /**function post_list($pagesize,$currentpageid)
 {
 		global $db;
-		$query='select t1.no,t1.title,t2.user_name,t3.catagory_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_catagory t3 on t1.catagory_id=t3.id order by no desc limit '.($currentpageid-1)*$pagesize.','.$pagesize;
+		$query='select t1.no,t1.title,t2.user_name,t3.category_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_category t3 on t1.category_id=t3.id order by no desc limit '.($currentpageid-1)*$pagesize.','.$pagesize;
 		$result=$db->query($query);
 		return $result;
 		$db->close();
@@ -34,7 +34,7 @@ function user_verify($userid,$passwd)
 function show_post($no)
 {
 		global $db;
-		$query='select t1.title,t2.user_name,t3.catagory_name,t1.tag,t1.post_type,t1.create_date,t1.content from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_catagory t3 on t1.catagory_id=t3.id where t1.no=\''.$no.'\''; 
+		$query='select t1.title,t2.user_name,t3.category_name,t1.tag,t1.post_type,t1.create_date,t1.content from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_category t3 on t1.category_id=t3.id where t1.no=\''.$no.'\''; 
 		$result=$db->query($query);
 		return $result;
 		$db->close();
@@ -48,19 +48,19 @@ function page_amount()
 		$db->close();
 }
 **/
-function list_catagory()
+function list_category()
 {
 		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
 		};
-		$query='select * from b_catagory';
+		$query='select * from b_category';
 		$result=$db->query($query);
 		return $result;
 		$db->close();
 }
-function post_article($title,$content,$excerpt,$user_id,$catagory_id,$tag,$post_type,$status,$hit_count=0)
+function post_article($title,$content,$excerpt,$user_id,$category_id,$tag,$post_type,$status,$hit_count=0)
 {
 		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
@@ -69,7 +69,7 @@ function post_article($title,$content,$excerpt,$user_id,$catagory_id,$tag,$post_
 		};
 		date_default_timezone_set('Asia/Shanghai');    //把时区设置为中国的上海，避免时间误差，)
 		$create_date=date('Y-m-d H:i:s');
-		$query='insert into b_article values(\'\',\''.$title.'\',\''.$content.'\',\''.$excerpt.'\',\''.$user_id.'\',\''.$catagory_id.'\',\''.$tag.'\',\''.$post_type.'\',\''.$create_date.'\',\''.$status.'\',\''.$hit_count.'\')';
+		$query='insert into b_article values(\'\',\''.$title.'\',\''.$content.'\',\''.$excerpt.'\',\''.$user_id.'\',\''.$category_id.'\',\''.$tag.'\',\''.$post_type.'\',\''.$create_date.'\',\''.$status.'\',\''.$hit_count.'\')';
 		$result=$db->query($query);
 		return $result;
 		$db->close();
@@ -86,14 +86,14 @@ echo 'can\'t connect the database;';
 		return $result;
 		$db->close();
 }
-function update_post($no,$title,$content,$excerpt,$catagory_id,$tag,$post_type,$status)
+function update_post($no,$title,$content,$excerpt,$category_id,$tag,$post_type,$status)
 {
 $db=new mysqli('127.0.0.1','blog','123qwe','blog');
 if(mysqli_connect_errno())
 {
 		echo 'can\'t connect the database;';
 };
-		$query='update b_article set title=\''.$title.'\',content=\''.$content.'\',excerpt=\''.$excerpt.'\',catagory_id=\''.$catagory_id.'\',tag=\''.$tag.'\',post_type=\''.$post_type.'\',status=\''.$status.'\'where no=\''.$no.'\'';
+		$query='update b_article set title=\''.$title.'\',content=\''.$content.'\',excerpt=\''.$excerpt.'\',category_id=\''.$category_id.'\',tag=\''.$tag.'\',post_type=\''.$post_type.'\',status=\''.$status.'\'where no=\''.$no.'\'';
 		$result=$db->query($query);
 		return $result;
 		$db->close();
@@ -106,10 +106,10 @@ if(mysqli_connect_errno())
 		return $result;
 		$db->close();				
 }**/
-/*function catagory_list($catagory)
+/*function category_list($category)
 {
 		global $db;	
-		$query='select no,title from b_article where catagory_id = (select id from b_catagory where catagory_name = \''.$catagory.'\')';
+		$query='select no,title from b_article where category_id = (select id from b_category where category_name = \''.$category.'\')';
 		$result=$db->query($query);
 		return $result;
 		$db->close();
@@ -223,31 +223,31 @@ function set_user($user_id,$user_name,$user_email,$user_des)
 		return $result;
 		$db->close();
 }
-function delete_cata($id)
+function delete_cate($id)
 {
 		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
 		};
-		$query='delete from b_catagory where id=\''.$id.'\'';
+		$query='delete from b_category where id=\''.$id.'\'';
 		$result=$db->query($query);
 		return $result;
 		$db->close();
 }
-function add_cata($catagory_name)
+function add_cate($category_name)
 {
 		$db=new mysqli('127.0.0.1','blog','123qwe','blog');
 		if(mysqli_connect_errno())
 		{
 				echo 'can\'t connect the database;';
 		};
-		$query='insert into b_catagory values(\'\',\''.$catagory_name.'\')';
+		$query='insert into b_category values(\'\',\''.$category_name.'\')';
 		$result=$db->query($query);
 		return $result;
 		$db->close();
 }
-function set_cata($id,$catagory_name)
+function set_cate($id,$category_name)
 {
 
         $db=new mysqli('127.0.0.1','blog','123qwe','blog');
@@ -255,7 +255,7 @@ function set_cata($id,$catagory_name)
 		{
 				echo 'can\'t connect the database;';
 		};
-		$query='update b_catagory set catagory_name=\''.$catagory_name.'\'where id=\''.$id.'\'';
+		$query='update b_category set category_name=\''.$category_name.'\'where id=\''.$id.'\'';
 		$result=$db->query($query);
 		return $result;
 		$db->close();

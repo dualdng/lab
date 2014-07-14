@@ -25,9 +25,9 @@ function editor_user()
 {
 		$('.right').load('editor_user_page.php');
 };
-function editor_catagory()
+function editor_category()
 {
-		$('.right').load('editor_catagory_page.php');
+		$('.right').load('editor_category_page.php');
 };
 function editor_option()
 {
@@ -73,18 +73,18 @@ function delete_article(no)//use the ajax to delete the article
 		return false;
 		}
 }
-function delete_catagory(id)//use the ajax to delete the article
+function delete_category(id)//use the ajax to delete the article
 {
-		if(confirm('are you sure delete the '+id+'catagory'))
+		if(confirm('are you sure delete the '+id+'category'))
 		{
 		$.ajax(
 		{
 				type:'POST',
-				url:'delete_catagory.php?id='+id,
+				url:'delete_category.php?id='+id,
 				success:function(data)
 				{
-						$('#cata'+id).remove();
-						$('#dcata'+id).remove();
+						$('#cate'+id).remove();
+						$('#dcate'+id).remove();
 				}
 				})
 		}
@@ -93,15 +93,15 @@ function delete_catagory(id)//use the ajax to delete the article
 		return false;
 		}
 }
-function add_catagory()//use the ajax to delete the article
+function add_category()//use the ajax to delete the article
 {
 		$.ajax(
 		{
 				type:'POST',
-				url:'add_catagory_page.php',
+				url:'add_category_page.php',
 				success:function(data)
 				{
-						$('#add_cata').append(data);
+						$('#add_cate').append(data);
 				}
 				})
 		}

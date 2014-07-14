@@ -60,7 +60,7 @@ ADMIN
 <a href='javascript:editor_user()'>edito user</a>
 </li>
 <li>
-<a href='javascript:editor_catagory()'>edito catagory</a>
+<a href='javascript:editor_category()'>edito category</a>
 </li>
 <li>
 <a href='javascript:editor_option()'>edito option</a>

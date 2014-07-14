@@ -8,7 +8,7 @@ admin_page
 </title>
 </head>
 <body>
-<p>editor_catagory</p>
+<p>editor_category</p>
 <?php show_list();?> 
 <?php echo 'editor_post';?>
 </body>

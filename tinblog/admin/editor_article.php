@@ -51,14 +51,14 @@ type:
 <?php
 for($i=1;$i<=show_num();$i++)
 {
-		$showcata=show_result()->fetch_assoc();
-		if($res[$no][5]==$showcata['id'])
+		$showcate=show_result()->fetch_assoc();
+		if($res[$no][5]==$showcate['id'])
 		{
-		echo 'catagory:<input type=\'radio\' id=\'catagory\' name=\'catagory\' value=\''.$showcata['id'].'\' checked=\'checked\'>'.$showcata['catagory_name'].'</input><br />';
+		echo 'category:<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$showcate['id'].'\' checked=\'checked\'>'.$showcate['category_name'].'</input><br />';
 		}
 		else
 		{
-		echo 'catagory:<input type=\'radio\' id=\'catagory\' name=\'catagory\' value=\''.$showcata['id'].'\'>'.$showcata['catagory_name'].'</input><br />';
+		echo 'category:<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$showcate['id'].'\'>'.$showcate['category_name'].'</input><br />';
 		}
 }
 ?>

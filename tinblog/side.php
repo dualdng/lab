@@ -21,7 +21,7 @@
 <div class='widget'>
 <div class='widget_tag'><span class='icon-flag'>&nbsp</span>CATAGORY</div>
 <div id='widget'>
-<?php cata_cloud();?>
+<?php cate_cloud();?>
 </div>
 </div>
 <div class='widget'>

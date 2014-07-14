@@ -1,7 +1,7 @@
 <?php
 include('../include/mysql_con.php');
-$catagory_name=$_GET['catagory_name'];
-$result=add_cata($catagory_name);
+$category_name=$_GET['category_name'];
+$result=add_cate($category_name);
 if(empty($result))
 {
 		echo 'error';

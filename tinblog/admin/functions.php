@@ -1,6 +1,6 @@
 <?php
 include('../include/mysql_con.php');
-$result=list_catagory();
+$result=list_category();
 $num=$result->num_rows;
 function show_num()
 {

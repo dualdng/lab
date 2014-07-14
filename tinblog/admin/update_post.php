@@ -11,7 +11,7 @@ include('../include/mysql_con.php');
 $no=$_GET['no'];
 $title=$_GET['title'];
 $excerpt=$_GET['excerpt'];
-$catagory_id=$_GET['catagory'];
+$category_id=$_GET['category'];
 $tag=$_GET['tag'];
 $post_type=$_GET['type'];
 if(isset($_GET['status']))
@@ -22,7 +22,7 @@ else
 {
 		$status=0;
 }
-$result=update_post($no,$title,$content,$excerpt,$catagory_id,$tag,$post_type,$status);
+$result=update_post($no,$title,$content,$excerpt,$category_id,$tag,$post_type,$status);
 if(!empty($result))
 {
 		header('location:admin_page.php');

@@ -10,7 +10,7 @@ include('../include/mysql_con.php');
 	}
 $title=$_POST['title'];
 $excerpt=$_POST['excerpt'];
-$catagory_id=$_POST['catagory'];
+$category_id=$_POST['category'];
 $tag=$_POST['tag'];
 $post_type=$_POST['type'];
 $user_id=$_POST['user_id'];
@@ -22,7 +22,7 @@ else
 {
 		$status=0;
 }
-$result=post_article($title,$content,$excerpt,$user_id,$catagory_id,$tag,$post_type,$status);
+$result=post_article($title,$content,$excerpt,$user_id,$category_id,$tag,$post_type,$status);
 if($result)
 {
 		echo 'success!';

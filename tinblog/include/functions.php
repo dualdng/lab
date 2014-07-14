@@ -3,7 +3,7 @@ include('mysql_class.php');
 include('pagenavi_class.php');
 include('config.php');
 		$db=new mysql_con();//call the class mysql_class
-		$query='select t1.no,t1.title,t2.user_name,t3.catagory_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_catagory t3 on t1.catagory_id=t3.id order by no desc';
+		$query='select t1.no,t1.title,t2.user_name,t3.category_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_category t3 on t1.category_id=t3.id order by no desc';
 		$res=$db->fetch_all($query);//select all the post
 function pagenavi_index()
 {
@@ -53,7 +53,7 @@ function post_list()//show post's list on index.php
 				$page=$_GET['page'];
 		}
 		$pagestart=($page-1)*$pagesize;//set the for_start pagenum,eg:2*5-15
-		for($i=$pagestart;$i<$pagestart+5;$i++)// array([0]=>no,1=>title,2=>user_name.3=>catagory_name,4=>tag,5=>post_type,6=>create_date,7=>content,8=>excerpt)
+		for($i=$pagestart;$i<$pagestart+5;$i++)// array([0]=>no,1=>title,2=>user_name.3=>category_name,4=>tag,5=>post_type,6=>create_date,7=>content,8=>excerpt)
 		{
 				if(empty($res[$i]))
 				{
@@ -89,7 +89,7 @@ function post_list()//show post's list on index.php
 						}
 								echo '</div>';
 						echo '<div style=\'clear:both\'></div>';
-						echo '<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
+						echo '<div class=\'user\'><span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 
 						for($a=0;$a<$num;$a++)
@@ -116,7 +116,7 @@ function post_list()//show post's list on index.php
 						{
 								echo '<div class=\'content\'>'.$res[$i][8].@$matches[0].'</div>';
 						}
-						echo '<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
+						echo '<div class=\'user\'><span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -131,7 +131,7 @@ function post_list()//show post's list on index.php
 				while($res[$i][5]==3)//status
 				{
 						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.date('d M,y',strtotime($res[$i][6])).'</span></div>
-								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
+								<div class=\'user\'><span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 								for($a=0;$a<$num;$a++)
 								{
@@ -158,7 +158,7 @@ function post_list()//show post's list on index.php
 								echo '<div class=\'content\'>'.$res[$i][8].'<a href=\''.@$matches[1].'\'>'.@$matches[0].'</a></div>';
 						}
 						echo '<div style=\'clear:both\'></div>';
-						echo '<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
+						echo '<div class=\'user\'><span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -184,7 +184,7 @@ function single_post($no)
 				{
 						echo '<div id=\'single\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'>'.$res[$no][1].'<span class=\'views\'>'.$res[$no][9].' Views<br />'.comments_no($res[$no][0]).' Comments</span></div>
 								<div class=\'content\'>'.$res[$no][7].'</div>
-								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$no][3].'\'>'.$res[$no][3].'</a></span></div>
+								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'category_page.php?category='.$res[$no][3].'\'>'.$res[$no][3].'</a></span></div>
 								<div class=\'tag\'>';
 
 						for($a=0;$a<$num;$a++)
@@ -201,7 +201,7 @@ function single_post($no)
 				{
 						echo '<div id=\'single\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'>'.$res[$no][1].'<span class=\'views\'>'.$res[$no][9].' Views<br />'.comments_no($res[$no][0]).' Comments</span></div>
 								<div class=\'content\'>'.$res[$no][7].'</div>
-								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$no][3].'\'>'.$res[$no][3].'</span></div>
+								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'category_page.php?category='.$res[$no][3].'\'>'.$res[$no][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -216,7 +216,7 @@ function single_post($no)
 				while($res[$no][5]==3)//status
 				{
 						echo '<div id=\'single\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'>'.$res[$no][7].'<span class=\'views\'>'.$res[$no][9].' Views<br />'.comments_no($res[$no][0]).' Comments</span></div>
-								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$no][3].'\'>'.$res[$no][3].'</a></span></div>
+								<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'category_page.php?category='.$res[$no][3].'\'>'.$res[$no][3].'</a></span></div>
 								<div class=\'tag\'>';
 								for($a=0;$a<$num;$a++)
 								{
@@ -232,7 +232,7 @@ function single_post($no)
 				{
 						echo '<div id=\'single\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'>'.$res[$no][1].'<span class=\'views\'>'.$res[$no][9].' Views<br />'.comments_no($res[$no][0]).' Comments</span></div>';
 						echo '<div class=\'content\'>'.$res[$no][7].'</div>';
-						echo '<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$no][3].'\'>'.$res[$no][3].'</span></div>
+						echo '<div class=\'user\'>Post by '.$res[$no][2].' on <span><a href=\'category_page.php?category='.$res[$no][3].'\'>'.$res[$no][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -262,7 +262,7 @@ function show_title()//show the title of html pedding the pagename
 		global $id;
 		global $res;
 		global $option;
-		global $catagory;
+		global $category;
 		global $tag;
 		global $db;
 		$row=count($res);
@@ -283,8 +283,8 @@ function show_title()//show the title of html pedding the pagename
 				case 'index.php':
 				echo 'Brague|'.$option[0][2];
 				break;
-				case 'catagory_page.php';
-				echo $catagory.'|Brague';
+				case 'category_page.php';
+				echo $category.'|Brague';
 				break;
 				case 'tag_page.php';
 				echo $tag.'|Brague';
@@ -350,7 +350,7 @@ function tag_list($tag)//show the posts who with the same tags
 						}
 								echo '</div>';
 						echo '<div style=\'clear:both\'></div>';
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
+						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 
 						for($a=0;$a<$num;$a++)
@@ -377,7 +377,7 @@ function tag_list($tag)//show the posts who with the same tags
 						{
 								echo '<div class=\'content\'>'.$res[$i][8].$matches[0].'</div>';
 						}
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
+						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -392,7 +392,7 @@ function tag_list($tag)//show the posts who with the same tags
 				while($res[$i][5]==3)//status
 				{
 						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
-								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
+								<div class=\'user\'><span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -415,7 +415,7 @@ function tag_list($tag)//show the posts who with the same tags
 						{
 								echo '<div class=\'content\'>'.$res[$i][8].'</div>';
 						}
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
+						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -449,10 +449,10 @@ function pagenavi_tag($tag)//the pagenavi of the tag_page
 }
 
 
-function cata_list($cata)//show the posts who with the same category
+function cate_list($cate)//show the posts who with the same category
 {
 		global $res;
-		global $cata_num;
+		global $cate_num;
 		$rows=count($res);
 		if(!isset($_GET['page']))
 		{
@@ -465,12 +465,12 @@ function cata_list($cata)//show the posts who with the same category
 		$temp=array();
 		for($i=0;$i<$rows;$i++)
 		{
-				if($res[$i][3]==$cata)
+				if($res[$i][3]==$cate)
 				{
 						$temp[$i]=$i;
 				}
 		}
-		$cata_num=count($temp);
+		$cate_num=count($temp);
 		$pagestart=($page-1)*5;
 		$temp=array_slice($temp,$pagestart,$pagestart+5);
 		foreach($temp as $i)
@@ -503,7 +503,7 @@ function cata_list($cata)//show the posts who with the same category
 						}
 								echo '</div>';
 						echo '<div style=\'clear:both\'></div>';
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
+						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 
 						for($a=0;$a<$num;$a++)
@@ -530,7 +530,7 @@ function cata_list($cata)//show the posts who with the same category
 						{
 								echo '<div class=\'content\'>'.$res[$i][8].$matches[0].'</div>';
 						}
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
+						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -545,7 +545,7 @@ function cata_list($cata)//show the posts who with the same category
 				while($res[$i][5]==3)//status
 				{
 						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</div>
-								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
+								<div class=\'user\'><span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -568,7 +568,7 @@ function cata_list($cata)//show the posts who with the same category
 						{
 								echo '<div class=\'content\'>'.$res[$i][8].'</div>';
 						}
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
+						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -583,7 +583,7 @@ function cata_list($cata)//show the posts who with the same category
 
 		}
 }
-function pagenavi_cata($cata)//the pagenavi of the category_page
+function pagenavi_cate($cate)//the pagenavi of the category_page
 {
 		if(!isset($_GET['page']))
 		{
@@ -593,10 +593,10 @@ function pagenavi_cata($cata)//the pagenavi of the category_page
 		{
 				$page=$_GET['page'];
 		}
-		global $cata_num;
+		global $cate_num;
 		$pagesize=5;
-		$pagenum=ceil($cata_num/$pagesize);//get the pagenum
-		$url='catagory_page.php?catagory='.$cata.'&';
+		$pagenum=ceil($cate_num/$pagesize);//get the pagenum
+		$url='category_page.php?category='.$cate.'&';
 		$pagenavi=pagenavi::getInstance();
 		$pagenavi->_pagenavi($page,$pagesize,$url,$pagenum);
 }
@@ -662,15 +662,15 @@ function rand_article()//show the rand posts on sidebar
 				echo'<a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><br />';
 		}
 }
-function cata_cloud()//show the categorys on sidebar
+function cate_cloud()//show the categorys on sidebar
 {
 		global $db;
-		$query='select * from b_catagory';
+		$query='select * from b_category';
 		$result=$db->fetch_all($query);
 		$rows=count($result);
 		for($i=0;$i<$rows;$i++)
 		{
-				echo'<a class=\'icon-flag\' href=\'catagory_page.php?catagory='.$result[$i][1].'\'>'.$result[$i][1].'</a><br />';
+				echo'<a class=\'icon-flag\' href=\'category_page.php?category='.$result[$i][1].'\'>'.$result[$i][1].'</a><br />';
 		}
 }
 function links()//show the links on sidebar

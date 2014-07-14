@@ -44,8 +44,8 @@ type:<input type='radio' id='type' name='type' value='1'>image</input><br />
 <?php
 for($i=1;$i<=show_num();$i++)
 {
-		$showcata=show_result()->fetch_assoc();
-		echo 'catagory:<input type=\'radio\' id=\'catagory\' name=\'catagory\' value=\''.$showcata['id'].'\'>'.$showcata['catagory_name'].'</input><br />';
+		$showcate=show_result()->fetch_assoc();
+		echo 'category:<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$showcate['id'].'\'>'.$showcate['category_name'].'</input><br />';
 }
 ?>
 <input type='radio' id='status' name='status' value='1'>草稿</input><br />
