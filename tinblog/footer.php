@@ -16,11 +16,6 @@
 <li>
 <a href='http://line.uuuuj.com'>Line</a>
 <ul>
-<li><a href='#'></a></li>
-<li><a href='#'></a></li>
-<li><a href='#'></a></li>
-<li><a href='#'></a></li>
-<li><a href='#'></a></li>
 </ul>
 </li>
 <li>
@@ -30,7 +25,7 @@
 </ul>
 </li>
 <li>
-<div class='foot'>Music <a href='javascript:void(0);'  onclick="document.getElementById('backmusic').play()" >ON&nbsp|</a><a href='javascript:void(0);' onclick="document.getElementById('backmusic').pause()" >&nbspOFF</a><audio id='backmusic'src='http://music.uuuuj.com/dance to the death .mp3'  loop='loop'></audio>
+<div class='foot'>Music <a href='javascript:void(0);'  onclick="document.getElementById('backmusic').play()" >ON&nbsp|</a><a href='javascript:void(0);' onclick="document.getElementById('backmusic').pause()" >&nbspOFF</a><audio id='backmusic'src='#'  loop='loop'></audio>
 Powered by <a href='http://www.uuuuj.com'>Brague</a></div>
 </ul>
 </nav>

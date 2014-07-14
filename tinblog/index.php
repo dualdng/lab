@@ -1,7 +1,7 @@
 <?php include('header.php');?>
 <article class="main_content">
-		<div class='double'><button class='d_button' onclick='javascript:double();'>双栏</button>
-				<button class='d_button' onclick='javascript:one();'>单栏</button></div>
+		<div class='double'><button class='button arrowleft icon' onclick='javascript:double();'></button>
+				<button class='button arrowright icon' onclick='javascript:one();'></button></div>
 		<div id='page'>
 				<div id='article'><?php post_list();?>
 				</div>

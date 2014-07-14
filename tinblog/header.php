@@ -48,6 +48,7 @@ MM########MBBBBHBMMM########################################@@Xi.,,,,,,,, i3ii  
 <meta name="author" content="Tinty" />
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="style/main.css" />
+<link rel="stylesheet" type="text/css" href="image/github/gh-buttons.css" />
 <link rel='stylesheet' href='phzoom/phzoom.css' />
 <link rel="stylesheet" href="admin/editor/plugins/code/prettify.css" />
 <script type='text/javascript' src='js/jquery-2.1.0.min.js'></script>
