@@ -12,6 +12,25 @@ $(document).ready(function($){
 		$('.main_title span').html('<span style=\'color:#61a64b\'>L</span>ife <span style=\'color:#66ccff\'>i</span>s <span style=\'color:pink\'>a</span> <span style=\'color:red\'>c</span>olor <span style=\'color:yellow\'>b</span>lind');
 		}
 			})
+/**				var thread_key=58;
+				var comval='';
+				var res='';
+		$.ajax({
+				url:'http://api.duoshuo.com/threads/counts.jsonp?short_name=tinty&threads=59&callback=?',
+				dataType:'json',
+				success:function(data)
+		{
+
+				$.each(data.response, function(i, item) {
+                     comval += item.comments;
+				})
+				res=data.response;
+				alert(res.comments);
+				alert(comval);
+				$('span.views').append(data);
+		}
+		})
+		**/
 			
 		
 		/**			else

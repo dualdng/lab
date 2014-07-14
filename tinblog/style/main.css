@@ -26,7 +26,7 @@ a:visited {
 		color:#69606b;
 }
 a:hover {
-		color:pink;
+		color:#61a64b;
 }
 		
 head {
@@ -209,21 +209,22 @@ button:last-child {
 }
 .user {
 		float:right;
+		margin-top:1%;
 }
 
 .user a:link {
-		color:red;
-		border-bottom:3px solid #61a64b;
+		color:#61a64b;
+		border-bottom:3px solid red;
 }
 
 .user a:visited {
-		color:red;
-		border-bottom:3px solid #61a64b;
+		color:#61a64b;
+		border-bottom:3px solid red;
 }
 
 .user a:hover {
-		color:#61a64b;
-		border-bottom:3px solid red;
+		color:#000;
+		border-bottom:3px solid #000;
 }
 .date {
 		margin-bottom:2%;
@@ -259,8 +260,8 @@ a.ta2 {
 }
 #pagenavi span {
 		padding:10px;
-		background:pink;
-		color:#66ccff;
+		background:#61a64b;
+		color:#fff;
 }
 #pagenavi a:link {
 		padding:10px;
@@ -269,14 +270,14 @@ a.ta2 {
 }
 #pagenavi a:visited {
 		padding:10px;
-		background:pink;
+		background:#69606b;
 		color:#fff;
 }
 
 #pagenavi a:hover {
 		padding:10px;
-		background:pink;
-		color:#66ccff;
+		background:#61a64b;
+		color:#fff;
 }
 #article {
 		position:relative;

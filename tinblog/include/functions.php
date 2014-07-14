@@ -70,7 +70,7 @@ function post_list()//show post's list on index.php
 						$str=$res[$i][7];
 						preg_match_all($ruls,$str,$matches);
 						$c=count($matches[0]);
-						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.comments_no($res[$i][0]).' Comments</span></div>';
+						echo '<div id=\'image\'><img id=\'type\' src=\'image/image.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.date('d M,y',strtotime($res[$i][6])).'</span></div>';
 								echo '<div class=\'content\'>';
 								if(empty($res[$i][8]))
 						{
@@ -89,7 +89,7 @@ function post_list()//show post's list on index.php
 						}
 								echo '</div>';
 						echo '<div style=\'clear:both\'></div>';
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
+						echo '<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 
 						for($a=0;$a<$num;$a++)
@@ -98,7 +98,7 @@ function post_list()//show post's list on index.php
 						}
 						echo '</div>
 
-								<div class=\'date\'>'.$res[$i][6].'</div>
+								<div class=\'date\'></div>
 								</div>';
 						break;
 				}
@@ -107,7 +107,7 @@ function post_list()//show post's list on index.php
 						$ruls='/<audio[^>]+>/iu';
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.comments_no($res[$i][0]).' Comments</span></div>';
+						echo '<div id=\'music\'><img id=\'type\'  src=\'image/music.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.date('d M,y',strtotime($res[$i][6])).'</span></div>';
 								if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.@$matches[0].'</div>';
@@ -116,7 +116,7 @@ function post_list()//show post's list on index.php
 						{
 								echo '<div class=\'content\'>'.$res[$i][8].@$matches[0].'</div>';
 						}
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
+						echo '<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
@@ -124,13 +124,13 @@ function post_list()//show post's list on index.php
 						}
 						echo '</div>
 
-								<div class=\'date\'>'.$res[$i][6].'</div>
+								<div class=\'date\'></div>
 								</div>'; 
 						break;
 				}
 				while($res[$i][5]==3)//status
 				{
-						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.comments_no($res[$i][0]).' Comments</span></div>
+						echo '<div id=\'status\'><img id=\'type\'  src=\'image/status.png\' /><div class=\'content\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][7].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.date('d M,y',strtotime($res[$i][6])).'</span></div>
 								<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</a></span></div>
 								<div class=\'tag\'>';
 								for($a=0;$a<$num;$a++)
@@ -138,7 +138,7 @@ function post_list()//show post's list on index.php
 										echo'<a class=\'ta'.$a.'\'href=\'tag_page.php?tag='.$tag[$a].'\'>'.$tag[$a].'</a>&nbsp&nbsp';
 								}
 						echo '</div>
-								<div class=\'date\'>'.$res[$i][6].'</div>
+								<div class=\'date\'></div>
 								</div>';
 						break;
 
@@ -148,7 +148,7 @@ function post_list()//show post's list on index.php
 						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.comments_no($res[$i][0]).' Comments</span></div>';
+						echo '<div id=\'standard\'><img id=\'type\'  src=\'image/standard.png\' /><div class=\'title\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.date('d M,y',strtotime($res[$i][6])).'</span></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
@@ -158,14 +158,14 @@ function post_list()//show post's list on index.php
 								echo '<div class=\'content\'>'.$res[$i][8].'<a href=\''.@$matches[1].'\'>'.@$matches[0].'</a></div>';
 						}
 						echo '<div style=\'clear:both\'></div>';
-						echo '<div class=\'user\'>Post by '.$res[$i][2].' on <span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
+						echo '<div class=\'user\'><span><a href=\'catagory_page.php?catagory='.$res[$i][3].'\'>'.$res[$i][3].'</span></div>
 								<div class=\'tag\'>';
 						for($a=0;$a<$num;$a++)
 						{
 								echo'<a class=\'ta'.$a.'\'href=\'tag_page.php?tag='.$tag[$a].'\'>'.$tag[$a].'</a>&nbsp&nbsp';
 						}
 						echo '</div>
-								<div class=\'date\'>'.$res[$i][6].'</div>
+								<div class=\'date\'></div>
 								</div>';
 						break;
 				}
