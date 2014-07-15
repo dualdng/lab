@@ -1,5 +1,5 @@
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 session_start();
 $userid=$_GET['username'];
 $passwd=$_GET['passw'];

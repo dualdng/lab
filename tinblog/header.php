@@ -52,6 +52,7 @@ MM########MBBBBHBMMM########################################@@Xi.,,,,,,,, i3ii  
 <link rel='stylesheet' href='phzoom/phzoom.css' />
 <link rel="stylesheet" href="admin/editor/plugins/code/prettify.css" />
 <script type='text/javascript' src='js/jquery-2.1.0.min.js'></script>
+<script type='text/javascript' src='js/jarallax-0.2.4b.min.js'></script>
 <script type="text/javascript" src="phzoom/phzoom.js"></script>
 <script type='text/javascript' src='js/main.js'></script>
 <script charset="utf-8" src="admin/editor/kindeditor.js"></script>
