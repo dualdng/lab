@@ -5,7 +5,7 @@ include('../include/mysql_con.php');
 		if (get_magic_quotes_gpc()) {
 			$content = $_GET['content'];
 		} else {
-			$content = stripslashes($_GET['content']);
+			$content = addslashes($_GET['content']);
 		}
 	}
 $no=$_GET['no'];

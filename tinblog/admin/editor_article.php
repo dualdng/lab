@@ -40,7 +40,7 @@ $no=$_GET['no'];
 <body>
 <form name="article" method="get" action="update_post.php">
 title:<input type='text' id='title' name='title' value='<?php echo $res[$no][1];?>'></input><br />
-conntent:<textarea id='editor_id' name='content' style='width:700px;height:300px;'><?php echo $res[$no][2];?></textarea><br />
+conntent:<textarea id='editor_id' name='content' style='width:700px;height:300px;'><?php echo stripslashes($res[$no][2]);?></textarea><br />
 excerpt:<textarea id='except' name='excerpt'><?php echo $res[$no][3];?></textarea><br />
 tag:<input type='text' id='tag' name='tag' value='<?php echo $res[$no][6];?>'</input><br />
 type:

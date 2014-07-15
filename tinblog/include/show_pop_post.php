@@ -1,7 +1,6 @@
 <?php
-include('mysql_con.php');
+include('functions.php');
 $result=most_pop();
-$result=$result->fetch_all();
 $rows=count($result);
 for($i=0;$i<$rows;$i++)
 {

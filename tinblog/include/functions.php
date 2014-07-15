@@ -772,4 +772,28 @@ function comments_no($thread_key=59,$short_name='tinty')
 		$res=json_decode($res,true);
 		return $res['response'][$thread_key]['comments'];
 }
+/** pop post**/
+function most_pop()
+{
+		global $db;
+		$query='select no,title from b_article order by hit_count desc limit 0,5';
+		$result=$db->fetch_all($query);
+		return $result;
+}
+function rand_post()
+{
+		global $db;
+		$query='select no,title from b_article order by rand() limit 0,5';
+		$result=$db->fetch_all($query);
+		return $result;
+}
+function tag_num($tag)
+{
+		global $db;
+		$query='select count(*) from b_article where tag like\'%'.$tag.'%\'';
+		$result=$db->query($query);
+		$result=$result->fetch_all();
+		return $result[0][0];
+}
+
 ?>

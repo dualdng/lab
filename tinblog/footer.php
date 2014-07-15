@@ -5,7 +5,7 @@
 <a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>'>Home</a>
 </li>
 <li>
-<a href='#'>Catagory</a>
+<a href='#'>Category</a>
 <ul>
 <li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?cate=LifeTime'>LifeTime</a></li>
 <li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?cate=Codes'>Codes</a></li>
