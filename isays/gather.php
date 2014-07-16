@@ -1,7 +1,7 @@
 <?php 
 header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
-$db=new mysqli('127.0.0.1','pic','123qwe','pic');
+$db=new mysqli('127.0.0.1','pic','d3621201,','pic');
 if(mysqli_connect_errno())
 {
 		echo 'can\'t connect the database';
@@ -25,6 +25,7 @@ $file='url.txt';//判断是否已经被获取过
 $res=file_get_contents($file);
 if($res)
 {
+		echo '1';
 		$res=json_decode($res);
 		$arr_url=array_diff($arr_url,$res);
 		if(empty($arr_url))//判断数组是否为空
@@ -43,12 +44,22 @@ if($res)
 				preg_match_all($pattern,$result,$matches2);
 				$arr_img=array();
 				$arr_img=$matches2[0];
+				print_r($arr_img);
 				$arr_img=array_unique($arr_img);
 				sort($arr_img);
+				/**
 				$row=count($arr_img);
 				for($a=0;$a<$row;$a++)
 				{
-						$file='img/'.basename($arr_img[$a]);
+						$res=end(explode('.',$arr_img[$a]));
+						if($res!='jpg'||$res!='jpeg'||$res!='bmp')
+						{
+								$file='img/'.basename($arr_img[$a]).'.jpg';
+						}
+						else
+						{
+								$file='img/'.basename($arr_img[$a]);
+						}
 						file_put_contents($file,file_get_contents($arr_img[$a]));
 						echo $arr_img[$a].'<br />';
 						$query='insert into pic values(\'\',\'\',\''.$file.'\')';
@@ -58,13 +69,17 @@ if($res)
 								echo 'erro insert';
 						}
 				}
+				**/
 		}
+		exit;
 }
 else
 {
+		echo '2';
 		$page_url=json_encode($arr_url);
-		file_put_contents($file,$page_url,FILE_APPEND);
+		file_put_contents($file,$page_url);
 		$num=count($arr_url);
+		print_r($arr_url);
 		for($i=0;$i<$num;$i++)
 		{
 				$url=$arr_url[$i];
@@ -75,19 +90,31 @@ else
 				$arr_img=$matches2[0];
 				$arr_img=array_unique($arr_img);
 				sort($arr_img);
+				print_r($arr_img);
+				/**
 				$row=count($arr_img);
 				for($a=0;$a<$row;$a++)
 				{
-						$file='img/'.basename($arr_img[$a]);
+						$res=end(explode('.',$arr_img[$a]));
+						if($res!='jpg'||$res!='jpeg'||$res!='bmp')
+						{
+								$file='img/'.basename($arr_img[$a]).'.jpg';
+						}
+						else
+						{
+								$file='img/'.basename($arr_img[$a]);
+						}
 						file_put_contents($file,file_get_contents($arr_img[$a]));
 						echo $arr_img[$a].'<br />';
 						$query='insert into pic values(\'\',\'\',\''.$file.'\')';
-						$result=$db->query($query);
-						if(empty($result))
-						{
-								echo 'erro insert';
-						}
+										$result=$db->query($query);
+										if(empty($result))
+										{
+										echo 'erro insert';
+										}
 				}
+				**/
 		}
+		exit;
 }
 ?>
