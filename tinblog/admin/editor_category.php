@@ -1,5 +1,5 @@
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 $catagory_name=$_GET['catagory_name'];
 $id=$_GET['id'];
 $result=set_cata($id,$catagory_name);

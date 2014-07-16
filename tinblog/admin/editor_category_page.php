@@ -9,7 +9,7 @@ admin
 </head>
 <body>
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 $result=list_category();
 $result=$result->fetch_all();
 $num=count($result);

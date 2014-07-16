@@ -1,6 +1,5 @@
 <!doctypehtml>
 <?php include('functions.php');
-include('../include/mysql_con.php');
 ?>
 <html>
 <title>

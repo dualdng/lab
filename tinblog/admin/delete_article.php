@@ -1,5 +1,5 @@
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 $no=$_GET['no'];
 $result=delete_article($no);
 ?>

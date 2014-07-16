@@ -7,10 +7,10 @@
 <li>
 <a href='#'>Category</a>
 <ul>
-<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?cate=LifeTime'>LifeTime</a></li>
-<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?cate=Codes'>Codes</a></li>
-<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?cate=Movies'>Movies</a></li>
-<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?cate=Themes'>Themes</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=LifeTime'>LifeTime</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Codes'>Codes</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Movies'>Movies</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Themes'>Themes</a></li>
 </ul>
 </li>
 <li>

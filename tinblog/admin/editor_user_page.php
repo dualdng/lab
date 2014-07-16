@@ -7,7 +7,7 @@ admin
 </head>
 <body>
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 $result=show_user();
 $result=$result->fetch_all();
 ?>

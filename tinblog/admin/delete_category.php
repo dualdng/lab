@@ -1,5 +1,5 @@
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 $id=$_GET['id'];
 $result=delete_cate($id);
 if(empty($result))

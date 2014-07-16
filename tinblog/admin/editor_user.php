@@ -1,5 +1,5 @@
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 $user_name=$_GET['user_name'];
 $user_email=$_GET['user_email'];
 $user_des=$_GET['user_des'];

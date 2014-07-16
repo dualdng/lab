@@ -1,5 +1,5 @@
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 	$content = '';
 	if (!empty($_GET['content'])) {
 		if (get_magic_quotes_gpc()) {

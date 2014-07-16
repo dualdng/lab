@@ -1,5 +1,5 @@
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 $no=$_GET['no'];
 $name=$_GET['name'];
 $link=$_GET['link'];

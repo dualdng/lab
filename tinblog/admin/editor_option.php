@@ -1,5 +1,5 @@
 <?php
-include('../include/mysql_con.php');
+include('functions.php');
 $title=$_GET['title'];
 $keywords=$_GET['keywords'];
 $description=$_GET['description'];

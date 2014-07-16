@@ -18,6 +18,9 @@ $filename=end(explode('/',$url));
 				case 'archive.php':
 				echo '<a  href=\'http://'.$_SERVER['HTTP_HOST'].'\'>HOME</a>&nbsp>&nbspArchive';
 				break;
+				case 'themes.php':
+				echo '<a  href=\'http://'.$_SERVER['HTTP_HOST'].'\'>HOME</a>&nbsp>&nbspThemes';
+				break;
 				default:
 				echo 'Brague';
 				break;
