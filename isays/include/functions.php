@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
-$db=new mysqli('127.0.0.1','用户名','密码','数据库');
+$db=new mysqli('127.0.0.1','pic','123qwe','pic');
 $query='select url from pic';
 $result=$db->query($query);
 $result=$result->fetch_all();
@@ -9,6 +9,7 @@ $pagenum=ceil($num/10);
 $db->close();
 function show_pic($page)
 {
+		$url='http://127.0.0.1/lab/isays';
 		global $result;
 		global $pagenum;
 		if($page>$pagenum)
@@ -21,12 +22,13 @@ function show_pic($page)
 			$pageend=$page*10;
 			for($i=$pagebegin;$i<=$pageend;$i++)
 			{
-					echo '<div class=\'pic-contentleft\'><a href=\''.$result[$i][0].'\'><img src=\''.$result[$i][0].'\'/></a></div>';
+					echo '<div class=\'pic-contentleft\'><a href=\''.$url.'/'.$result[$i][0].'\'><img src=\''.$url.'/'.$result[$i][0].'\'/></a></div>';
 			}
 		}
 }
 function rand_pic()
 {
+		$url='http://127.0.0.1/lab/isays';
 	global $result;
 	global $num;
 	$rand_array=range(0,$num);
@@ -34,7 +36,7 @@ function rand_pic()
 	$rand_array=array_slice($rand_array,0,10);
 	foreach($rand_array as $i)
 	{
-			echo '<div class=\'pic-contentleft\'><a href=\''.$result[$i][0].'\'><img src=\''.$result[$i][0].'\'/></a></div>';
+			echo '<div class=\'pic-contentleft\'><a href=\''.$url.'/'.$result[$i][0].'\'><img src=\''.$url.'/'.$result[$i][0].'\'/></a></div>';
 	}
 }
 ?>

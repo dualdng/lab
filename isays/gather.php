@@ -1,7 +1,7 @@
 <?php 
 header("Content-type: text/html; charset=utf-8");
 set_time_limit(0);
-$db=new mysqli('127.0.0.1','pic','d3621201,','pic');
+$db=new mysqli('127.0.0.1','pic','123qwe','pic');
 if(mysqli_connect_errno())
 {
 		echo 'can\'t connect the database';
@@ -84,14 +84,13 @@ else
 		{
 				$url=$arr_url[$i];
 				$result=file_get_contents($url);
-				$pattern='/[a-z]+:\/\/[a-z0-9.\/]+jpg|[a-z]+:\/\/images.isays.cn[a-z0-9.\/]+/';
+				$pattern='/<a .*class="fancybox".*>(<img src="(.*\.jpg).*"\/>)<\/a>/U';
 				preg_match_all($pattern,$result,$matches2);
 				$arr_img=array();
-				$arr_img=$matches2[0];
+				$arr_img=$matches2[2];
 				$arr_img=array_unique($arr_img);
 				sort($arr_img);
-				print_r($arr_img);
-				/**
+				var_dump($arr_img);
 				$row=count($arr_img);
 				for($a=0;$a<$row;$a++)
 				{
@@ -113,7 +112,6 @@ else
 										echo 'erro insert';
 										}
 				}
-				**/
 		}
 		exit;
 }
