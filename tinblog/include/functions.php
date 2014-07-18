@@ -32,7 +32,7 @@ function hitokoto()//hitokoto api
 }
 function line_api()//line api
 {
-	$url='http://127.0.0.1/gather/include/line_api.php?type=1';
+	$url='http://line.uuuuj.com/include/line_api.php?type=1';
 	$line=file_get_contents($url);
 	$line=strip_tags($line);
 	$line=json_decode($line,true);

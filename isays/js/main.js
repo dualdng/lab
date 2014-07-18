@@ -1,5 +1,6 @@
 function rand_pic()
 {
+		return:false;
 	$.ajax({
 		url:'rand_pic.php',
 		type:'POST',
