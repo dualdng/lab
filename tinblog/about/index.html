@@ -109,6 +109,18 @@ a{
 		text-decoration:none;
 		font-weight:bold;
 }
+#mail .input_text {
+		border:1px solid #ebeaea;
+}
+input.submit {
+		background:#b14c6a;
+		width:150px;
+		height:30px;
+		cursor:pointer;
+}
+input.submit:hover {
+		background:#61a64b;
+}
 </style>
 </head>
 <body onload="init()">
@@ -122,7 +134,7 @@ a{
 于2013年底谋划着把wp也抛弃了，于是现在你见到的这个站搭好了，正式搬家应该是在2014年6月份。<br />
 </p>
 <p>特点1：没有太多技术文章，有不少的影评，我也想能写出技术文章，我也想写好影评，所以影评全当是一个电影推荐了，你可以通过我的推荐去豆瓣上看影评，博主保证推荐的电影都是质高无上的。</p>
-<p>特点2：博主也会推荐一些好听的歌，同样保证推荐的歌都是质高无上的！</p>
+<p>特点2：博主也会推荐一些好听的歌！</p>
 <p>特点3：博客含有茫茫海的个人心情文章，请自动无视。</p>
 </div>
 <div class='container' id='slide2'>
@@ -141,19 +153,20 @@ a{
 </ul>
 </div>
 <div class='container' id='slide3'>
-<h2>ATTENTION</h2>
-<p>注意：以下内容为英文<br />Attention:The texts below are written in English</p>
+<h2>CONTACT</h2>
+<p>EMAIL:dualdng@gmail.com</p>
+<p>EMAIL:admin@uuuuj.com</p>
 </div>
 <div class='container' id='slide4'>
-<h2>ENGLISH</h2>
-<p>The blog was founded before the end of the world singles day, to comfort, edify sentiment, improve, improve food forced lattice.
-At first thought emlog petty and forced up, so the first stop is emlog</p>
-<p>Remember what time, estimated in 2013 5-6 month, find me to various plugins, themes are not beautiful, so I chose the high-end atmospheric grade WordPress, by the way also to connect with the international rail.</p>
-<p>Almost the same period, I from the virtual machine 168 a year on to my VPS, and international hostigation!<br />
-At the end of 2013, up to WP also abandoned, this station so now you see up, should be in 2014 June formally to move.</p>
-<p>Characteristics of 1: not too many technical articles, there are a lot of critics, I also want to write articles, I also want to write reviews, so when the whole film is recommended for a movie, you can through my recommendation to live to see critics, bloggers assurance recommended films are of high quality and no on.</p>
-<p>Characteristics of 2: the blogger will recommend some good songs, the same guarantees recommends the song is of high quality and great!</p>
-<p>Characteristics of 3: blog contains the vast sea of personal mood article, please automatically ignore.</p>
+<h2>CONTACT</h2>
+<p></p>
+<form id='mail' method='POST' action='mail_me.php'>
+		<input class='iput_text' name='name' type='text' placeholder='Your Name(Needed)' requied='requied'></input>
+		<input class='iput_text' name='email' type='text' placeholder='Your Email'></input>
+		<input class='iput_text' name='my_email' type='hidden' value='admin@uuuuj.com'></input>
+		<textarea class='iput_text' name='content' placeholder='Your Content(Needed)' cols='80' rows='5' requied='requied'></textarea>
+		<input class='submit' type='submit' value='Submit'></input>
+		</form>
 </div>
 </body>
 </html>

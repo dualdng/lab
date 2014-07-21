@@ -19,6 +19,11 @@
 </ul>
 </li>
 <li>
+<a href='http://www.uuuuj.com/about'>About</a>
+<ul>
+</ul>
+</li>
+<li>
 <a href='http://blog.uuuuj.com'>Wordpress</a>
 <ul>
 <li><a href='#'></a></li>
@@ -27,6 +32,7 @@
 <li>
 <div class='foot'>Music <a href='javascript:void(0);'  onclick="document.getElementById('backmusic').play()" >ON&nbsp|</a><a href='javascript:void(0);' onclick="document.getElementById('backmusic').pause()" >&nbspOFF</a><audio id='backmusic'src='#'  loop='loop'></audio>
 Powered by <a href='http://www.uuuuj.com'>Brague</a></div>
+</li>
 </ul>
 </nav>
 </footer>

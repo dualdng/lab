@@ -730,30 +730,41 @@ function children_comments($post_id)
 }
 function show_archive()
 {
-		$month_arr=array('01','02','03','04','05','06','07','08','09','10','11','12');
+		$month_arr=array('12','11','10','09','08','07','06','05','04','03','02','01');
 		$year_arr=array('14','15','16');
 		echo '<div class=\'article\'>';
 		foreach($month_arr as $value)
 		{
-				echo '2014-'.$value.'<br />';
-				archive('14',$value);
+				$arrResult=archive('14',$value);
+				if(!empty($arrResult))
+				{
+						$strTime=empty($arrResult)?'':'2014-'.$value;
+						echo '<div class=\'archive_date\'>'.$strTime.'</div>';
+						echo '<div class=\'archive_content\'>';
+						foreach($arrResult as $strValues)
+						{
+								echo '<span>'.$strValues.'</span>';
+						}
+						echo '</div>';
+				}
 		}
 		echo '</div>';
 }
 function archive($year,$month)
 {
 		global $db;
-		$query='select no,title,create_date from b_article order by create_date desc';
-		$result=$db->fetch_all($query);
-		$row=count($result);
+		global $res;
+		$row=count($res);
+		$arrResult=array();
 		for($i=0;$i<$row;$i++)
 		{
-						if($year==substr($result[$i][2],2,2))
+						if($year==substr($res[$i][6],2,2))
 						{
-										if($month==substr($result[$i][2],5,2))
+										if($month==substr($res[$i][6],5,2))
 										{
-												echo substr($result[$i][2],0,10).'<br />';
-												echo '<a href=\'single.php?id='.$result[$i][0].'\'>'.$result[$i][1].'</a><br />';
+												$arrResult[]='<a class=\'archive_title\' href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><br />'; 
+												$arrResult[].='on <span><a class=\'archive_cate\' href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a></span>';
+												$arrResult[].=' in '.date('m-d',strtotime($res[$i][6])).'<br />';
 										}
 										else
 										{
@@ -764,6 +775,7 @@ function archive($year,$month)
 						{
 						}
 		}
+		return $arrResult;
 }
 function comments_no($thread_key=59,$short_name='tinty') 
 {
@@ -812,7 +824,7 @@ function themes_list()
 		$temp=array();
 		for($i=0;$i<$rows;$i++)
 		{
-				if($res[$i][3]=='Themes')
+				if($res[$i][3]=='Themes')//category is themes
 				{
 						$temp[$i]=$i;
 				}
