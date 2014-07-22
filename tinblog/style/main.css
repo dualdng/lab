@@ -179,6 +179,9 @@ button:last-child {
 		height:32px;
 		overflow:hidden;
 		-webkit-transition:width .8s;
+		-moz-transition:width .8s;
+		-o-transition:width .8s;
+		transition:width .8s;
 }
 .title:hover .views {
 		width:100px;
@@ -342,14 +345,28 @@ nav ul li .foot {
 		font-size:12px;
 		line-height:20px;
 }
-nav >ul >li >a:hover:after {
+nav >ul >li >a:after {
 		content:'';
 		position:absolute;
-		bottom:0;
+		top:30px;
 		left:0;
-		right:0;
 		height:2px;
+		width:100%;
 		background:#0f0;
+		-webkit-transition:all .7s;
+		-moz-transition:all .7s;
+		-o-transition:all .7s;
+		transition:all .7s;
+		-webkit-transform:scaleX(0);
+		-moz-transform:scaleX(0);
+		-o-transform:scaleX(0);
+		transform:scaleX(0);
+}
+nav >ul >li >a:hover:after {
+		-webkit-transform:scaleX(1);
+		-moz-transform:scaleX(1);
+		-o-transform:scaleX(1);
+		transform:scaleX(1);
 }
 nav ul li ul {
 		position:absolute;
@@ -358,6 +375,9 @@ nav ul li ul {
 		height: 0px;
 		overflow: hidden;
 		-webkit-transition:height .7s;
+		-moz-transition:height .7s;
+		-o-transition:height .7s;
+		transition:height .7s;
 }
 nav ul li ul li {
 		background:#fff;
@@ -376,6 +396,34 @@ footer {
 		height:50px;
 		background:#fff;
 }
+.foot span {
+		color:#ebeaea;
+		font-size:12px;
+}
+.foot span a {
+		position:relative;
+}
+.foot span a:link {
+		color:#ebeaea;
+}
+
+.foot span a:visited {
+		color:#ebeaea;
+}
+
+.foot span a:hover {
+		color:#ebeaea;
+}
+.foot span a:hover:before {
+		content:"";
+		position:absolute;
+		bottom:0px;
+		left:0;		
+		width:100%;
+		border-bottom:1px solid #000;
+}
+
+
 /** widget **/
 .widget {
 		background:#fff;
@@ -619,20 +667,33 @@ footer {
 		margin:1%;
 }
 .archive_content span {
-
+		color:#ebeaea;
+		font-size:12px;
+}
+a.archive_cate {
+		position:relative;
 }
 a.archive_cate:link {
-		color:#61a64b;
-		border-bottom:3px solid red;
+		color:#ebeaea;
 }
 
 a.archive_cate:visited {
-		color:#61a64b;
-		border-bottom:3px solid red;
+		color:#ebeaea;
 }
 
 a.archive_cate:hover {
-		color:#000;
-		border-bottom:3px solid #000;
+		color:#ebeaea;
+}
+a.archive_cate:hover:before {
+		content:"";
+		position:absolute;
+		bottom:0px;
+		left:0;		
+		width:100%;
+		border-bottom:1px solid #000;
 }
 
+.archive_title {
+		font-weight:bold;
+		font-size:18px;
+}

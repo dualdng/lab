@@ -34,7 +34,7 @@ function line_api()//line api
 {
 	$url='http://line.uuuuj.com/include/line_api.php?type=1';
 	$line=file_get_contents($url);
-	$line=strip_tags($line);
+//	$line=strip_tags($line);
 	$line=json_decode($line,true);
 	$error=json_last_error();
 	echo '<a href=\'http://line.uuuuj.com\' title=\''.$line['name'].'\'>'.$line['line'].'</a>——'.$line['name'];
@@ -743,7 +743,7 @@ function show_archive()
 						echo '<div class=\'archive_content\'>';
 						foreach($arrResult as $strValues)
 						{
-								echo '<span>'.$strValues.'</span>';
+								echo $strValues;
 						}
 						echo '</div>';
 				}
@@ -763,8 +763,8 @@ function archive($year,$month)
 										if($month==substr($res[$i][6],5,2))
 										{
 												$arrResult[]='<a class=\'archive_title\' href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><br />'; 
-												$arrResult[].='on <span><a class=\'archive_cate\' href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a></span>';
-												$arrResult[].=' in '.date('m-d',strtotime($res[$i][6])).'<br />';
+												$arrResult[].='<span>on <a class=\'archive_cate\' href=\'category_page.php?category='.$res[$i][3].'\'>'.$res[$i][3].'</a>';
+												$arrResult[].=' in '.date('m-d',strtotime($res[$i][6])).'<br /></span>';
 										}
 										else
 										{

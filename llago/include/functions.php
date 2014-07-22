@@ -56,7 +56,7 @@ function line_api($type=0)
 	$i=rand(0,$num);
 	if($type==0)
 	{
-		echo json_encode(addslashes($result[$i][1]));
+		echo json_encode(stripslashes($result[$i][1]));
 	}
 	elseif($type==1)
 	{
