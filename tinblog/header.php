@@ -62,6 +62,7 @@ MM########MBBBBHBMMM########################################@@Xi.,,,,,,,, i3ii  
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
+<meta property="qc:admins" content="13206473776555526375" /><!-- qq 认证-->
 </head>
 <body>
 <?php 
