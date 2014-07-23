@@ -9,6 +9,11 @@ class qq_connect
 		private $strCode;
 		private $strAccess_token;
 		private $strOpen_id;
+		function __construct()
+		{
+				$this->strAccess_token=$this->get_access_token();
+				$this->strOpen_id=$this->get_openid();
+		}
 		function qq_login()
 		{
 				$strUrl='https://graph.qq.com/oauth2.0/authorize';
@@ -40,12 +45,11 @@ class qq_connect
 				$obResponse = curl_exec($ch);
 				$arrTemp=array();
 				parse_str($obResponse,$arrTemp);
-				$this->strAccess_token=$arrTemp['access_token'];
-				return $this->strAccess_token;
+				return $arrTemp['access_token'];
 		}
 		function get_openid()
 		{
-				$access_toke=qq_connect::get_access_token();
+				$access_token=$this->strAccess_token;
 				$strUrl='https://graph.qq.com/oauth2.0/me';
 				$strUrl.='?access_token='.$access_token;
 				$ch = curl_init();
@@ -54,16 +58,18 @@ class qq_connect
 				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				$obResponse = curl_exec($ch);
+				$partern='/{.*}/';
+				preg_match($partern,$obResponse,$match);
 				$arrTemp=array();
-				$arrTemp=json_decode($obResponse,true);
-				$this->strOpen_id=$arrTemp['openid'];
-				return $this->strOpen_id;
+				$arrTemp=json_decode($match[0],true);
+				return $arrTemp['openid'];
 		}
 		function get_user_info()
 		{
-				$open_id=qq_connect::get_openid();
+				$openid=$this->strOpen_id;
+				$access_token=$this->strAccess_token;
 				$strUrl='https://graph.qq.com/user/get_user_info';
-				$strUrl.='?access_toke='.$this->strAccess_token;
+				$strUrl.='?access_token='.$access_token;
 				$strUrl.='&oauth_consumer_key='.$this->strApp_id;
 				$strUrl.='&openid='.$openid;
 				$ch = curl_init();
