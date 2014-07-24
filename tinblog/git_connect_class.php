@@ -10,6 +10,10 @@ class git_connect
 		private $strAccess_token;
 //		private $strAccess_token='022ad7707d24230a537f65b2872da466311816c3';  //git hub testing token
 		private $strOpen_id;
+		function __construct()
+		{
+				$this->strAccess_token=$this->get_access_token();
+		}
 		function login()
 		{
 				$strUrl='https://github.com/login/oauth/authorize';
@@ -33,6 +37,7 @@ class git_connect
 				curl_setopt($ch, CURLOPT_URL, $strUrl);  
 				curl_setopt($ch, CURLOPT_POST, 1);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				$obResponse = curl_exec($ch);
 				$arrTemp=array();
 				parse_str($obResponse,$arrTemp);
@@ -43,10 +48,10 @@ class git_connect
 				$access_token=$this->strAccess_token;
 				$strUrl='https://api.github.com/user';
 				$strUrl.='?access_token='.$access_token;
+				$header[]='User-Agent:dualdng';
 				$ch = curl_init();
+				curl_setopt($ch, CURLOPT_HTTPHEADER,$header);  //github nees a user-agent header;
 				curl_setopt($ch, CURLOPT_URL,$strUrl);  
-				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  
-				curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);  
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				$obResponse = curl_exec($ch);
 				$arrTemp=array();
