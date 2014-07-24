@@ -1,5 +1,5 @@
 <?php
-class qq_connect
+class sina_connect
 {
 		private $strApp_id='';
 		private $strApp_key='';
@@ -87,6 +87,7 @@ class qq_connect
 				echo 'error';		
 		}
 }
+class
 ?>
 
 
