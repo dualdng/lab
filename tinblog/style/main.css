@@ -697,3 +697,16 @@ a.archive_cate:hover:before {
 		font-weight:bold;
 		font-size:18px;
 }
+/** vote **/
+#vote span {
+		cursor:pointer;
+}
+span.s {
+		color:#61a64b;
+}
+span.h {
+		color:#e5ebe3;
+}
+span.a {
+		color:#61a64b;
+}

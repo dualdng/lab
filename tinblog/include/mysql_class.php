@@ -1,7 +1,7 @@
 <?php
 class mysql_con
 {
-		private $db;
+		public $db;
 		private $res;
 		private $query;
 		function __construct()//init the mysqli connect

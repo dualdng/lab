@@ -3,7 +3,7 @@ include('mysql_class.php');
 include('pagenavi_class.php');
 include('config.php');
 		$db=new mysql_con();//call the class mysql_class
-		$query='select t1.no,t1.title,t2.user_name,t3.category_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_category t3 on t1.category_id=t3.id order by no desc';
+		$query='select t1.no,t1.title,t2.user_name,t3.category_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count,t1.vote,t1.rank from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_category t3 on t1.category_id=t3.id order by no desc';
 		$res=$db->fetch_all($query);//select all the post
 function pagenavi_index()
 {
@@ -691,6 +691,13 @@ function show_user()//show the user's information on sidebar
 		$result=$db->fetch_all($query);
 		return $result;
 }
+function post_comments($no,$pre_post_id=0,$user_id=0,$name,$email,$url,$text)
+{
+		global $db;
+		$query='insert into b_comments value('.$no.',\'\','.$pre_post_id.','.$user_id.','.$name.','.$email.','.$url.','.$text.')';
+		$result=$db->_insert($query);
+}
+		
 function show_comments($no)//this is not in use
 {
 		global $db;
@@ -705,6 +712,7 @@ function show_comments($no)//this is not in use
 								echo '<div class=\'author\'>'.$result[$i][3].'</div>';
 								echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
 								echo '<div class=\'text\'>'.$result[$i][6].'</div>';
+								echo '<div class=\'reply\'><a href=\'comments_content?no='.$no.'&pre_post_id='.$post_id.'>reply</a></div>';
 								children_comments($result[$i][1]);
 								echo '</div>';
 		}
@@ -723,6 +731,7 @@ function children_comments($post_id)
 						echo '<div class=\'author\'>'.$result[$i][3].'</div>';
 						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
 						echo '<div class=\'text\'>'.$result[$i][6].'</div>';
+						echo '<div class=\'reply\'><a href=\'comments_content?no='.$no.'&pre_post_id='.$result[$i][1].'>reply</a></div>';
 						children_comments($result[$i][1]);
 						echo '</div>';
 				}
@@ -841,5 +850,88 @@ function themes_list()
 				echo '<div class=\'themes_pak\'><a href=\'single.php?id='.$res[$i][0].'\'><p>'.$res[$i][1].'</p><span>Read More-></span></a></div>';
 				echo '</div>';
 		}
+}
+function show_rank($id,$no)
+{
+		global $db;
+		global $res;
+		$goal=@round($res[$no][11]/$res[$no][10],1);//四舍五入去整，小数点一位
+		$avery=round($goal/2,0);
+		switch($avery)
+		{
+		case 0:
+				echo '
+						<span class=\'h\' rate=\'2\'>★</span>
+						<span class=\'h\' rate=\'4\'>★</span>
+						<span class=\'h\' rate=\'6\'>★</span>
+						<span class=\'h\' rate=\'8\'>★</span>
+						<span class=\'h\' rate=\'10\'>★</span>
+						';
+				break;
+		case 1:
+				echo '
+						<span class=\'s\' rate=\'2\'>★</span>
+						<span class=\'h\' rate=\'4\'>★</span>
+						<span class=\'h\' rate=\'6\'>★</span>
+						<span class=\'h\' rate=\'8\'>★</span>
+						<span class=\'h\' rate=\'10\'>★</span>
+						';
+				break;
+
+		case 2:
+				echo '
+						<span class=\'s\' rate=\'2\'>★</span>
+						<span class=\'s\' rate=\'4\'>★</span>
+						<span class=\'h\' rate=\'6\'>★</span>
+						<span class=\'h\' rate=\'8\'>★</span>
+						<span class=\'h\' rate=\'10\'>★</span>
+						';
+				break;
+		case 3:
+				echo '
+						<span class=\'s\' rate=\'2\'>★</span>
+						<span class=\'s\' rate=\'4\'>★</span>
+						<span class=\'s\' rate=\'6\'>★</span>
+						<span class=\'h\' rate=\'8\'>★</span>
+						<span class=\'h\' rate=\'10\'>★</span>
+						';
+				break;
+		case 4:
+				echo '
+						<span class=\'s\' rate=\'2\'>★</span>
+						<span class=\'s\' rate=\'4\'>★</span>
+						<span class=\'s\' rate=\'6\'>★</span>
+						<span class=\'s\' rate=\'8\'>★</span>
+						<span class=\'h\' rate=\'10\'>★</span>
+						';
+				break;
+		case 5:
+				echo '
+						<span class=\'s\' rate=\'2\'>★</span>
+						<span class=\'s\' rate=\'4\'>★</span>
+						<span class=\'s\' rate=\'6\'>★</span>
+						<span class=\'s\' rate=\'8\'>★</span>
+						<span class=\'s\' rate=\'10\'>★</span>
+						';
+				break;
+		default:
+				echo '
+						<span class=\'s\'>★</span>
+						<span class=\'s\'>★</span>
+						<span class=\'s\'>★</span>
+						<span class=\'s\'>★</span>
+						<span class=\'s\'>★</span>
+						';
+				break;
+		}
+
+}
+function update_rank($id,$no,$goal)
+{
+		global $db;
+		global $res;
+		$res[$no][10]++;
+		$query='update b_article set vote=\''.$res[$no][10].'\',rank=\''.$goal.'\'where no=\''.$id.'\'';
+		$db->_update($query);
 }
 ?>

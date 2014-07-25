@@ -18,6 +18,7 @@ include('banner.php');
 <button class='button arrowright icon' onclick='javascript:one();'></button></div>
 <div id='page'>
 <div id='article'><?php single_post($no);?>
+<div id='vote'><?php show_rank($id,$no);?></div>
 <!--duoshuo start-->
 <div class="ds-thread" data-thread-key="<?php echo $id;?>"
 data-title="<?php echo $res[$no][1];?>" data-url="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>"></div>

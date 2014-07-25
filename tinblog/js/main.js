@@ -114,4 +114,14 @@ $('#pagenavi').append(result2);
 })
 return false;
 })
+$(document).on('mouseover','#vote span',function()
+				{
+						$(this).addClass('a');
+				})
+$(document).on('mouseout','#vote span',function()
+				{
+						$(this).removeClass('a');
+				})
+
+
 
