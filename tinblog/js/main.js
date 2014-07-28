@@ -114,14 +114,37 @@ $('#pagenavi').append(result2);
 })
 return false;
 })
-$(document).on('mouseover','#vote span',function()
+$(document).on('mouseover','#vote_star a',function()
 				{
-						$(this).addClass('a');
+						var rate=$(this).attr('rate');
+						switch(rate){
+								case '1':$('#abel').addClass('light');break;
+								case '2':$('#abel').addClass('light');$('#baker').addClass('light');break;
+								case '3':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');break;
+								case '4':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');break;
+								case '5':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');$('#easy').addClass('light');break;
+								default:void(0);break;
+						}
 				})
-$(document).on('mouseout','#vote span',function()
+$(document).on('mouseout','#vote_star a',function()
 				{
-						$(this).removeClass('a');
+						$('#vote_star a').removeClass('light');
+
 				})
+$(document).ready(function($)
+				{
+						var avery=$('#vote').text();
+						//avery!=''?alert(avery):void(0); jquery 的三元运算;
+						switch(avery){
+								case '1':$('#abel').addClass('light');break;
+								case '2':$('#abel').addClass('light');$('#baker').addClass('light');break;
+								case '3':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');break;
+								case '4':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');break;
+								case '5':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');$('#easy').addClass('light');break;
+								default:void(0);break;
+						}
+				}
+				)
 
 
 

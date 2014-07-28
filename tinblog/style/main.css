@@ -698,15 +698,13 @@ a.archive_cate:hover:before {
 		font-size:18px;
 }
 /** vote **/
-#vote span {
+#vote {
+		display:none;
+}
+a.default {
 		cursor:pointer;
-}
-span.s {
-		color:#61a64b;
-}
-span.h {
 		color:#e5ebe3;
 }
-span.a {
+a.light {
 		color:#61a64b;
 }

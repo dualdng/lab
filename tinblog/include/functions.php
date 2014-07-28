@@ -857,6 +857,8 @@ function show_rank($id,$no)
 		global $res;
 		$goal=@round($res[$no][11]/$res[$no][10],1);//四舍五入去整，小数点一位
 		$avery=round($goal/2,0);
+		return $avery;
+		/**
 		switch($avery)
 		{
 		case 0:
@@ -924,6 +926,7 @@ function show_rank($id,$no)
 						';
 				break;
 		}
+		**/
 
 }
 function update_rank($id,$no,$goal)

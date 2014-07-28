@@ -18,7 +18,14 @@ include('banner.php');
 <button class='button arrowright icon' onclick='javascript:one();'></button></div>
 <div id='page'>
 <div id='article'><?php single_post($no);?>
-<div id='vote'><?php show_rank($id,$no);?></div>
+<div id='vote'><?php echo show_rank($id,$no);?></div>
+<div id='vote_star'>
+<a id='abel' class='default' rate='1'>★</a>
+<a id='baker'  class='default' rate='2'>★</a>
+<a id='charlie'  class='default' rate='3'>★</a>
+<a id='dog'  class='default' rate='4'>★</a>
+<a id='easy'  class='default' rate='5'>★</a>
+</div>
 <!--duoshuo start-->
 <div class="ds-thread" data-thread-key="<?php echo $id;?>"
 data-title="<?php echo $res[$no][1];?>" data-url="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>"></div>
