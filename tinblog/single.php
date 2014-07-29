@@ -20,11 +20,11 @@ include('banner.php');
 <div id='article'><?php single_post($no);?>
 <div id='vote'><?php echo show_rank($id,$no);?></div>
 <div id='vote_star'>
-<a id='abel' class='default' rate='1'>★</a>
-<a id='baker'  class='default' rate='2'>★</a>
-<a id='charlie'  class='default' rate='3'>★</a>
-<a id='dog'  class='default' rate='4'>★</a>
-<a id='easy'  class='default' rate='5'>★</a>
+<a href='javascript:void(0);' id='abel' class='default' rate='1' onclick='javascript:vote(2,<?php echo $id;?>,<?php echo $no;?>);'>★</a>
+<a  href='javascript:void(0);' id='baker'  class='default' rate='2' onclick='javascript:vote(4);'>★</a>
+<a  href='javascript:void(0);' id='charlie'  class='default' rate='3' onclick='javascript:vote(6);'>★</a>
+<a  href='javascript:void(0);' id='dog'  class='default' rate='4' onclick='javascript:vote(8);'>★</a>
+<a  href='javascript:void(0);' id='easy'  class='default' rate='5' onclick='javascript:vote(10);'>★</a>
 </div>
 <!--duoshuo start-->
 <div class="ds-thread" data-thread-key="<?php echo $id;?>"

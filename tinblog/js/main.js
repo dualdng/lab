@@ -145,6 +145,49 @@ $(document).ready(function($)
 						}
 				}
 				)
+function vote(rate,id,no)
+{
+		alert(rate+'and'+id+'and'+no);
+		$('#vote').text(5);
+							switch(rate){
+								case '1':$('#abel').addClass('light');break;
+								case '2':$('#abel').addClass('light');$('#baker').addClass('light');break;
+								case '3':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');break;
+								case '4':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');break;
+								case '5':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');$('#easy').addClass('light');break;
+								default:void(0);break;
+						}
+	
+/**		$.ajax({
+				url:'../include/vote.php?no='+no,
+				type:'POST',
+				success:function(data)
+		{
+				$('#vote').text(data);
+		}
+		})
+		**/
+}
 
+/** ajax ep **/
+/**
+$.ajax({ 
+    url: "Service.php", 
+    type: "POST", 
+    contentType: "application/json;utf-8", 
+    dataType: 'json', 
+    cache: false, 
+    beforeSend:function(){ 
+        $("#showloading").html("<img src=\"images/loading.gif\" />正在请求数据,请稍后..."); 
+    }, 
+    success: function(data) { 
+        var d = eval(data); 
+        //处理json,方法略 
+    }, 
+    error: function(data) { 
+        alert(data); 
+    } 
+});
+**/
 
 
