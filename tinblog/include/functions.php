@@ -728,7 +728,9 @@ function show_comments($id)//this is not in use
 								echo '<div class=\'text\'>'.$result[$i][7].'</div>';
 								echo '<div class=\'comments_reply\'><a class=\'reply\' href=\'javascript:void(0);\'onclick=\'comments_fields('.$id.','.$result[$i][1].')\'>reply</a><a href=\'javascript:void(0)\' class=\'cancel_reply\' onclick=\'cancel_reply('.$result[$i][1].')\'>cancel</a></div>';
 						echo '<div class=\'comments_form_'.$result[$i][1].'\'></div>';
+						if ($result[$i][1]!=0) {
 								children_comments($result[$i][1]);
+						}
 								echo '</div>';
 		}
 }
