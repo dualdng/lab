@@ -118,46 +118,47 @@ $(document).on('mouseover','#vote_star a',function()
 				{
 						var rate=$(this).attr('rate');
 						switch(rate){
-								case '1':$('#abel').addClass('light');break;
-								case '2':$('#abel').addClass('light');$('#baker').addClass('light');break;
-								case '3':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');break;
-								case '4':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');break;
-								case '5':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');$('#easy').addClass('light');break;
-								default:void(0);break;
+								case '1':
+										$('#abel').addClass('mouser');
+										break;
+								case '2':
+										$('#abel').addClass('mouser');
+										$('#baker').addClass('mouser');
+										break;
+								case '3':
+										$('#abel').addClass('mousesr');
+										$('#baker').addClass('mouser');
+										$('#charlie').addClass('mouser');
+										break;
+								case '4':
+										$('#abel').addClass('mouser');
+										$('#baker').addClass('mouser');
+										$('#charlie').addClass('mouser');
+										$('#dog').addClass('mouser');
+										break;
+								case '5':
+										$('#abel').addClass('mouser');
+										$('#baker').addClass('mouser');
+										$('#charlie').addClass('mouser');
+										$('#dog').addClass('mouser');
+										$('#easy').addClass('mouser');
+										break;
+								default:
+										void(0);
+										break;
 						}
 				})
 $(document).on('mouseout','#vote_star a',function()
 				{
-						$('#vote_star a').removeClass('light');
+						$('#vote_star a').removeClass('mouser');
 
 				})
-$(document).ready(function($)
-				{
-						var avery=$('#vote').text();
-						//avery!=''?alert(avery):void(0); jquery 的三元运算;
-						switch(avery){
-								case '1':$('#abel').addClass('light');break;
-								case '2':$('#abel').addClass('light');$('#baker').addClass('light');break;
-								case '3':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');break;
-								case '4':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');break;
-								case '5':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');$('#easy').addClass('light');break;
-								default:void(0);break;
-						}
-				}
-				)
 function vote(rate,id,no)
 {
 		alert(rate+'and'+id+'and'+no);
 		$('#vote').text(5);
-							switch(rate){
-								case '1':$('#abel').addClass('light');break;
-								case '2':$('#abel').addClass('light');$('#baker').addClass('light');break;
-								case '3':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');break;
-								case '4':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');break;
-								case '5':$('#abel').addClass('light');$('#baker').addClass('light');$('#charlie').addClass('light');$('#dog').addClass('light');$('#easy').addClass('light');break;
-								default:void(0);break;
-						}
-	
+						$('#vote_star a').removeClass('mouser');
+							
 /**		$.ajax({
 				url:'../include/vote.php?no='+no,
 				type:'POST',
@@ -168,6 +169,61 @@ function vote(rate,id,no)
 		})
 		**/
 }
+
+$(document).ready(function($)
+				{
+						var avery=$('#vote').text();
+						//avery!=''?alert(avery):void(0); jquery 的三元运算;
+						switch(avery){
+								case '1':
+										$('#abel').removeClass('light').addClass('light');
+										break;
+								case '2':
+										$('#abel').removeClass('light').addClass('light');
+										$('#baker').removeClass('light').addClass('light');
+										break;
+								case '3':
+										$('#abel').removeClass('light').addClass('light');
+										$('#baker').removeClass('light').addClass('light');
+										$('#charlie').removeClass('light').addClass('light');
+										break;
+								case '4':
+										$('#abel').removeClass('light').addClass('light');
+										$('#baker').removeClass('light').addClass('light');
+										$('#charlie').removeClass('light').addClass('light');
+										$('#dog').removeClass('light').addClass('light');
+										break;
+								case '5':
+										$('#abel').removeClass('light').addClass('light');
+										$('#baker').removeClass('light').addClass('light');
+										$('#charlie').removeClass('light').addClass('light');
+										$('#dog').removeClass('light').addClass('light');
+										$('#easy').removeClass('light').addClass('light');
+										break;
+								default:
+										void(0);
+										break;
+						}
+				}
+				)
+
+function comments_fields(id,post_id)
+{
+		$('a.reply').css({'display':'none'});
+		$('a.cancel_reply').css({'display':'block'})
+		var data={"id":id,"post_id":post_id,"user_id":"0"};
+		$('.comments_form_'+post_id).load('comments.php',data);
+		$('.comments_form').css({'display':'none'});
+}
+function cancel_reply(post_id)
+{
+		$('.comments_form_'+post_id).empty();
+		$('a.cancel_reply').css({'display':'none'});
+		$('a.reply').css({'display':'block'})
+		$('.comments_form').css({'display':'block'});
+}
+
+
 
 /** ajax ep **/
 /**

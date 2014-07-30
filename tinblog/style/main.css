@@ -701,10 +701,24 @@ a.archive_cate:hover:before {
 #vote {
 //		display:none;
 }
+#vote_star a {
+		margin-right:-1%;
+}
+
 a.default {
 		cursor:pointer;
 		color:#e5ebe3;
 }
 a.light {
 		color:#61a64b;
+}
+a.mouser {
+		color:#66ccff;
+}
+/**comments**/
+a.reply {
+		display:block;
+}
+a.cancel_reply {
+		display:none;
 }

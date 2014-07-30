@@ -691,17 +691,31 @@ function show_user()//show the user's information on sidebar
 		$result=$db->fetch_all($query);
 		return $result;
 }
-function post_comments($no,$pre_post_id=0,$user_id=0,$name,$email,$url,$text)
+function comments_fields($id,$pre_post_id=0,$user_id=0)
+{
+		echo '<form class=\'comment_field\' method=\'post\' action=\'post_comments.php\'>';
+		echo '<input type=\'text\' name=\'id\' class=\'name\' value=\''.$id.'\'></input>';
+		echo '<input type=\'text\' name=\'pre_post_id\' class=\'name\' value=\''.$pre_post_id.'\'></input>';
+		echo '<input type=\'text\' name=\'user_id\' class=\'name\' value=\''.$user_id.'\'></input>';
+		echo '<input type=\'text\' name=\'name\' class=\'name\' placeholder=\'your name here\'></input>';
+		echo '<input type=\'text\' name=\'email\' class=\'email\' placeholder=\'your name here\'></input>';
+		echo '<input type=\'text\' name=\'url\' class=\'url\' placeholder=\'your name here\'></input>';
+		echo '<textarea type=\'text\' name=\'text\' class=\'text\' placeholder=\'your name here\'></textarea>';
+		echo '<input type=\'submit\' name=\'submit\' class=\'submit\' value=\'submit\'></input>';
+		echo '</form>';
+}
+
+function post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text)
 {
 		global $db;
-		$query='insert into b_comments value('.$no.',\'\','.$pre_post_id.','.$user_id.','.$name.','.$email.','.$url.','.$text.')';
+		$query='insert into b_comments value(\''.$id.'\',\'\',\''.$pre_post_id.'\',\''.$user_id.'\',\''.$name.'\',\''.$email.'\',\''.$url.'\',\''.$text.'\')';
 		$result=$db->_insert($query);
 }
 		
-function show_comments($no)//this is not in use
+function show_comments($id)//this is not in use
 {
 		global $db;
-		$query='select * from b_comments where no=\''.$no.'\' and pre_post_id=0 order by post_id asc';
+		$query='select * from b_comments where no=\''.$id.'\' and pre_post_id=0 order by post_id asc';
 		$result=$db->fetch_all($query);
 		$rows=count($result);
 		$pre_post_id=array();
@@ -709,10 +723,11 @@ function show_comments($no)//this is not in use
 		for($i=0;$i<$rows;$i++)
 		{
 								echo '<div class=\'comments\'>';
-								echo '<div class=\'author\'>'.$result[$i][3].'</div>';
-								echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
-								echo '<div class=\'text\'>'.$result[$i][6].'</div>';
-								echo '<div class=\'reply\'><a href=\'comments_content?no='.$no.'&pre_post_id='.$post_id.'>reply</a></div>';
+								echo '<div class=\'author\'>'.$result[$i][4].'</div>';
+								echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][6] ) ) ).'?s=80\'/></a></div>';
+								echo '<div class=\'text\'>'.$result[$i][7].'</div>';
+								echo '<div class=\'comments_reply\'><a class=\'reply\' href=\'javascript:void(0);\'onclick=\'comments_fields('.$id.','.$result[$i][1].')\'>reply</a><a href=\'javascript:void(0)\' class=\'cancel_reply\' onclick=\'cancel_reply('.$result[$i][1].')\'>cancel</a></div>';
+						echo '<div class=\'comments_form_'.$result[$i][1].'\'></div>';
 								children_comments($result[$i][1]);
 								echo '</div>';
 		}
@@ -728,10 +743,11 @@ function children_comments($post_id)
 				for($i=0;$i<$rows;$i++)
 				{
 						echo '<div class=\'comments_children\'>';
-						echo '<div class=\'author\'>'.$result[$i][3].'</div>';
-						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][4] ) ) ).'?s=80\'/></a></div>';
-						echo '<div class=\'text\'>'.$result[$i][6].'</div>';
-						echo '<div class=\'reply\'><a href=\'comments_content?no='.$no.'&pre_post_id='.$result[$i][1].'>reply</a></div>';
+						echo '<div class=\'author\'>'.$result[$i][4].'</div>';
+						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][6] ) ) ).'?s=80\'/></a></div>';
+						echo '<div class=\'text\'>'.$result[$i][7].'</div>';
+						echo '<div class=\'comments_reply\'><a class=\'reply\' href=\'javascript:void(0);\'onclick=\'comments_fields('.$result[$i][0].','.$result[$i][1].')\'>reply</a><a href=\'javascript:void(0)\' class=\'cancel_reply\' onclick=\'cancel_reply('.$result[$i][1].')\'>cancel</a></div>';
+						echo '<div class=\'comments_form_'.$result[$i][1].'\'></div>';
 						children_comments($result[$i][1]);
 						echo '</div>';
 				}
