@@ -693,14 +693,14 @@ function show_user()//show the user's information on sidebar
 }
 function comments_fields($id,$pre_post_id=0,$user_id=0)
 {
-		echo '<form class=\'comment_field\' method=\'post\' action=\'post_comments.php\'>';
-		echo '<input type=\'text\' name=\'id\' class=\'name\' value=\''.$id.'\'></input>';
-		echo '<input type=\'text\' name=\'pre_post_id\' class=\'name\' value=\''.$pre_post_id.'\'></input>';
-		echo '<input type=\'text\' name=\'user_id\' class=\'name\' value=\''.$user_id.'\'></input>';
-		echo '<input type=\'text\' name=\'name\' class=\'name\' placeholder=\'your name here\'></input>';
-		echo '<input type=\'text\' name=\'email\' class=\'email\' placeholder=\'your name here\'></input>';
-		echo '<input type=\'text\' name=\'url\' class=\'url\' placeholder=\'your name here\'></input>';
-		echo '<textarea type=\'text\' name=\'text\' class=\'text\' placeholder=\'your name here\'></textarea>';
+		echo '<form class=\'comments_field\' method=\'post\' action=\'post_comments.php\'onSubmit=\'return post_comments()\'>';
+		echo '<input type=\'hidden\' name=\'id\' class=\'name\' value=\''.$id.'\'></input>';
+		echo '<input type=\'hidden\' name=\'pre_post_id\' class=\'name\' value=\''.$pre_post_id.'\'></input>';
+		echo '<input type=\'hidden\' name=\'user_id\' class=\'name\' value=\''.$user_id.'\'></input>';
+		echo '<input type=\'text\' name=\'name\' class=\'name\' placeholder=\'Your Name*\' required=\'required\'></input><br />';
+		echo '<input type=\'text\' name=\'email\' class=\'email\' placeholder=\'Your Email*\' required=\'required\'></input><br />';
+		echo '<input type=\'text\' name=\'url\' class=\'url\' placeholder=\'Your Website\'></input><br />';
+		echo '<textarea type=\'text\' rows=\'6\' name=\'text\' class=\'textarea\' placeholder=\'Something Here\' required=\'required\'></textarea><br />';
 		echo '<input type=\'submit\' name=\'submit\' class=\'submit\' value=\'submit\'></input>';
 		echo '</form>';
 }
@@ -708,7 +708,9 @@ function comments_fields($id,$pre_post_id=0,$user_id=0)
 function post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text)
 {
 		global $db;
-		$query='insert into b_comments value(\''.$id.'\',\'\',\''.$pre_post_id.'\',\''.$user_id.'\',\''.$name.'\',\''.$email.'\',\''.$url.'\',\''.$text.'\')';
+		date_default_timezone_set('Asia/Shanghai');    //把时区设置为中国的上海，避免时间误差，)
+		$date=date('Y-m-d H:i:s');
+		$query='insert into b_comments value(\''.$id.'\',\'\',\''.$pre_post_id.'\',\''.$user_id.'\',\''.$name.'\',\''.$url.'\',\''.$email.'\',\''.$text.'\',\''.$date.'\')';
 		$result=$db->_insert($query);
 }
 		
@@ -723,11 +725,16 @@ function show_comments($id)//this is not in use
 		for($i=0;$i<$rows;$i++)
 		{
 								echo '<div class=\'comments\'>';
-								echo '<div class=\'author\'>'.$result[$i][4].'</div>';
-								echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][6] ) ) ).'?s=80\'/></a></div>';
-								echo '<div class=\'text\'>'.$result[$i][7].'</div>';
-								echo '<div class=\'comments_reply\'><a class=\'reply\' href=\'javascript:void(0);\'onclick=\'comments_fields('.$id.','.$result[$i][1].')\'>reply</a><a href=\'javascript:void(0)\' class=\'cancel_reply\' onclick=\'cancel_reply('.$result[$i][1].')\'>cancel</a></div>';
+								echo '<div class=\'author_avatar\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][6] ) ) ).'?s=40\'/></div>';
+								echo '<div class=\'comments_contents\'>';
+								echo '<div class=\'comments_pak\'>';
+								echo '<div class=\'comments_author\'><a href=\''.$result[$i][5].'\'>'.$result[$i][4].'</a></div>';
+								echo '<div class=\'comments_date\'>'.date('d M,y',strtotime($result[$i][8])).'</div>';
+								echo '</div>';
+								echo '<div class=\'comments_text\'>'.$result[$i][7].'</div>';
+								echo '<div class=\'comments_reply\'><a class=\'reply_'.$result[$i][1].' reply\' href=\'javascript:void(0);\'onclick=\'comments_fields('.$id.','.$result[$i][1].')\'>reply</a><a href=\'javascript:void(0)\' class=\'cancel_reply_'.$result[$i][1].' cancel_reply\' onclick=\'cancel_reply('.$result[$i][1].')\'>cancel</a></div>';
 						echo '<div class=\'comments_form_'.$result[$i][1].'\'></div>';
+								echo '</div>';
 						if ($result[$i][1]!=0) {
 								children_comments($result[$i][1]);
 						}
@@ -745,11 +752,16 @@ function children_comments($post_id)
 				for($i=0;$i<$rows;$i++)
 				{
 						echo '<div class=\'comments_children\'>';
-						echo '<div class=\'author\'>'.$result[$i][4].'</div>';
-						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][6] ) ) ).'?s=80\'/></a></div>';
-						echo '<div class=\'text\'>'.$result[$i][7].'</div>';
-						echo '<div class=\'comments_reply\'><a class=\'reply\' href=\'javascript:void(0);\'onclick=\'comments_fields('.$result[$i][0].','.$result[$i][1].')\'>reply</a><a href=\'javascript:void(0)\' class=\'cancel_reply\' onclick=\'cancel_reply('.$result[$i][1].')\'>cancel</a></div>';
+						echo '<div class=\'author_avatar\'><a href=\''.$result[$i][5].'\'><img src=\'http://www.gravatar.com/avatar/'.md5( strtolower( trim( $result[$i][6] ) ) ).'?s=40\'/></div>';
+						echo '<div class=\'comments_contents\'>';
+						echo '<div class=\'comments_pak\'>';
+						echo '<div class=\'comments_author\'><a href=\''.$result[$i][5].'\'>'.$result[$i][4].'</a></div>';
+						echo '<div class=\'comments_date\'>'.date('d M,y',strtotime($result[$i][8])).'</div>';
+						echo '</div>';
+						echo '<div class=\'comments_text\'>'.$result[$i][7].'</div>';
+						echo '<div class=\'comments_reply\'><a class=\'reply_'.$result[$i][1].' reply\' href=\'javascript:void(0);\'onclick=\'comments_fields('.$result[$i][0].','.$result[$i][1].')\'>reply</a><a href=\'javascript:void(0)\' class=\'cancel_reply_'.$result[$i][1].' cancel_reply\' onclick=\'cancel_reply('.$result[$i][1].')\'>cancel</a></div>';
 						echo '<div class=\'comments_form_'.$result[$i][1].'\'></div>';
+						echo '</div>';
 						children_comments($result[$i][1]);
 						echo '</div>';
 				}

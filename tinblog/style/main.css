@@ -3,7 +3,7 @@
 		margin:0;
 }
 body {
-		font-family:"Maison Neue Book",Helvetica,华文细黑,Arial;
+		font-family:微软雅黑,"Maison Neue Book",Helvetica,华文细黑,Arial;
 		font-size:16px;
 		color:#69606b;
 		background:#f9f9f9;
@@ -607,15 +607,7 @@ footer {
 		background:#66ccff;
 }
 /**comments**/
-.comments {
-		margin:0 auto;
-		width:100%;
-}
-.comments_children {
-		width:90%;
-		color:#61a64b;
-		margin-left:5%;
-}
+
 /** themes **/
 .themes_content {
 		margin:0 auto;
@@ -722,3 +714,133 @@ a.reply {
 a.cancel_reply {
 		display:none;
 }
+.comments_form {
+		padding-top:1%;
+		background:#fff;
+		border: 1px solid #ebeaea;
+		
+}
+.comments_title {
+		background: #f5f5f5;
+		margin-top:0.5%;
+		margin-left:-1%;
+		padding: 1%;
+		border: 1px solid #ebeaea;
+		width:97%;
+}
+.name,.email,.url {
+		border:1px solid #ebeaea;
+		width:40%;
+		height:30px;
+		margin-top:1%;
+		margin-left:-1%;
+		background: #f5f5f5;
+}
+.textarea {
+		width:80%;
+		border:1px solid #ebeaea;
+		margin-top:1%;
+		margin-left:-1%;
+		background: #f5f5f5;
+}
+.comments_field {
+		background:#fff;
+}
+input.submit {
+		color:#61a64b;
+		width:100px;
+		height:30px;
+		background:#f5f5f5;
+		border: 1px solid #ebeaea;
+		margin-left: -1%;
+		margin-bottom: 1%;
+		cursor:pointer;
+}
+input.submit:hover {
+		color:#fff;
+		background:#61a64b;
+}
+#comments {
+		position:relative;
+}
+.comments {
+		margin:1% 0;
+}
+.comments_children {
+
+		width:95%;
+		margin-left:5%;
+}
+.comments_contents {
+		position:relative;
+		background:#fff;
+		border: 1px solid #ebeaea;
+		margin:1% 0;
+		margin-left:7%;
+		padding-bottom:1%;
+}
+
+.author_avatar {
+		float:left;
+}
+.author_avatar img {
+		-webkit-border-radius:50%;
+}
+.comments_reply {
+		position:absolute;
+		right:0;
+		top:0;
+		background: #f5f5f5;
+		margin-top:2%;
+		border: 1px solid #ebeaea;
+		padding:1% 0;
+		width:0px;
+		overflow:hidden;
+		transition:width .7s;
+		text-align:center;
+
+}
+.comments_contents:hover>.comments_reply {
+		width:50px;
+}
+.comments_author a {
+		position:relative;
+		margin-left:1.5%;
+		font-size:16px;
+}
+.comments_author a:link {
+		color:#999;
+}
+.comments_author a:visited {
+		color:#999;
+}
+.comments_author a:hover:after {
+		content:'';
+		height:2px;
+		width:100%;
+		border-bottom:1px solid #000;
+		position:absolute;
+		bottom:0;
+		left:0;
+}
+.comments_date {
+		position:relative;
+		font-size:12px;
+		color:#999;
+		margin-left:1%;
+}
+.comments_text {
+		clear:both;
+}
+.comments_pak {
+		background: #f5f5f5;
+		margin-top:0.5%;
+		margin-left:-1%;
+		border: 1px solid #ebeaea;
+		width:97%;
+}
+
+		
+		
+
+

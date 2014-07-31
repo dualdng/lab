@@ -1,11 +1,21 @@
 <?php
 require_once('include/functions.php');
-$id=isset($_POST['id'])?$_POST['id']:die('none id');
-$pre_post_id=isset($_POST['pre_post_id'])?$_POST['pre_post_id']:0;
-$user_id=isset($_POST['user_id'])?$_POST['user_id']:0;
-$name=isset($_POST['name'])?$_POST['name']:die('none id');
-$email=isset($_POST['email'])?$_POST['email']:die('none id');
-$url=isset($_POST['url'])?$_POST['url']:die('none id');
+$msg=array();
+$id=$_POST['id'];
+$pre_post_id=$_POST['pre_post_id'];
+$user_id=$_POST['user_id'];
+$name=$_POST['name'];
+$email=$_POST['email'];
+$pattern='/[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]+/';
+if(!preg_match($pattern,$email,$matches));
+{
+		$msg[]='0';
+}
+$url=$_POST['url'];
+if(strpos('http://',$url,0))
+{
+		$url='http://'.$url;
+}
 if (!empty($_POST['text'])) {
 		if (get_magic_quotes_gpc()) {
 				$text = $_POST['text'];

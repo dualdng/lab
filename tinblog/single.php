@@ -27,27 +27,16 @@ include('banner.php');
 <a  href='javascript:void(0);' id='easy'  class='default' rate='5' onclick='javascript:vote(10);'>★</a>
 </div>
 <!--comments start-->
+<div id='ajax_comments'>
+</div>
 <div id='comments'>
 <?php show_comments($id);?>
+</div>
 <div class='comments_form'> 
+<div class='comments_title'>Post your comments here:</div>
 <?php comments_fields($id,0,0);?>
 </div>
-</div>
-<!--duoshuo start-->
-<div class="ds-thread" data-thread-key="<?php echo $id;?>"
-data-title="<?php echo $res[$no][1];?>" data-url="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];?>"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"tinty"};
-(function() {
- var ds = document.createElement('script');
- ds.type = 'text/javascript';ds.async = true;
- ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
- ds.charset = 'UTF-8';
- (document.getElementsByTagName('head')[0] 
-  || document.getElementsByTagName('body')[0]).appendChild(ds);
- })();
-</script>
-<!-- duoshuo end -->
+<!--comments end-->
 </div>
 <div id='side'><?php include('side.php');?></div>
 <div id='share'></div>

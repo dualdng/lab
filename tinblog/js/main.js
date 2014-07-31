@@ -209,8 +209,8 @@ $(document).ready(function($)
 
 function comments_fields(id,post_id)
 {
-		$('a.reply').css({'display':'none'});
-		$('a.cancel_reply').css({'display':'block'})
+		$('a.reply_'+post_id).css({'display':'none'});
+		$('a.cancel_reply_'+post_id).css({'display':'block'})
 		var data={"id":id,"post_id":post_id,"user_id":"0"};
 		$('.comments_form_'+post_id).load('comments.php',data);
 		$('.comments_form').css({'display':'none'});
@@ -218,9 +218,36 @@ function comments_fields(id,post_id)
 function cancel_reply(post_id)
 {
 		$('.comments_form_'+post_id).empty();
-		$('a.cancel_reply').css({'display':'none'});
-		$('a.reply').css({'display':'block'})
+		$('a.cancel_reply_'+post_id).css({'display':'none'});
+		$('a.reply_'+post_id).css({'display':'block'})
 		$('.comments_form').css({'display':'block'});
+}
+function post_comments()
+{
+		var id=$(':input[name=\'id\']').val();
+		var pre_post_id=$(':input[name=\'pre_post_id\']').val();
+		var user_id=$(':input[name=\'user_id\']').val();
+		var name=$(':input[name=\'name\']').val();
+		var email=$(':input[name=\'email\']').val();
+		var url=$(':input[name=\'url\']').val();
+		var text=$(':input[name=\'text\']').val();
+		var parastr={'id':id,'pre_post_id':pre_post_id,'user_id':user_id,'name':name,'email':email,'url':url,'text':text};
+//		var parastr='id='+id+'&pre_post_id='+pre_post_id+'&user_id='+user_id+'&name='+name+'&email='+email+'&url='+url+'&text='+text;
+		$.ajax({
+				url:'post_comments.php',
+				type:'POST',
+				data:parastr,
+//				dataType:'json'
+				success:function(data){
+						$('.comments_field').css({'display':'none'});
+						$('.comments_form').css({'display':'none'});
+						$('#ajax_comments').html(text);
+						alert(name);
+						$("html,body").animate({scrollTop:$("#ajax_comments").offset().top+50},1000);
+
+				}
+		})
+		return false;
 }
 
 
