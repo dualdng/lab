@@ -237,13 +237,21 @@ function post_comments()
 				url:'post_comments.php',
 				type:'POST',
 				data:parastr,
-//				dataType:'json'
+				dataType:'json',
 				success:function(data){
+						if(data.error==0) {
+								alert('邮箱格式错误');
+								exit;
+						}
+						else if (data.error==1) {
+								alert('请输入中文');
+								exit;
+						}
 						$('.comments_field').css({'display':'none'});
 						$('.comments_form').css({'display':'none'});
 						$('#ajax_comments').html(text);
-						alert(name);
-						$("html,body").animate({scrollTop:$("#ajax_comments").offset().top+50},1000);
+						$("html,body").animate({scrollTop:$("#ajax_comments").offset().top-100},1000);
+								//输出每个root子对象的名称和值 
 
 				}
 		})
