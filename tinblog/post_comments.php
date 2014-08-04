@@ -29,6 +29,11 @@ if(strpos('http://',$url,0))
 if (!get_magic_quotes_gpc()) {
 		$text = addslashes($text);
 }
-//post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text);
+post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text);
+setcookie('name',$name,time()+3600*24*30,'/');
+setcookie('email',$email,time()+3600*24*30,'/');
+setcookie('url',$url,time()+3600*24*30,'/');
+$msg['success']='-1';
+echo json_encode($msg);
 ?>
 

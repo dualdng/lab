@@ -231,7 +231,7 @@ function post_comments()
 		var email=$(':input[name=\'email\']').val();
 		var url=$(':input[name=\'url\']').val();
 		var text=$(':input[name=\'text\']').val();
-		var parastr={'id':id,'pre_post_id':pre_post_id,'user_id':user_id,'name':name,'email':email,'url':url,'text':text};
+		var parastr={"id":id,"pre_post_id":pre_post_id,"user_id":user_id,"name":name,"email":email,"url":url,"text":text};
 //		var parastr='id='+id+'&pre_post_id='+pre_post_id+'&user_id='+user_id+'&name='+name+'&email='+email+'&url='+url+'&text='+text;
 		$.ajax({
 				url:'post_comments.php',
@@ -247,10 +247,12 @@ function post_comments()
 								alert('请输入中文');
 								exit;
 						}
+						else if (data.success==-1) {
 						$('.comments_field').css({'display':'none'});
 						$('.comments_form').css({'display':'none'});
 						$('#ajax_comments').html(text);
 						$("html,body").animate({scrollTop:$("#ajax_comments").offset().top-100},1000);
+						}
 								//输出每个root子对象的名称和值 
 
 				}
