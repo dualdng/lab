@@ -50,7 +50,7 @@ class git_connect
 				$strUrl.='?access_token='.$access_token;
 				$header[]='User-Agent:dualdng';
 				$ch = curl_init();
-				curl_setopt($ch, CURLOPT_HTTPHEADER,$header);  //github nees a user-agent header;
+				curl_setopt($ch, CURLOPT_HTTPHEADER,$header);  //github needs a user-agent header;
 				curl_setopt($ch, CURLOPT_URL,$strUrl);  
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 				$obResponse = curl_exec($ch);
