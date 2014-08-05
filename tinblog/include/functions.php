@@ -693,23 +693,24 @@ function show_user()//show the user's information on sidebar
 }
 function comments_fields($id,$pre_post_id=0)
 {
+				echo '<form class=\'comments_field\' method=\'post\' action=\'post_comments.php\'onSubmit=\'return post_comments()\'>';
+				echo '<input type=\'hidden\' name=\'id\' class=\'name\' value=\''.$id.'\'></input>';
+				echo '<input type=\'hidden\' name=\'pre_post_id\' class=\'name\' value=\''.$pre_post_id.'\'></input>';
+
 		if(isset($_COOKIE['name']))
 		{
 
 				$name=$_COOKIE['name'];
-				echo '<form class=\'comments_field\' method=\'post\' action=\'post_comments.php\'onSubmit=\'return post_comments()\'>';
-				echo '<input type=\'hidden\' name=\'id\' class=\'name\' value=\''.$id.'\'></input>';
-				echo '<input type=\'hidden\' name=\'pre_post_id\' class=\'name\' value=\''.$pre_post_id.'\'></input>';
 				if(isset($_COOKIE['openid']))
 				{
 						$user_id='qq'.$_COOKIE['openid'];
 						$email=isset($_COOKIE['email'])?$_COOKIE['email']:'';
 						$url=isset($_COOKIE['url'])?$_COOKIE['url']:'';
-						echo '<span class=\'qq_name\'>欢迎:'.$name.'</span>';
+						echo '<p class=\'qq_name\'>欢迎:'.$name.'</p>';
 						echo '<input type=\'hidden\' name=\'user_id\' class=\'name\' value=\''.$user_id.'\'></input>';
-						echo '<input type=\'hidden\' name=\'name\' class=\'name\' value=\''.$name.'\'></input><br />';
-						echo '<input type=\'hidden\' name=\'email\' class=\'email\' value=\''.$email.'\' required=\'required\'></input><br />';
-						echo '<input type=\'hidden\' name=\'url\' class=\'url\' value=\''.$url.'\'></input><br />';
+						echo '<input type=\'hidden\' name=\'name\' class=\'name\' value=\''.$name.'\'></input>';
+						echo '<input type=\'hidden\' name=\'email\' class=\'email\' value=\''.$email.'\' required=\'required\'></input>';
+						echo '<input type=\'hidden\' name=\'url\' class=\'url\' value=\''.$url.'\'></input>';
 
 				}
 				else
@@ -726,14 +727,16 @@ function comments_fields($id,$pre_post_id=0)
 		}
 		else
 		{
+				$user_id=0;
+				echo '<input type=\'hidden\' name=\'user_id\' class=\'name\' value=\''.$user_id.'\'></input>';
 				echo '<input type=\'text\' name=\'name\' class=\'name\' placeholder=\'Your Name*\' required=\'required\'></input><br />';
 				echo '<input type=\'text\' name=\'email\' class=\'email\' placeholder=\'Your Email*\' required=\'required\'></input><br />';
 				echo '<input type=\'text\' name=\'url\' class=\'url\' placeholder=\'Your Website\'></input><br />';
 		}
-		echo '<textarea type=\'text\' rows=\'6\' name=\'text\' class=\'textarea\' placeholder=\'Something Here\' required=\'required\'></textarea><br />';
-		echo '<input type=\'submit\' name=\'submit\' class=\'submit\' value=\'submit\'></input>';
-		echo '</form>';
-		echo '<div class=\'qq_login\'><img src=\'qq/Connect_logo_1.png\'/><a href=\'qq/login.php\'>使用QQ登录</a></div>';
+				echo '<textarea type=\'text\' rows=\'6\' name=\'text\' class=\'textarea\' placeholder=\'Something Here\' required=\'required\'></textarea><br />';
+				echo '<input type=\'submit\' name=\'submit\' class=\'submit\' value=\'submit\'></input>';
+				echo '</form>';
+				echo '<div class=\'qq_login\'><img src=\'qq/Connect_logo_1.png\'/><a href=\'qq/login.php\'>使用QQ登录</a></div>';
 }
 
 function post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text)
@@ -756,9 +759,9 @@ function show_comments($id)//this is not in use
 		for($i=0;$i<$rows;$i++)
 		{
 								echo '<div class=\'comments\'>';
-								if(strpos('qq',$result[$i][0]))
+								if(strpos($result[$i][3],'qq')!==false)
 								{
-										$query='select avatar from b_third where user_id=\''.$result[$i][0].'\'';
+										$query='select avatar from b_third where user_id=\''.$result[$i][3].'\'';
 										$res=$db->fetch_assoc($query);
 										echo '<div class=\'author_avatar\'><img src=\''.$res['avatar'].'\'/></div>';
 								}
@@ -792,9 +795,9 @@ function children_comments($post_id)
 				for($i=0;$i<$rows;$i++)
 				{
 						echo '<div class=\'comments_children\'>';
-						if(strpos('qq',$result[$i][0]))
+						if(strpos($result[$i][3],'qq')!==false)
 						{
-								$query='select avatar from b_third where user_id=\''.$result[$i][0].'\'';
+								$query='select avatar from b_third where user_id=\''.$result[$i][3].'\'';
 								$res=$db->fetch_assoc($query);
 								echo '<div class=\'author_avatar\'><img src=\''.$res['avatar'].'\'/></div>';
 						}
@@ -1019,10 +1022,10 @@ function update_rank($id,$no,$goal)
 }
 function create_third($name,$avatar,$third_id)
 {
-		$user_id='qq'.$third_id;
+	$user_id='qq'.$third_id;
 		global $db;
-		$query='insert into b_third value (\''.$user_id.'\',\''.$name.'\',\'\',\'\',\''.$avatar.'\',\''.$third_id.'\')';
-		$db->_insert($query);
+		$query='insert into b_third value(\''.$user_id.'\',\''.$name.'\',\'\',\'\',\''.$avatar.'\',\''.$third_id.'\')';
+		$res=$db->_insert($query);
 }
 function update_third($email,$url,$third_id)
 {
@@ -1030,5 +1033,4 @@ function update_third($email,$url,$third_id)
 		$query='update b_third set email=\''.$email.'\',url=\''.$url.'\' where third_id=\''.$third_id.'\'';
 		$db->_update($query);
 }
-
 ?>

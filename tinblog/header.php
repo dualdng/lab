@@ -62,7 +62,7 @@ MM########MBBBBHBMMM########################################@@Xi.,,,,,,,, i3ii  
 <!--[if IE]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
-<meta property="qc:admins" content="13206473776555526375" /><!-- qq 认证-->
+<meta property="qc:admins" content="13206470126476524665474162477" /><!-- qq 认证-->
 </head>
 <body>
 <?php 
@@ -74,7 +74,7 @@ if($url=='index.php'||$url=='about.php')
 <header>
 <div class="bg-img"></div>
 <div class="main_title">
-<h1><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>'>Brague</a></h1>
+<h1 class='brague_title'><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>'>Brague</a></h1>
 <span><?php line_api();?></span>
 </div>
 <div class="bg-img"></div>

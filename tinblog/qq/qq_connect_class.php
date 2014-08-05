@@ -1,8 +1,8 @@
 <?php
 class qq_connect
 {
-		private $strApp_id='101141172';
-		private $strApp_key='e0709edf1e54d54bb182665e8f5f79b6';
+		private $strApp_id='101144330';
+		private $strApp_key='b1bddb1157591ae9113cf4d25d140749';
 		private $strRedirect='http://www.uuuuj.com/qq/index.php';
 		private $strState='001';
 		private $obResult;

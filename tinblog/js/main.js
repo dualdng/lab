@@ -247,6 +247,10 @@ function post_comments()
 								alert('请输入中文');
 								exit;
 						}
+						else if (data.error==2) {
+								alert('评论过快');
+								exit;
+						}
 						else if (data.success==-1) {
 						$('.comments_field').css({'display':'none'});
 						$('.comments_form').css({'display':'none'});
