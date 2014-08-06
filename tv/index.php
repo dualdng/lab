@@ -1,99 +1,88 @@
-<?php
-include_once('rate/connect.php');
-
-$query=mysql_query("select * from raty where id=1");
-$rs=mysql_fetch_array($query);
-$aver=$rs['total']/$rs['voter'];
-$aver=round($aver,1)*10;
-?>
 <!doctypehtml>
-<html><head><meta charset='utf-8'>
-<style type="text/css">
-.rate{width:600px; margin:100px auto; color:#51555c; font-size:14px; position:relative; padding:10px 0;}
-.rate p {margin:0; padding:0; display:inline; height:40px; overflow:hidden; position:absolute; top:0; left:100px; margin-left:140px;}
-.rate p span.s {font-size:36px; line-height:36px; float:left; font-weight:bold; color:#DD5400;}
-.rate p span.g {font-size:22px; display:block; float:left; color:#DD5400;}
-.big_rate {width:140px; height:28px; text-align:left; position:absolute; top:3px; left:85px; display:inline-block; background:url(star.gif) left bottom repeat-x;}
-.big_rate span {display:inline-block; width:24px; height:28px; position:relative; z-index:1000; cursor:pointer; overflow:hidden;}
-.big_rate_up {width:140px; height:28px; position:absolute; top:0; left:0; background:url(star.gif) left top;}
-#my_rate{ position:absolute; margin-top:40px; margin-left:100px}
-#my_rate span{color:#dd5400; font-weight:bold}
-</style>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	get_rate(<?php echo $aver;?>);
-});
-function get_rate(rate){
-	rate=rate.toString();
-	var s;
-	var g;
-	$("#g").show();
-	if (rate.length>=3){
-		s=10;	
-		g=0;
-		$("#g").hide();
-	}else if(rate=="0"){
-		s=0;
-		g=0;
-	}else{
-		s=rate.substr(0,1);
-		g=rate.substr(1,1);
-	}
-	$("#s").text(s);
-	$("#g").text("."+ g);
-	$(".big_rate_up").animate({width:(parseInt(s)+parseInt(g)/10) * 14,height:26},1000);
-	$(".big_rate span").each(function(){
-		$(this).mouseover(function(){
-			$(".big_rate_up").width($(this).attr("rate") * 14 );
-			$("#s").text($(this).attr("rate"));
-			$("#g").text("");
-		}).click(function(){
-			var score = $(this).attr("rate");
-			$("#my_rate").html("您的评分：<span>"+score+"</span>");
-			$.ajax({
-		       type: "POST",
-		       url: "action.php",
-		       data:"score="+score,
-		       success: function(msg){
-				   //alert(msg);
-				   if(msg==1){
-					   $("#my_rate").html("<span>您已经评过分了！</span>");
-				   }else if(msg==2){
-					   $("#my_rate").html("<span>您评过分了！</span>");
-				   }else{
-					   get_rate(msg);
-				   }
-		       }
-	        });
-		})
-	})
-	$(".big_rate").mouseout(function(){
-		$("#s").text(s);
-		$("#g").text("."+ g);
-		$(".big_rate_up").width((parseInt(s)+parseInt(g)/10) * 14);
-	})
+<?php include('include/functions.php');
+if(!isset($_GET['page']))
+{
+		$page=1;
 }
-</script>
+else
+{
+		$page=$_GET['page'];
+}
+?>
+<html>
+<head>
+<meta charset='utf-8' >
+<link rel='stylesheet' text='text/css' href='style/main.css' />
+<script type='text/javascript' src='js/jquery-2.1.0.min.js'></script>
+<script type='text/javascript' src='js/main.js'></script>
+<title>
+		Line|Brague
+</title>
 </head>
 <body>
-<form id='add' method='POST' action='add.php'>
-<input class='name' type='text' name='name' placeholder='xxxxxxxxxxxx'></input>
-<input class='url' type='text' name='url' placeholder='xxxxxxxxxxxx'></input>
-type:<select>
-  <option value ="1">Volvo</option>
-  <option value ="2">Saab</option>
-  <option value="3">Opel</option>
-  <option value="4">Audi</option>
-</select>
-<input class='submit' type='submit' value='add'></input>
-</form>
-<form id='search' method='POST' action='search.php'>
-<input class='search_content' type='text' name='search_value' placeholder='xxxxxxxxxxxx'></input>
-<input class='submit' type='submit' value='submit'></input>
-</form>
-<div id='result_content'>
+<div id='banner'>
+<?php 
+echo '<a  href=\'http://'.$_SERVER['HTTP_HOST'].'\'>HOME</a>&nbsp>&nbspLines';
+?>
 </div>
+
+<article class="main_content">
+		<div id='page'>
+				<div id='article'>
+						<div class='title'>
+								<form class='search' method='POST' action='search.php' onSubmit='return search();'>
+										<input class='search_value' type='text' name='value' placeholder='   鏀寔绌烘牸鍒嗚瘝'></input>
+										<input class='submit' type='submit' value='鎼滅储'></input>
+								</form>
+						</div>
+<div id='line_content'>
+
+						<?php show_line_text($page);?>
+				</div>
+				</div>
+				<div class='more'>
+<?php
+echo '<a id=\'loadmore\' href=\'index.php?page='.($page+1).'\'>';
+?>
+								鍔犺浇鏇村
+						</a>
+						<a href='javascript:rand_line();'>璇曡瘯鎵嬫皵</a>
+				</div>
+		</div>
+</article>
+<footer>
+		<nav id='navibar'>
+				<ul>
+						<li>
+						<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>'>Home</a>
+						</li>
+						<li>
+						<a href='#'>Category</a>
+						<ul>
+								<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=LifeTime'>LifeTime</a></li>
+								<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Codes'>Codes</a></li>
+								<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Movies'>Movies</a></li>
+								<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Themes'>Themes</a></li>
+						</ul>
+						</li>
+						<li>
+						<a href='http://line.uuuuj.com'>Line</a>
+						<ul>
+						</ul>
+						</li>
+						<li>
+						<a href='http://blog.uuuuj.com'>Wordpress</a>
+						<ul>
+								<li><a href='#'></a></li>
+						</ul>
+						</li>
+						<li>
+						<div class='foot'>Music <a href='javascript:void(0);'  onclick="document.getElementById('backmusic').play()" >ON&nbsp|</a><a href='javascript:void(0);' onclick="document.getElementById('backmusic').pause()" >&nbspOFF</a><audio id='backmusic'src='#'  loop='loop'></audio>
+								<span><a href='http://www.uuuuj.com/about'>About</a> | <a href='http://www.uuuuj.com/archive.php'>Archive</a></span></div>
+						</li>
+				</ul>
+		</nav>
+</footer>
 </body>
 </html>
 
