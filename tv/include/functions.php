@@ -26,9 +26,18 @@ function show_line_text ($page)
 			for($i=$pagebegin;$i<=$pageend;$i++)
 			{
 				echo '<div class=\'contentleft\'>';
-				echo '<div class=\'title\'>  '.$result[$i][1].'</div>';
-				echo '<div class=\'line\'>  '.$result[$i][2].'</div>';
+				echo '<div class=\'title\'>  '.@$result[$i][1].'</div>';
+				echo '<div class=\'line\'>  '.@$result[$i][2].'</div>';
+				echo '<div id=\'vote\'>'.show_rank(@$result[$i][0],$i).'</div>';
+				echo '<div class=\'vote_star\'>';
+				echo '<a href=\'javascript:void(0);\' class=\'abel\' class=\'default\' rate=\'1\' onclick=\'javascript:vote(4,'.@$result[$i][0].','.$i.');\'>★</a>';
+				echo '<a href=\'javascript:void(0);\' class=\'baker\'  class=\'default\' rate=\'2\' onclick=\'javascript:vote(4);\'>★</a>';
+				echo '<a href=\'javascript:void(0);\' class=\'charlie\'  class=\'default\' rate=\'3\' onclick=\'javascript:vote(6);\'>★</a>';
+				echo '<a href=\'javascript:void(0);\' class=\'dog\'  class=\'default\' rate=\'4\' onclick=\'javascript:vote(8);\'>★</a>';
+				echo '<a href=\'javascript:void(0);\' class=\'easy\'  class=\'default\' rate=\'5\' onclick=\'javascript:vote(10);\'>★</a>';
 				echo '</div>';
+				echo '</div>';
+				var int a=10;
 			}
 		}
 }
@@ -46,13 +55,12 @@ function rand_line_text()
 			echo '<div class=\'line\'>  '.$result[$i][1].'</div>';
 			echo '<div id=\'vote\'>'.show_rank($result[$i][0],$i).'</div>';
 			echo '<div id=\'vote_star\'>';
-			echo '<a href=\'javascript:void(0);\' id=\'abel\' class=\'default\' rate=\'1\' onclick=\'javascript:vote(4,'.$id.','.$no.');\'>★</a>';
+			echo '<a href=\'javascript:void(0);\' id=\'abel\' class=\'default\' rate=\'1\' onclick=\'javascript:vote(4,'.$result[$i][0].','.$i.');\'>★</a>';
 			echo '<a href=\'javascript:void(0);\' id=\'baker\'  class=\'default\' rate=\'2\' onclick=\'javascript:vote(4);\'>★</a>';
-					<a  href='javascript:void(0);' id='charlie'  class='default' rate='3' onclick='javascript:vote(6);'>★</a>
-					<a  href='javascript:void(0);' id='dog'  class='default' rate='4' onclick='javascript:vote(8);'>★</a>
-					<a  href='javascript:void(0);' id='easy'  class='default' rate='5' onclick='javascript:vote(10);'>★</a>
-					</div>
-
+			echo '<a href=\'javascript:void(0);\' id=\'charlie\'  class=\'default\' rate=\'3\' onclick=\'javascript:vote(6);\'>★</a>';
+			echo '<a href=\'javascript:void(0);\' id=\'dog\'  class=\'default\' rate=\'4\' onclick=\'javascript:vote(8);\'>★</a>';
+			echo '<a href=\'javascript:void(0);\' id=\'easy\'  class=\'default\' rate=\'5\' onclick=\'javascript:vote(10);\'>★</a>';
+			echo '</div>';
 			echo '</div>';
 	}
 }
@@ -76,7 +84,6 @@ function search_line($value)
 				echo '</div>';
 		}
 }
-line
 function show_rank($id,$no)
 {
 		global $db;
@@ -93,18 +100,5 @@ function update_rank($id,$no,$goal)
 		$query='update b_article set vote=\''.$result[$no][5].'\',rank=\''.$goal.'\'where no=\''.$id.'\'';
 		$db->_update($query);
 }
-
-
-10
-		<div id='vote'><?php echo show_rank($id,$no);?></div>
-<div id='vote_star'>
-<a href='javascript:void(0);' id='abel' class='default' rate='1' onclick='javascript:vote(4,<?php echo $id;?>,<?php echo $no;?>);'>★</a>
-<a  href='javascript:void(0);' id='baker'  class='default' rate='2' onclick='javascript:vote(4);'>★</a>
-<a  href='javascript:void(0);' id='charlie'  class='default' rate='3' onclick='javascript:vote(6);'>★</a>
-<a  href='javascript:void(0);' id='dog'  class='default' rate='4' onclick='javascript:vote(8);'>★</a>
-<a  href='javascript:void(0);' id='easy'  class='default' rate='5' onclick='javascript:vote(10);'>★</a>
-</div>
-
-		
 
 ?>
