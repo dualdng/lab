@@ -44,3 +44,32 @@ $(document).on('click','#loadmore',function()
 		})
 		return false;
 });
+function add_line()
+{
+		$('#line_content').empty();
+		$('#line_content').load('include/add_line.php');
+}
+function add_new()
+{
+		var name=$('.movie_name').val();
+		var line=$('.movie_line').val();
+		var url='include/add_new.php';
+		var data={"name":name,"line":line};
+		$.ajax({
+				url:url,
+				type:'POST',
+				data:data,
+				dataType:'json',
+				success:function(data){
+						if (data.code=='-1') {
+								alert('格式无效');
+								exit;
+						} else if (data.code=='1') {
+								alert('success');
+								exit;
+						}
+				}
+		})
+		return false;
+}
+

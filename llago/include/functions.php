@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
-$db=new mysqli('127.0.0.1','gather','d3621201,','movie_lines');
+$db=new mysqli('127.0.0.1','gather','123qwe','movie_lines');
 if(mysqli_connect_errno())
 {
 		echo 'can not connect the database';
@@ -102,7 +102,7 @@ function rand_line_text()
 }
 function search_line($value)
 {
-		$db=new mysqli('127.0.0.1','gather','d3621201,','movie_lines');
+		$db=new mysqli('127.0.0.1','gather','123qwe','movie_lines');
 		if(mysqli_connect_errno())
 		{
 				echo 'can not connect the database';
@@ -120,8 +120,18 @@ function search_line($value)
 				echo '</div>';
 		}
 }
+function add_new($name,$line)
+{
+		$db=new mysqli('127.0.0.1','gather','123qwe','movie_lines');
+		if(mysqli_connect_errno())
+		{
+				echo 'can not connect the database';
+		}
+		$query='insert into line values (\'\',\''.$line.'\',\''.$name.'\',\'\')';
+		$result=$db->query($query);
+		if (empty($result)) {
+				echo 'can not insert into the database';
+		}
 
-
-
-		
+}
 ?>

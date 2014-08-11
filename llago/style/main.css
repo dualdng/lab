@@ -939,5 +939,27 @@ input.third_submit:hover {
 		height:20px;
 		width:50%;
 }
+a.submit:link {
+		color: #61a64b;
+		font-size:14px;
+		width: 100px;
+		height: 30px;
+		background: #f5f5f5;
+		border: 1px solid #ebeaea;
+		padding:0.5% 5%;
+}
+a.submit:hover {
+		color: #fff;
+		font-size:14px;
+		width: 100px;
+		height: 30px;
+		background: #61a64b;
+		border: 1px solid #ebeaea;
+		padding:0.5% 5%;
+}
+.movie_line {
+		width:80%;
+}
+
 
 

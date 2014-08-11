@@ -29,10 +29,12 @@ echo '<a  href=\'http://'.$_SERVER['HTTP_HOST'].'\'>HOME</a>&nbsp>&nbspLines';
 <article class="main_content">
 		<div id='page'>
 				<div id='article'>
+
 						<div class='title'>
 								<form class='search' method='POST' action='search.php' onSubmit='return search();'>
 										<input class='search_value' type='text' name='value' placeholder='   支持空格分词'></input>
 										<input class='submit' type='submit' value='搜索'></input>
+<a class='submit' href='javascript:void(0);' onclick='add_line()'>新增</a>
 								</form>
 						</div>
 <div id='line_content'>
