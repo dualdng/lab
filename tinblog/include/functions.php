@@ -1033,4 +1033,22 @@ function update_third($email,$url,$third_id)
 		$query='update b_third set email=\''.$email.'\',url=\''.$url.'\' where third_id=\''.$third_id.'\'';
 		$db->_update($query);
 }
+//函数 过滤HTML标签，去掉单引号等特殊符号
+function remove_html_tags($content) {
+$value = strip_tags($content);
+
+return is_array($value) ? array_map('k::htmlspecialchars', $value) : preg_replace('/&amp;((#(\d{3,5}|x[a-fA-F0-9]{4})|[a-zA-Z][a-z0-9]{2,5});)/', '&\\1', str_replace(array(
+'&',
+'"',
+'<',
+'>',
+'\''
+) , array(
+'&amp;',
+'&quot;',
+'&lt;',
+'&gt;',
+'’'
+) , $value));
+}
 ?>

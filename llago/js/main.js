@@ -67,6 +67,8 @@ function add_new()
 						} else if (data.code=='1') {
 								alert('success');
 								exit;
+						} else if (data.code=='-2') {
+								alert('过快');
 						}
 				}
 		})
