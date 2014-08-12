@@ -1,5 +1,12 @@
 <?php
 require_once('include/functions.php');
+if(isset($_COOKIE['time']))
+{
+		$msg['error']='3';
+		echo json_encode($msg);
+		exit;
+}
+
 $msg=array();
 $id=$_POST['id'];
 $pre_post_id=$_POST['pre_post_id'];
@@ -35,9 +42,11 @@ if(!empty($email))
 				$url='http://'.$url;
 		}
 }
-if (!get_magic_quotes_gpc()) {
-		$text = addslashes($text);
-}
+$text=remove_html_tags($text);
+//if (!get_magic_quotes_gpc()) {
+//		$text = addslashes($text);
+//}
+//
 post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text);
 setcookie('name',$name,time()+3600*24*30,'/');
 setcookie('email',$email,time()+3600*24*30,'/');
