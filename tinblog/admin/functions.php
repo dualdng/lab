@@ -64,7 +64,7 @@ function post_article($title,$content,$excerpt,$user_id,$category_id,$tag,$post_
 		global $db;
 		date_default_timezone_set('Asia/Shanghai');    //把时区设置为中国的上海，避免时间误差，)
 		$create_date=date('Y-m-d H:i:s');
-		$query='insert into b_article values(\'\',\''.$title.'\',\''.$content.'\',\''.$excerpt.'\',\''.$user_id.'\',\''.$category_id.'\',\''.$tag.'\',\''.$post_type.'\',\''.$create_date.'\',\''.$status.'\',\''.$hit_count.'\')';
+		$query='insert into b_article values(\'\',\''.$title.'\',\''.$content.'\',\''.$excerpt.'\',\''.$user_id.'\',\''.$category_id.'\',\''.$tag.'\',\''.$post_type.'\',\''.$create_date.'\',\''.$status.'\',\''.$hit_count.'\',\'\',\'\')';
 		$result=$db->query($query);
 		return $result;
 }

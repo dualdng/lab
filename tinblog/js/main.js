@@ -247,7 +247,7 @@ function post_comments()
 								alert('请输入中文');
 								exit;
 						}
-						else if (data.error==2) {
+						else if (data.error==3) {
 								alert('评论过快');
 								exit;
 						}
