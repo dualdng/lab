@@ -1051,4 +1051,6 @@ return is_array($value) ? array_map('k::htmlspecialchars', $value) : preg_replac
 '’'
 ) , $value));
 }
+//获取评论数量
+function
 ?>
