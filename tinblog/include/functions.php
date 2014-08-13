@@ -706,7 +706,7 @@ function comments_fields($id,$pre_post_id=0)
 						$user_id='qq'.$_COOKIE['openid'];
 						$email=isset($_COOKIE['email'])?$_COOKIE['email']:'';
 						$url=isset($_COOKIE['url'])?$_COOKIE['url']:'';
-						echo '<p class=\'qq_name\'>欢迎:'.$name.'</p>';
+						echo '<p class=\'qq_name\'>欢迎:'.$name.'<a href=\'functions.php?action=log_out\' >Log_out</a></p>';
 						echo '<input type=\'hidden\' name=\'user_id\' class=\'name\' value=\''.$user_id.'\'></input>';
 						echo '<input type=\'hidden\' name=\'name\' class=\'name\' value=\''.$name.'\'></input>';
 						echo '<input type=\'hidden\' name=\'email\' class=\'email\' value=\''.$email.'\' required=\'required\'></input>';
@@ -1052,5 +1052,10 @@ return is_array($value) ? array_map('k::htmlspecialchars', $value) : preg_replac
 ) , $value));
 }
 //获取评论数量
-function
+$action=@$_GET['action'];
+if($action=='log_out')
+{
+		setcookie('openid','',time()-3600);
+}
+//function
 ?>

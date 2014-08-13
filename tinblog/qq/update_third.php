@@ -1,5 +1,5 @@
 <?php
-require_once('include/functions.php');
+include('../include/functions.php');
 $msg=array();
 $third_id=$_POST['third_id'];
 $email=$_POST['email'];
