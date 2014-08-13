@@ -18,5 +18,6 @@ if(strpos('http://',$url,0))
 		$url='http://'.$url;
 }
 update_third($email,$url,$third_id);
+header('location:http://www.uuuuj.com');
 ?>
 
