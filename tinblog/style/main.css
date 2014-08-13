@@ -841,7 +841,7 @@ input.submit:hover {
 		position:relative;
 		font-size:12px;
 		color:#999;
-		margin-left:1%;
+//		margin-left:1%;
 }
 .comments_text {
 		margin-top:1%;
@@ -912,5 +912,4 @@ input.third_submit:hover {
 		background:#61a64b;
 }
 
-		
 
