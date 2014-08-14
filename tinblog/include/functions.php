@@ -5,7 +5,8 @@ include('config.php');
 		$db=new mysql_con();//call the class mysql_class
 		$query='select t1.no,t1.title,t2.user_name,t3.category_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count,t1.vote,t1.rank from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_category t3 on t1.category_id=t3.id order by no desc';
 		$res=$db->fetch_all($query);//select all the post
-function pagenavi_index()
+		//index 页面的page导航
+function pagenavi_index() 
 {
 		global $res;
 		if(!isset($_GET['page']))
@@ -18,7 +19,7 @@ function pagenavi_index()
 		}
 		$rows=count($res);
 		$pagesize=5;
-		$pagenum=ceil($rows/$pagesize);//get the pagenum
+		$pagenum=ceil($rows/$pagesize);//获取总页数，取整
 		$url='index.php?';
 		$pagenavi=pagenavi::getInstance();//调用pagenavi_class
 		$pagenavi->_pagenavi($page,$pagesize,$url,$pagenum);
@@ -281,13 +282,13 @@ function show_title()//show the title of html pedding the pagename
 				echo $res[$no][1].'|Brague';
 				break;
 				case 'index.php':
-				echo 'Brague|'.$option[0][2];
+				echo 'Brague | '.$option[0][2];
 				break;
 				case 'category_page.php';
-				echo $category.'|Brague';
+				echo $category.' | Brague';
 				break;
 				case 'tag_page.php';
-				echo $tag.'|Brague';
+				echo $tag.' | Brague';
 				break;
 				default:
 				echo 'Brague';
@@ -741,7 +742,7 @@ function comments_fields($id,$pre_post_id=0)
 				echo '<textarea type=\'text\' rows=\'6\' name=\'text\' class=\'textarea\' placeholder=\'Something Here\' required=\'required\'></textarea><br />';
 				echo '<input type=\'submit\' name=\'submit\' class=\'submit\' value=\'submit\'></input>';
 				echo '</form>';
-				echo '<div class=\'qq_login\'><img src=\'qq/Connect_logo_1.png\'/><a href=\'qq/login.php\'>使用QQ登录</a></div>';
+				echo '<div class=\'qq_login\'><img src=\'qq/Connect_logo_1.png\'/><a href=\'javascript:void(0);\'>使用QQ登录</a></div>';
 }
 
 function post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text)
@@ -1032,6 +1033,7 @@ function create_third($name,$avatar,$third_id)
 		$query='insert into b_third value(\''.$user_id.'\',\''.$name.'\',\'\',\'\',\''.$avatar.'\',\''.$third_id.'\')';
 		$res=$db->_insert($query);
 }
+//set the third part user_account 
 function update_third($email,$url,$third_id)
 {
 		global $db;
@@ -1063,5 +1065,5 @@ if($action=='log_out')
 		header('location:http://www.uuuuj.com');
 }
 //获取评论数量
-//function
+function
 ?>
