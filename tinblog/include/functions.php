@@ -1065,5 +1065,5 @@ if($action=='log_out')
 		header('location:http://www.uuuuj.com');
 }
 //获取评论数量
-function
+//function
 ?>

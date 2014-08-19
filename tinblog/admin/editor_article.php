@@ -1,12 +1,11 @@
 <?php 
-session_start();
-$res=$_SESSION['res'];
+include('functions.php');
 $no=$_GET['no'];
+$res=show_list();
 ?>
 <!doctype html>
 <html>
 <head>
-<?php include('functions.php');?>
 <meta charset='utf-8' />
 	<link rel="stylesheet" href="editor/themes/default/default.css" />
 	<link rel="stylesheet" href="editor/plugins/code/prettify.css" />
@@ -39,29 +38,40 @@ $no=$_GET['no'];
 </head>
 <body>
 <form name="article" method="get" action="update_post.php">
-title:<input type='text' id='title' name='title' value='<?php echo $res[$no][1];?>'></input><br />
-conntent:<textarea id='editor_id' name='content' style='width:700px;height:300px;'><?php echo stripslashes($res[$no][2]);?></textarea><br />
-excerpt:<textarea id='except' name='excerpt'><?php echo $res[$no][3];?></textarea><br />
-tag:<input type='text' id='tag' name='tag' value='<?php echo $res[$no][6];?>'</input><br />
-type:
-<input type='radio' id='type' name='type' value='1'<?php if($res[$no][7]==1 ) echo 'checked=\'checked\''?>>image</input><br />
-<input type='radio' id='type' name='type' value='2'<?php if($res[$no][7]==2 ) echo 'checked=\'checked\''?>>music</input><br />
-<input type='radio' id='type' name='type' value='3'<?php if($res[$no][7]==3 ) echo 'checked=\'checked\''?>>status</input><br />
-<input type='radio' id='type' name='type' value='4'<?php if($res[$no][7]==4 ) echo 'checked=\'checked\''?>>standard</input><br />
+<div class='right_tag'>标题</div>
+<input type='text' id='title' name='title' value='<?php echo $res[$no][1];?>'></input><br />
+<textarea id='editor_id' name='content' ><?php echo stripslashes($res[$no][2]);?></textarea><br />
+<div class='right_t'>其他</div> 
+<textarea id='except' name='excerpt'><?php echo $res[$no][3];?></textarea><br />
+<div class='right_tag'>标签</div>
+<div class='other'>
+<input type='text' id='tag' name='tag' value='<?php echo $res[$no][6];?>'</input><br />
+</div>
+<div class='right_tag'>文章样式</div>
+<div class='other'>
+<input type='radio' id='type' name='type' value='1'<?php if($res[$no][7]==1 ) echo 'checked=\'checked\''?>>image</input>
+<input type='radio' id='type' name='type' value='2'<?php if($res[$no][7]==2 ) echo 'checked=\'checked\''?>>music</input>
+<input type='radio' id='type' name='type' value='3'<?php if($res[$no][7]==3 ) echo 'checked=\'checked\''?>>status</input>
+<input type='radio' id='type' name='type' value='4'<?php if($res[$no][7]==4 ) echo 'checked=\'checked\''?>>standard</input>
+</div>
+<div class='right_tag'>分类</div>
+<div class='other'>
 <?php
-for($i=1;$i<=show_num();$i++)
+$cate=list_category();
+$num=count($cate);
+for($i=0;$i<$num;$i++)
 {
-		$showcate=show_result()->fetch_assoc();
-		if($res[$no][5]==$showcate['id'])
+		if($res[$no][5]==$cate[$i][0])
 		{
-		echo 'category:<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$showcate['id'].'\' checked=\'checked\'>'.$showcate['category_name'].'</input><br />';
+		echo '<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$cate[$i][0].'\' checked=\'checked\'>'.$cate[$i][1].'</input>';
 		}
 		else
 		{
-		echo 'category:<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$showcate['id'].'\'>'.$showcate['category_name'].'</input><br />';
+		echo '<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$cate[$i][0].'\'>'.$cate[$i][1].'</input>';
 		}
 }
 ?>
+</div>
 <input type='radio' id='status' name='status' value='1'>草稿</input><br />
 <input type='submit' id='submit' name='submit' value='submit'></input>
 <input type='hidden'id='no' name='no' value='<?php echo $res[$no][0];?>' ></input>

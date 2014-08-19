@@ -16,26 +16,32 @@
 function post_article()
 {
 		$('.right').load('post_article_page.php');
+		$('.right_t').html('发表文章');
 };
 function editor_article()
 {
 		$('.right').load('editor_article_page.php');
+		$('.right_t').html('编辑文章');
 };
 function editor_user()
 {
 		$('.right').load('editor_user_page.php');
+		$('.right_t').html('编辑用户');
 };
 function editor_category()
 {
 		$('.right').load('editor_category_page.php');
+		$('.right_t').html('编辑用户');
 };
 function editor_option()
 {
 		$('.right').load('editor_option_page.php');
+		$('.right_t').html('网站选项');
 };
 function editor_link()
 {
 		$('.right').load('editor_link_page.php');
+		$('.right_t').html('友情链接');
 };
 $(document).on('click','.list a',function()
 {

@@ -34,6 +34,12 @@ class mysql_con
 				$res=$res->fetch_assoc();
 				return $res;
 		}
+		function row_num($query)
+		{
+				$res=$this->query($query);
+				$num=$res->num_rows;
+				return $num;
+		}
 		function _insert($query)//insert
 		{
 				$res=$this->query($query);

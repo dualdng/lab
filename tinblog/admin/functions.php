@@ -2,17 +2,17 @@
 include('../include/mysql_class.php');
 include('../include/config.php');
 $db=new mysql_con;
-$result=list_category();
-$num=$result->num_rows;
-function show_num()
-{
-		global $num;// global 
-		return $num;
-}
 function show_result()
 {
 		global $result;
 		return $result;
+}
+function show_list()
+{
+		global $db;
+		$query='select * from b_article order by no asc';
+		$res=$db->fetch_all($query);	
+		return $res;
 }
 $action=@$_GET['action'];
 if($action=='delete_cache')//delete the cache file
@@ -33,18 +33,15 @@ elseif($action=='session_destroy')//unregister the session!
 		session_destroy();
 		header('location:admin.php');
 }
-else
-{
-		echo 'xxxxxxxxxxx';
-}
 /** database **/
 function list_post()
 {
 		global $db;
 		$query='select t1.no,t1.title,t2.user_name,t3.category_name,t1.tag,t1.post_type,t1.create_date,t1.content,t1.excerpt,t1.hit_count from b_article t1 left join b_user t2 on t1.user_id=t2.user_id left join b_category t3 on t1.category_id=t3.id order by no desc';
-		$result=$db->query($query);
+		$result=$db->fetch_assoc($query);
 		return $result;
 }
+
 function user_verify($userid,$passwd)
 {
 		global $db;
@@ -56,7 +53,7 @@ function list_category()
 {
 		global $db;
 		$query='select * from b_category';
-		$result=$db->query($query);
+		$result=$db->fetch_all($query);
 		return $result;
 }
 function post_article($title,$content,$excerpt,$user_id,$category_id,$tag,$post_type,$status,$hit_count=0)

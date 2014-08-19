@@ -33,21 +33,32 @@
 </head>
 <body>
 <form class='form'name="article" method="post" action="post_article.php">
-title:<input type='text' id='title' name='title'></input><br />
-conntent:<textarea id='editor_id' name='content' style='width:700px;height:300px;'></textarea><br />
-excerpt:<textarea id='except' name='excerpt'></textarea><br />
-tag:<input type='text' id='tag' name='tag'></input><br />
-type:<input type='radio' id='type' name='type' value='1'>image</input><br />
-<input type='radio' id='type' name='type' value='2'>music</input><br />
-<input type='radio' id='type' name='type' value='3'>status</input><br />
-<input type='radio' id='type' name='type' value='4'>standard</input><br />
+<div class='right_tag'>标题</div>
+<input type='text' id='title' name='title' placeholder='输入标题'></input><br />
+<textarea id='editor_id' name='content' placeholder='输入内容'></textarea><br />
+<div class='right_t'>其他</div> 
+<textarea id='except' name='excerpt' placeholder='摘要'></textarea><br />
+<div class='right_tag'>标签</div>
+<div class='other'>
+<input type='text' id='tag' name='tag'placeholder='标签用","分隔'></input><br />
+</div>
+<div class='right_tag'>文章样式</div>
+<div class='other'>
+<input type='radio' id='type' name='type' value='1'>image</input>
+<input type='radio' id='type' name='type' value='2'>music</input>
+<input type='radio' id='type' name='type' value='3'>status</input>
+<input type='radio' id='type' name='type' value='4'>standard</input>
+</div>
+<div class='right_tag'>分类</div>
+<div class='other'>
 <?php
 for($i=1;$i<=show_num();$i++)
 {
 		$showcate=show_result()->fetch_assoc();
-		echo 'category:<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$showcate['id'].'\'>'.$showcate['category_name'].'</input><br />';
+		echo '<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$showcate['id'].'\'>&nbsp'.$showcate['category_name'].'&nbsp</input>';
 }
 ?>
+</div>
 <input type='radio' id='status' name='status' value='1'>草稿</input><br />
 <input type='hidden' id='auther' name='user_id'value='1'></input>
 <input type='submit' id='submit' name='submit' value='submit'></input>

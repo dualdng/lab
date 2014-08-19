@@ -12,6 +12,7 @@ if(!isset($_SESSION['user_id']))
 <html>
 <head>
 <meta charset='utf-8'>
+<link rel='stylesheet' type='text/css' href='style.css' />
 <script src='../js/jquery-2.1.0.min.js' ></script>
 <script src='main.js' ></script>
 	<link rel="stylesheet" href="editor/themes/default/default.css" />
@@ -47,40 +48,46 @@ Admin page
 </title>
 </head>
 <body>
-<div class='left'>
-<ul>
-ADMIN
-<li>
-<a href='javascript:post_article()' >post article</a>
-</li>
-<li>
-<a href='javascript:editor_article()'>edito article</a>
-</li>
-<li>
-<a href='javascript:editor_user()'>edito user</a>
-</li>
-<li>
-<a href='javascript:editor_category()'>edito category</a>
-</li>
-<li>
-<a href='javascript:editor_option()'>edito option</a>
-</li>
-<li>
-<a href='javascript:editor_link()'>edito link</a>
-</li>
-</ul>
-<ul>
-config
-<li>
-<a href='functions.php?action=delete_cache'>recache</a><!-- action-->
-</li>
-<li>
-<a href='functions.php?action=session_destroy'>Log out</a>
-</li>
-</ul>
+<div id='wrapper'>
+<div id='banner'>
+欢迎:w
 </div>
-<div class='right'>
-right
+<div class='admin'>管理</div>
+<menu class='left'>
+<ul>
+<li>
+<a href='javascript:post_article()' >发表文章</a>
+</li>
+<li>
+<a href='javascript:editor_article()'>编辑文章</a>
+</li>
+<li>
+<a href='javascript:editor_user()'>编辑用户</a>
+</li>
+<li>
+<a href='javascript:editor_category()'>编辑分类</a>
+</li>
+<li>
+<a href='javascript:editor_option()'>网站选项</a>
+</li>
+<li>
+<a href='javascript:editor_link()'>友情链接</a>
+</li>
+</ul>
+<ul>
+<div class='admin'>选项</div>
+<li>
+<a href='functions.php?action=delete_cache'>清空缓存</a><!-- action-->
+</li>
+<li>
+<a href='functions.php?action=session_destroy'>登出</a>
+</li>
+</ul>
+</menu>
+<article>
+<div class='right_t'></div>
+<div class='right'></div>
+</article>
 </div>
 </body>
 </html>
