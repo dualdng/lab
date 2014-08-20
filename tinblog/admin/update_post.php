@@ -22,8 +22,8 @@ else
 {
 		$status=0;
 }
-$result=update_post($no,$title,$content,$excerpt,$category_id,$tag,$post_type,$status);
-if(!empty($result))
+$result=update_article($no,$title,$content,$excerpt,$category_id,$tag,$post_type,$status);
+if($result=='1')
 {
 		header('location:admin_page.php');
 }

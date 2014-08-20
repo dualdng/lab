@@ -1,7 +1,7 @@
 <?php session_start();
 if(!isset($_SESSION['user_id']))
 	{
-			header('location:admin.php');
+			header('location:index.php');
 	}
 	else
 	{
@@ -12,9 +12,9 @@ if(!isset($_SESSION['user_id']))
 <html>
 <head>
 <meta charset='utf-8'>
-<link rel='stylesheet' type='text/css' href='style.css' />
+<link rel='stylesheet' type='text/css' href='style/style.css' />
 <script src='../js/jquery-2.1.0.min.js' ></script>
-<script src='main.js' ></script>
+<script src='js/main.js' ></script>
 	<link rel="stylesheet" href="editor/themes/default/default.css" />
 	<link rel="stylesheet" href="editor/plugins/code/prettify.css" />
 	<script charset="utf-8" src="editor/kindeditor.js"></script>
@@ -59,19 +59,19 @@ Admin page
 <a href='javascript:post_article()' >发表文章</a>
 </li>
 <li>
-<a href='javascript:editor_article()'>编辑文章</a>
+<a href='javascript:edit_article()'>编辑文章</a>
 </li>
 <li>
-<a href='javascript:editor_user()'>编辑用户</a>
+<a href='javascript:edit_user()'>编辑用户</a>
 </li>
 <li>
-<a href='javascript:editor_category()'>编辑分类</a>
+<a href='javascript:edit_category()'>编辑分类</a>
 </li>
 <li>
-<a href='javascript:editor_option()'>网站选项</a>
+<a href='javascript:edit_option()'>网站选项</a>
 </li>
 <li>
-<a href='javascript:editor_link()'>友情链接</a>
+<a href='javascript:edit_link()'>友情链接</a>
 </li>
 </ul>
 <ul>

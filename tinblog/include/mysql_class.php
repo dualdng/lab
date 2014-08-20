@@ -15,7 +15,7 @@ class mysql_con
 		function query($query)//query the sqls
 		{
 				$res=$this->db->query($query);
-				if(empty($res))
+				if(!$res)
 				{
 						echo 'can not query the value';
 						exit;
