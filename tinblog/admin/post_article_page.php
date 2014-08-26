@@ -52,10 +52,11 @@
 <div class='right_tag'>分类</div>
 <div class='other'>
 <?php
-for($i=1;$i<=show_num();$i++)
+$res=list_category();
+$num=count($res);
+for($i=0;$i<$num;$i++)
 {
-		$showcate=show_result()->fetch_assoc();
-		echo '<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$showcate['id'].'\'>&nbsp'.$showcate['category_name'].'&nbsp</input>';
+		echo '<input type=\'radio\' id=\'category\' name=\'category\' value=\''.$res[$i][0].'\'>&nbsp'.$res[$i][1].'&nbsp</input>';
 }
 ?>
 </div>

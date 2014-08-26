@@ -18,16 +18,22 @@ $num=count($result);
 {
 		?>
 <div id='link<?php echo $result[$i][0];?>'>
-NO:<input  name='no' value='<?php echo $result[$i][0];?>'></input>
-NAME:<input name='name' value='<?php echo $result[$i][1];?>'></input>
-LINK:<input  name='link' value='<?php echo $result[$i][2];?>'></input>
-TITLE:<input  name='title' value='<?php echo $result[$i][3];?>'></input>
+<label>序号</label> 
+<input  class='no' name='no' value='<?php echo $result[$i][0];?>'></input>
+<label>名称</label> 
+<input name='name' value='<?php echo $result[$i][1];?>'></input>
+<label>地址</label> 
+<input  name='link' value='<?php echo $result[$i][2];?>'></input>
+<label>说明</label> 
+<input  name='title' value='<?php echo $result[$i][3];?>'></input>
 </div>
-<a id='dlink<?php echo $result[$i][0];?>'href='javascript:delete_link(<?php echo $result[$i][0];?>)'>delete_link</a><br />
+<div style='height:10px;'></div>
+<a class='button' id='dlink<?php echo $result[$i][0];?>'href='javascript:delete_link(<?php echo $result[$i][0];?>)'>删除</a><br />
+<div style='height:10px;'></div>
 <?php };?>
-<input name='submit' type='submit'>submit</input>
+<input id='submit'  name='submit' type='submit' value='submit'></input>
 </form>
-<button onclick=add_link()>add_link</button>
+<button onclick=add_link()>新增</button>
 <div id='add_link'></div>
 </body>
 </html>

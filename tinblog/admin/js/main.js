@@ -43,7 +43,7 @@ function edit_link()
 		$('.right').load('edit_link_page.php');
 		$('.right_t').html('友情链接');
 };
-$(document).on('click','.list a',function()
+$(document).on('click','a#edit',function()
 {
 var	url=$(this).attr('href');//notice :the diffrents between '$(this)' and $('.list a') 
 		$.ajax(
@@ -104,7 +104,7 @@ function add_category()//use the ajax to delete the article
 		$.ajax(
 		{
 				type:'POST',
-				url:'include/add_category_page.php',
+				url:'add_category_page.php',
 				success:function(data)
 				{
 						$('#add_cate').append(data);
@@ -136,7 +136,7 @@ function add_link()//use the ajax to delete the article
 		$.ajax(
 		{
 				type:'POST',
-				url:'include/add_link_page.php',
+				url:'add_link_page.php',
 				success:function(data)
 				{
 						$('#add_link').append(data);

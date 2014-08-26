@@ -1,11 +1,11 @@
 <?php session_start();
-if(!isset($_SESSION['user_id']))
+if(!isset($_SESSION['user_name']))
 	{
 			header('location:index.php');
 	}
 	else
 	{
-			$user_id=$_SESSION['user_id'];
+			$user_name=$_SESSION['user_name'];
 	}
 	?>
 <!doctypehtml>
@@ -50,7 +50,7 @@ Admin page
 <body>
 <div id='wrapper'>
 <div id='banner'>
-欢迎:w
+欢迎:<?php echo $user_name;?>
 </div>
 <div class='admin'>管理</div>
 <menu class='left'>

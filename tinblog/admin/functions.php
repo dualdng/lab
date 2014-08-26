@@ -5,7 +5,7 @@ $db=new mysql_con;
 function user_verify($userid,$passwd)
 {
 		global $db;
-		$query='select user_id from b_user where user_name=\''.$userid.'\'and user_paswd=\''.$passwd.'\''; 
+		$query='select user_name from b_user where user_name=\''.$userid.'\'and user_paswd=\''.$passwd.'\''; 
 		$result=$db->fetch_assoc($query);
 		return $result;
 }

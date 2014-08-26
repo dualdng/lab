@@ -11,8 +11,8 @@ if(count($result)==0)
 }
 else
 {
-		$userid=$result['user_id'];
-		$_SESSION['user_id']=$userid;
+		$user_name=$result['user_name'];
+		$_SESSION['user_name']=$user_name;
 		header('location:admin_page.php');
 }
 ?>

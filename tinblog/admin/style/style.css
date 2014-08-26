@@ -114,3 +114,57 @@ textarea#except {
 		color:#fff;
 		background:#61a64b;
 }
+/** button **/
+button {
+		color:#61a64b;
+		width:100px;
+		height:30px;
+		background:#fff;
+		border:1px solid #ebeaea;
+		cursor:pointer;
+		margin:2% 0;
+}
+button:hover {
+		color:#fff;
+		background:#61a64b;
+}
+/** a ±Í«©button **/
+a.button:link {
+		color:#61a64b;
+		padding:5px 30px;
+		background:#fff;
+		border:1px solid #ebeaea;
+		margin:2% 0;
+}
+a.button:visited {
+		color:#61a64b;
+		padding:5px 30px;
+		background:#fff;
+		border:1px solid #ebeaea;
+		margin:2% 0;
+}
+a.button:hover {
+		color:#fff;
+		background:#61a64b;
+}
+
+.dlist {
+		margin:2% 0;
+}
+input {
+		height:20px;
+}
+textarea {
+		width:770px;
+		height:100px;
+}
+input.no {
+		width:30px;
+}
+label {
+		background:#61a64b;
+		color:#fff;
+		padding:5px;
+		border:1px solid #ebeaea;
+}
+

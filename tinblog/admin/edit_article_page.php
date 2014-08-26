@@ -13,9 +13,9 @@ $res=list_article();
 $num=count($res);
 for($i=0;$i<$num;$i++)
 {
-		echo '<div class=\'list\' id=\'list_'.$res[$i][0].'\'><a href=\'edit_article.php?no='.$i.'\'>'.$res[$i][1].'</a></div><div id=\'dlist_'.$res[$i][0].'\'><a href=\'javascript:delete_article('.$res[$i][0].')\'>Delete</a></div>';
+		echo '<div class=\'list\' id=\'list_'.$res[$i][0].'\'>'.$res[$i][1].'</div>';
+		echo '<div class=\'dlist\' id=\'dlist_'.$res[$i][0].'\'><a class=\'button\' id=\'edit\' href=\'edit_article.php?no='.$i.'\'>编辑</a><a class=\'button\' href=\'javascript:delete_article('.$res[$i][0].')\'>删除</a></div>';
 };
 ?> 
-<?php echo 'editor_post';?>
 </body>
 </html>

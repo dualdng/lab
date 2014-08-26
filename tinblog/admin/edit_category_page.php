@@ -18,11 +18,14 @@ $num=count($result);
 {
 		?>
 <input type='hidden' name='id' value='<?php echo $result[$i][0];?>'></input>
-<span id='cate<?php echo $result[$i][0];?>'>CATAGORY:<input name='category_name' value='<?php echo $result[$i][1];?>'></input></span>&nbsp&nbsp<a id='dcate<?php echo $result[$i][0];?>'href='javascript:delete_category(<?php echo $result[$i][0];?>)'>delete_cate</a><br />
+<span id='cate<?php echo $result[$i][0];?>'>
+<div class='right_tag'>分类名称</div>
+<input name='category_name' value='<?php echo $result[$i][1];?>'></input></span>
+<a class='button' id='dcate<?php echo $result[$i][0];?>'href='javascript:delete_category(<?php echo $result[$i][0];?>)'>删除</a><br />
 <?php };?>
-<input name='submit' type='submit'>submit</input>
+<input id='submit'  name='submit' type='submit'value='submit'></input>
 </form>
-<button onclick=add_category()>add_cate</button>
+<button onclick=add_category()>新增</button>
 <div id='add_cate'></div>
 </body>
 </html>
