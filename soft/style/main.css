@@ -1,0 +1,15 @@
+* {
+		margin:0 0;
+		padding:0 0;
+}
+#scroll_full {
+		width:100px;
+		height:5px;
+		background-color:#61a64b;
+}
+#scroll {
+		width:0px;
+		height:5px;
+		background-color:#66ccff;
+}
+

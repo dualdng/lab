@@ -6,7 +6,7 @@ class pagenavi
 		private $url;
 		private $pagenum;
 		static private $instance=null;
-		function getInstance()
+		static	function getInstance()
 		{
 				if(self::$instance==null)
 				{
