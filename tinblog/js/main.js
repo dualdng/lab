@@ -227,11 +227,13 @@ function post_comments()
 		var id=$(':input[name=\'id\']').val();
 		var pre_post_id=$(':input[name=\'pre_post_id\']').val();
 		var user_id=$(':input[name=\'user_id\']').val();
+		var user_ip=$(':input[name=\'user_ip\']').val();
+		var user_agent=$(':input[name=\'user_agent\']').val();
 		var name=$(':input[name=\'name\']').val();
 		var email=$(':input[name=\'email\']').val();
 		var url=$(':input[name=\'url\']').val();
 		var text=$(':input[name=\'text\']').val();
-		var parastr={"id":id,"pre_post_id":pre_post_id,"user_id":user_id,"name":name,"email":email,"url":url,"text":text};
+		var parastr={"id":id,"pre_post_id":pre_post_id,"user_id":user_id,"user_ip":user_ip,"user_agent":user_agent,"name":name,"email":email,"url":url,"text":text};
 //		var parastr='id='+id+'&pre_post_id='+pre_post_id+'&user_id='+user_id+'&name='+name+'&email='+email+'&url='+url+'&text='+text;
 		$.ajax({
 				url:'post_comments.php',
@@ -249,6 +251,10 @@ function post_comments()
 						}
 						else if (data.error==3) {
 								alert('评论过快');
+								exit;
+						}
+						else if (data.error==4) {
+								alert('SPAM!!!');
 								exit;
 						}
 						else if (data.success==-1) {

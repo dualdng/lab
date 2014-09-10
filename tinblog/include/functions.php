@@ -697,6 +697,8 @@ function comments_fields($id,$pre_post_id=0)
 				echo '<form class=\'comments_field\' method=\'post\' action=\'post_comments.php\'onSubmit=\'return post_comments()\'>';
 				echo '<input type=\'hidden\' name=\'id\' class=\'name\' value=\''.$id.'\'></input>';
 				echo '<input type=\'hidden\' name=\'pre_post_id\' class=\'name\' value=\''.$pre_post_id.'\'></input>';
+				echo '<input type=\'text\' name=\'user_ip\' class=\'name\' value=\''.$_SERVER['REMOTE_ADDR'].'\'></input>';
+				echo '<input type=\'text\' name=\'user_agent\' class=\'name\' value=\''.$_SERVER['HTTP_USER_AGENT'].'\'></input>';
 
 		if(isset($_COOKIE['name']))
 		{
@@ -1066,4 +1068,35 @@ if($action=='log_out')
 }
 //获取评论数量
 //function
+function akismet_check($user_ip,$user_agent,$comment_author,$comment_author_email,$comment_author_url,$comment_content)
+{
+ $apikey='31b6d1d9f563';
+ $blog='http://blog.uuuuj.com';
+ $referrer='http://www.uuuuj.com';
+ $blog_charset='utf-8';
+ $url=$apikey.'.rest.akismet.com/1.1/comment-check';
+$data=array(
+'blog'=>$blog,
+'user_ip'=>$user_ip,
+'user_agent'=>$user_agent,
+'referrer'=>$referrer,
+'comment_author'=>$comment_author,
+'comment_author_email'=>$comment_author_email,
+'comment_author_url'=>$comment_author_url,
+'comment_content'=>$comment_content,
+'blog_charset'=>$blog_charset
+);
+ $curl=curl_init();
+ curl_setopt($curl,CURLOPT_URL,$url);
+ curl_setopt($curl,CURLOPT_HEADER,0);
+ curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                            
+						 'User-Agent:Tinblog/1.0 | Akismet/2.5.9'                                                                                  
+						 )                                                                         
+			);         
+  curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+ curl_setopt($curl,CURLOPT_POST,1);
+ curl_setopt($curl,CURLOPT_POSTFIELDS,$data);
+ $res=curl_exec($curl);
+return $res;
+}
 ?>

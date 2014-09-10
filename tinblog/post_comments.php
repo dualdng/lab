@@ -9,11 +9,19 @@ if(isset($_COOKIE['time']))
 }
 $id=$_POST['id'];
 $pre_post_id=$_POST['pre_post_id'];
+$user_ip=$_POST['user_ip'];
+$user_agent=$_POST['user_agent'];
 $user_id=$_POST['user_id'];
 $name=$_POST['name'];
 $email=$_POST['email'];
 $url=$_POST['url'];
 $text=$_POST['text'];
+$res=akismet_check($user_ip,$user_agent,$name,$email,$url,$text);
+if ($res=='true') {
+		$msg['error']='4';
+		echo json_encode($msg);
+		exit;
+}
 $pattern='/[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]+/';
 if(!empty($email))
 {

@@ -34,7 +34,7 @@ include('banner.php');
 </div>
 <div class='comments_form'> 
 <div class='comments_title'>Post your comments here:</div>
-<?php comments_fields($id,0,0);?>
+<?php comments_fields($id,0);?>
 </div>
 <!--comments end-->
 </div>
