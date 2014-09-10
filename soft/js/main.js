@@ -52,9 +52,9 @@ function duration()
 		/** jquery 写法**/
 		var audio=$('#music')[0];
 		$('#music').on('loadedmetadata', function() {
-				var length_full=audio.duration;
-				var time_full=time_transfer(length_full);
-				$('#time').text(time_full);
+						length_full=audio.duration;
+						var time_full=time_transfer(length_full);
+						$('#time').text(time_full);
 		});
 
 		var a=setInterval(function(){
@@ -96,4 +96,8 @@ function time_transfer(length) //s时间格式转换，由秒转换为分+秒
 		var res=time_m+'分'+time_s+'秒';
 		return  res;
 }
+$(document).on('click','#scroll_full',function(e){
+		var x=e.pageX;
+		alert(x);
+		}) 
 
