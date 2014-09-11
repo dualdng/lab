@@ -1,6 +1,12 @@
 <?php
 require_once('include/functions.php');
 $msg=array();
+$comments_off=0;
+if($comments_off===1) {
+		$msg['error']='5';
+		echo json_encode($msg);
+		exit;
+}
 if(isset($_COOKIE['time']))
 {
 		$msg['error']='3';
@@ -22,6 +28,12 @@ if ($res=='true') {
 		echo json_encode($msg);
 		exit;
 }
+if (strpos(' ',$name)) {
+		$msg['error']='6';
+		echo json_encode($msg);
+		exit;
+}
+
 $pattern='/[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]+/';
 if(!empty($email))
 {

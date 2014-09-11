@@ -257,6 +257,14 @@ function post_comments()
 								alert('SPAM!!!');
 								exit;
 						}
+						else if (data.error==5) {
+								alert('评论关闭');
+								exit;
+						}
+						else if (data.error==6) {
+								alert('禁止空格');
+								exit;
+						}
 						else if (data.success==-1) {
 						$('.comments_field').css({'display':'none'});
 						$('.comments_form').css({'display':'none'});

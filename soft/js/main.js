@@ -16,17 +16,23 @@ $(document).on('click','a#list',function(){
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
 		audio.load();//下标0的作用，推测为当前页面有多个audio的时候，选择第几个(the foot '0' means that when there are more than one audio tags ,you should select the element by the foot)
-		play();
+		play_pause();
 		return false;
 
 }
 )
-function play()
+function play_pause()
 {
 //		var audio=document.getElementById('music');
 		var audio=$('#music')[0];
+		if (audio.paused) {
 		audio.play();//下标0的作用，推测为当前页面有多个audio的时候，选择第几个(the foot '0' means that when there are more than one audio tags ,you should select the element by the foot)
+		$('#button').attr('class','icon-pause');
 		duration();
+		} else {
+				audio.pause();
+		$('#button').attr('class','icon-play');
+		}
 }
 function pause()
 {
@@ -62,7 +68,7 @@ function duration()
 		var length_pass=audio.currentTime;
 		var time_pass=time_transfer(length_pass);
 		$('#time_p').text(time_pass);
-		var width=(length_pass/length_full)*100;
+		var width=(length_pass/length_full)*600;
 		$('#scroll').css({'width':width});
 		},1000);
 }
@@ -96,8 +102,36 @@ function time_transfer(length) //s时间格式转换，由秒转换为分+秒
 		var res=time_m+'分'+time_s+'秒';
 		return  res;
 }
+/**  进度条时间设置 **/
 $(document).on('click','#scroll_full',function(e){
+		var audio=$('#music')[0];
 		var x=e.pageX;
-		alert(x);
+		var left=$('#scroll_full').offset().left;
+		x=x-left;
+		audio.currentTime=x/600*length_full;
 		}) 
+function menu_bar()
+{
+		var a=$('#cool').attr('val');
+		if(a==1) {
+				$('#cool').attr('class','icon-cool2').attr('val','2');
+				$('#menu-bar').css({'display':'block'});
+		} else if (a==2) {
+				$('#cool').attr('class','icon-cool').attr('val','1');
+				$('#menu-bar').css({'display':'none'});
+		}
+
+}
+function list()
+{
+		var a=$('#list-menu').attr('val');
+		if(a==1) {
+				$('#list-menu').attr('class','icon-music').attr('val','2');
+				$('#list-music').css({'display':'block'});
+		} else if (a==2) {
+				$('#list-menu').attr('class','icon-music').attr('val','1');
+				$('#list-music').css({'display':'none'});
+		}
+
+}
 
