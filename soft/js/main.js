@@ -5,7 +5,7 @@ function select()
 }
 $(document).ready(function()
 {
-
+		play_pause();
 		}
 )
 $(document).on('click','a#list',function(){
@@ -15,7 +15,8 @@ $(document).on('click','a#list',function(){
 		var url='../../music/'+songid+'.mp3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
-		audio.load();//下标0的作用，推测为当前页面有多个audio的时候，选择第几个(the foot '0' means that when there are more than one audio tags ,you should select the element by the foot)
+		var name=$(this).text();
+		$('#name').text(name);
 		play_pause();
 		return false;
 
@@ -80,7 +81,7 @@ function next()
 		var url='../../music/'+songid+'.mp3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
-		play();
+		play_pause();
 }
 function pre()
 {
@@ -90,7 +91,7 @@ function pre()
 		var url='../../music/'+songid+'.mp3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
-		play();
+		play_pause();
 }
 function time_transfer(length) //s时间格式转换，由秒转换为分+秒
 {
@@ -99,7 +100,7 @@ function time_transfer(length) //s时间格式转换，由秒转换为分+秒
 		var time_array=time_str.split('.');
 		var time_m=time_array[0];
 		var time_s=Math.round((time_array[1]/100)*60);
-		var res=time_m+'分'+time_s+'秒';
+		var res=time_m+':'+time_s+'';
 		return  res;
 }
 /**  进度条时间设置 **/

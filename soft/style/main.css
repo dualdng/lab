@@ -2,6 +2,18 @@
 		margin:0 0;
 		padding:0 0;
 }
+a {
+		text-decoration:none;
+}
+a:link {
+		color:#b3b3b1;
+}
+a:visited {
+		color:#b3b3b1;
+}
+a:hover {
+		color:#000;
+}
 /** 文字图片 **/
 @font-face {
 	font-family: 'icomoon';
@@ -83,19 +95,25 @@ body {
 		display:none;
 }
 #list-music {
-		font-size:20px;
+		font-size:14px;
 		display:none;
+		color:#b3b3b1;
 }
-span.icon-home {
-		font-size:40px;
+a.icon-home {
+		cursor:pointer;
 }
-span.icon-cool {
-		font-size:40px;
+a#cool {
+		cursor:pointer;
 }
+a#list-menu {
+		cursor:pointer;
+}
+
 #wrapper {
 		position:relative;
 		width:960px;
 		margin:0 auto;
+		margin-top:2%;
 }
 #banner {
 		height:150px;
@@ -137,21 +155,21 @@ a.icon-pause {
 }
 #border {
 		position:absolute;
-		top: 290px;
-		left: 130px;
+		top: 350px;
+		left: 310px;
 		height:40px;
 		width:3px;
 		background:#61a64b;
 }
 #time {
 		position:absolute;
-		top: 290px;
-		left: 140px;
+		top: 350px;
+		left: 320px;
 }
 #time_p {
 		position:absolute;
-		top: 310px;
-		left: 140px
+		top: 370px;
+		left: 320px
 
 }
 #next {
@@ -177,4 +195,27 @@ a.icon-pause {
 		height:7px;
 		background-color:#61a64b;
 }
-
+#name {
+		font-size:32px;
+		width:200px;
+		margin:0 auto;
+		margin-top:2%;
+}
+#line {
+		font-size:14px;
+		width:600px;
+		margin:0 auto;
+		margin-top:2%;
+}
+#line a {
+		text-decoration:none;
+}
+#line a:link {
+		color:#b3b3b1;
+}
+#line a:visited {
+		color:#b3b3b1;
+}
+#line a:hover {
+		color:#000;
+}

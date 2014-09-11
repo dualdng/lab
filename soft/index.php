@@ -1,3 +1,4 @@
+<?php include('include/functions.php');?>
 <!doctypehtml>
 <html>
 <body>
@@ -9,8 +10,8 @@
 <link rel='stylesheet' type='text/css' href='style/main.css' />
 </head>
 <div id='menu'>
-<a class='icon-home'></a><br />
-<a id='cool' class='icon-cool' val='1' onclick='javascript:menu_bar()'></a><br />
+ <a class='icon-home'></a><br />
+ <a id='cool' class='icon-cool' val='1' onclick='javascript:menu_bar()'></a><br />
 <div id='menu-bar'>
 <a class='icon-first' onclick='javascript:pre();'></a>
 <a class='icon-last' onclick='javascript:next();'></a>
@@ -47,8 +48,13 @@
 <div id='scroll'>
 </div>
 </div>
-buliding!
 </div>
+</div>
+<div id='name'>
+<span>DreamHigh</span><br />
+</div>
+<div id='line'>
+<span><?php line_api();?></span>
 </div>
 </body>
 </html>
