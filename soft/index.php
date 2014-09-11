@@ -54,7 +54,6 @@
 <span>DreamHigh</span><br />
 </div>
 <div id='line'>
-<span><?php line_api();?></span>
 </div>
 </body>
 </html>

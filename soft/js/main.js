@@ -1,10 +1,11 @@
-function select()
-{
-		var url=$('#first').attr('val');
-		alert(url);
-}
+
 $(document).ready(function()
 {
+		/** 歌曲编号数组 **/
+		song=new Array('xxxx','DreamHigh','矜持','勿忘心安','钟无艳');
+		var i=Math.floor(Math.random()*7);
+		$('#img img').attr('src','img/'+(i+1)+'.jpg');
+		$('#line').load('line.php');
 		play_pause();
 		}
 )
@@ -17,6 +18,9 @@ $(document).on('click','a#list',function(){
 		$('#music').attr('val',songid);
 		var name=$(this).text();
 		$('#name').text(name);
+		$('#line').load('line.php');
+		var a=Math.floor(Math.random()*7);
+		$('#img img').attr('src','img/'+(a+1)+'.jpg');
 		play_pause();
 		return false;
 
@@ -81,6 +85,10 @@ function next()
 		var url='../../music/'+songid+'.mp3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
+		var a=Math.floor(Math.random()*7);
+		$('#img img').attr('src','img/'+(a+1)+'.jpg');
+		$('#line').load('line.php');
+		$('#name').text(song[songid]);
 		play_pause();
 }
 function pre()
@@ -91,6 +99,9 @@ function pre()
 		var url='../../music/'+songid+'.mp3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
+		var a=Math.floor(Math.random()*7);
+		$('#img img').attr('src','img/'+(a+1)+'.jpg');
+		$('#line').load('line.php');
 		play_pause();
 }
 function time_transfer(length) //s时间格式转换，由秒转换为分+秒
