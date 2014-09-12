@@ -1,15 +1,15 @@
-
 $(document).ready(function()
 {
 		/** 歌曲编号数组 **/
-		song=new Array('xxxx','DreamHigh','矜持','勿忘心安','钟无艳');
+		song=new Array('DreamHigh','矜持','勿忘心安','钟无艳');
 		var i=Math.floor(Math.random()*7);
 		$('#img img').attr('src','img/'+(i+1)+'.jpg');
 		$('#line').load('line.php');
 		play_pause();
+		shuffle_on=0;
 		}
 )
-$(document).on('click','a#list',function(){
+$(document).on('click','a#list',function(){ //歌曲点击播放
 //		var audio=document.getElementById('music');
 		var audio=$('#music')[0];
 		var songid=$(this).attr('val');
@@ -39,16 +39,6 @@ function play_pause()
 		$('#button').attr('class','icon-play');
 		}
 }
-function pause()
-{
-//		var audio=document.getElementById('music');
-		var audio=$('#music')[0];
-		//js method
-//		var audio=document.getElementById('music');
-//		audio.pause();
-//jquery method
-		audio.pause();
-}
 function duration()
 {
 		clearInterval(a);
@@ -75,6 +65,27 @@ function duration()
 		$('#time_p').text(time_pass);
 		var width=(length_pass/length_full)*600;
 		$('#scroll').css({'width':width});
+		/** 判断是否播放结束，如果结束则继续下一首 **/
+		if (audio.ended) {
+				if(shuffle_on==1){ //判断shuffles是否打开
+						var m=song.length;
+						var i=Math.floor(Math.random()*m);
+						var songid=i;
+				} else {
+				var val=$('#music').attr('val');
+				val=parseInt(val);//将字符串转换为数字，因为从html中获得值都是字符串形式的
+				var songid=val+1;
+				var songid=(songid>=song.length)?0:songid; 
+				}
+				var url='../../music/'+songid+'.mp3';
+				$('#music').attr('src',url);
+				$('#music').attr('val',songid);
+				var i=Math.floor(Math.random()*7);
+				$('#img img').attr('src','img/'+(i+1)+'.jpg');
+				$('#line').load('line.php');
+				$('#name').text(song[songid]);
+				play_pause();
+		}
 		},1000);
 }
 function next()
@@ -82,6 +93,7 @@ function next()
 		var val=$('#music').attr('val');
 		val=parseInt(val);//将字符串转换为数字，因为从html中获得值都是字符串形式的
 		var songid=val+1;
+		var songid=(songid>=song.length)?0:songid; 
 		var url='../../music/'+songid+'.mp3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
@@ -96,12 +108,14 @@ function pre()
 		var val=$('#music').attr('val');
 		val=parseInt(val);
 		var songid=val-1;
+		var songid=(songid<0)?(song.length-1):songid; 
 		var url='../../music/'+songid+'.mp3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
 		var a=Math.floor(Math.random()*7);
 		$('#img img').attr('src','img/'+(a+1)+'.jpg');
 		$('#line').load('line.php');
+		$('#name').text(song[songid]);
 		play_pause();
 }
 function time_transfer(length) //s时间格式转换，由秒转换为分+秒
@@ -126,9 +140,9 @@ function menu_bar()
 {
 		var a=$('#cool').attr('val');
 		if(a==1) {
-				$('#cool').attr('class','icon-cool2').attr('val','2');
+				$('#cool').attr('class','icon-cool2').attr('val','0');
 				$('#menu-bar').css({'display':'block'});
-		} else if (a==2) {
+		} else if (a==0) {
 				$('#cool').attr('class','icon-cool').attr('val','1');
 				$('#menu-bar').css({'display':'none'});
 		}
@@ -138,12 +152,23 @@ function list()
 {
 		var a=$('#list-menu').attr('val');
 		if(a==1) {
-				$('#list-menu').attr('class','icon-music').attr('val','2');
+				$('#list-menu').attr('class','icon-close').attr('val','0');
 				$('#list-music').css({'display':'block'});
-		} else if (a==2) {
-				$('#list-menu').attr('class','icon-music').attr('val','1');
+		} else if (a==0) {
+				$('#list-menu').attr('class','icon-headphones').attr('val','1');
 				$('#list-music').css({'display':'none'});
 		}
 
 }
-
+function shuffle()
+{
+		var a=$('#shuffle').attr('val');
+		if(a==1) {
+				$('#shuffle').attr('class','icon-close').attr('val','0');
+		} else if (a==0) {
+				$('#shuffle').attr('class','icon-shuffle').attr('val','1');
+		}
+		shuffle_on=a;
+		var m=song.length;
+		var i=Math.floor(Math.random()*m);
+}
