@@ -66,7 +66,7 @@ function delete_article(no)//use the ajax to delete the article
 		$.ajax(
 		{
 				type:'POST',
-				url:'include/delete_article.php?no='+no,
+				url:'delete_article.php?no='+no,
 				success:function(data)
 				{
 						$('#list_'+no).remove();
@@ -86,7 +86,7 @@ function delete_category(id)//use the ajax to delete the article
 		$.ajax(
 		{
 				type:'POST',
-				url:'include/delete_category.php?id='+id,
+				url:'delete_category.php?id='+id,
 				success:function(data)
 				{
 						$('#cate'+id).remove();
@@ -118,7 +118,7 @@ function delete_link(no)//use the ajax to delete the article
 		$.ajax(
 		{
 				type:'POST',
-				url:'include/delete_link.php?no='+no,
+				url:'delete_link.php?no='+no,
 				success:function(data)
 				{
 						$('#link'+no).remove();

@@ -1,10 +1,95 @@
 $(document).ready(function()
 {
 		/** 歌曲编号数组 **/
-		song=new Array('DreamHigh','矜持','勿忘心安','钟无艳');
+song=new Array(
+		'Life Is Like A Cup of Coffee',
+		'Promise',
+		'The Ludlows',
+		'Eternal Hope',
+		'2003',
+		'A Little Story',
+		'Arriettys Song',
+		'Beyond the memory',
+		'Rain of Love',
+		'The Righteous Path',
+		'Hope',
+		'Dirk Ehlert - Excelsior',
+		'DJ Okawari - Flower Dance',
+		'DJ Sly - ジブリ？メドレー',
+		'Geo- Hey!!! 与你的夏日',
+		'Great Morning',
+		'KENSHU-幽灵公主',
+		'Kiss',
+		'Last Tears',
+		'Letters From Heave',
+		'Mein traum',
+		'memory',
+		'Mother Earth',
+		'My Soul',
+		'One Sweetest',
+		'oukaitou-桜',
+		'Oukaitou-雨空',
+		'Rainy Day Reminiscence',
+		'Raujika - City of Twilight',
+		'Ros - 秋, 彩々',
+		'Serenade',
+		'Smooth J - The Hill Of Wind',
+		'So beautiful',
+		'Somewhere',
+		'soulmate',
+		'Sweet Rain - 为你而奏的旋律',
+		'Theme of SSS',
+		'Waiting man',
+		'風の通り道',
+		'花之泪',
+		'今でもずっと',
+		'今年也想你的我',
+		'今日もどこかで',
+		'泪色天宆',
+		'难道是我哭了',
+		'你是唯一',
+		'素直になれたら',
+		'我们的幸福时光',
+		'我喜欢躺在···',
+		'无法完成的事',
+		'因为你',
+		'Cangsta Symphony',
+		'Immediate Music - Europa (Electric Romeo )',
+		'Ivan Torrent - Human Legacy',
+		'John Dreamer - Rise',
+		'John Dreamer【End of my Journey 】',
+		'Last of the Wilds',
+		'Mark Petrie - Willpower',
+		'Protectors of the Earth',
+		'ready for war （DANIZ）',
+		'The Ecstasy Of Gold',
+		'Two Steps From Hell - Dragon Rider',
+		'Two Steps From Hell - Men Of Honor·',
+		'暗战',
+		'杀死比尔',
+		'只要为你活一天',
+		'Determine纯音乐(暴力街区2超经典音乐)',
+		'悠久の翼アレンジVer （加长）',
+		'DJ电音：萧恒嘉---雷光'
+				)
 		var i=Math.floor(Math.random()*7);
 		$('#img img').attr('src','img/'+(i+1)+'.jpg');
 		$('#line').load('line.php');
+		var i=0;
+		var length=song.length;
+		for (i;i<40;i++) {
+				$('#list_one').append('<li><a id=\'list\' href=\'#\' val=\''+i+'\'>'+song[i]+'</a></li>');
+		}
+		for (i=40;i<length;i++) {
+				$('#list_two').append('<li><a id=\'list\' href=\'#\' val=\''+i+'\'>'+song[i]+'</a></li>');
+		}
+/**		var m=song.length;
+		var songid=Math.floor(Math.random()*m);
+		**/
+		var songid=0; //第一首 不随机 放promise
+		var url='../../music/song/'+song[songid]+'.MP3';
+		$('#music').attr('src',url);
+		$('#name').text(song[songid]);
 		play_pause();
 		shuffle_on=0;
 		}
@@ -13,7 +98,7 @@ $(document).on('click','a#list',function(){ //歌曲点击播放
 //		var audio=document.getElementById('music');
 		var audio=$('#music')[0];
 		var songid=$(this).attr('val');
-		var url='../../music/'+songid+'.mp3';
+		var url='../../music/song/'+song[songid]+'.MP3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
 		var name=$(this).text();
@@ -77,7 +162,7 @@ function duration()
 				var songid=val+1;
 				var songid=(songid>=song.length)?0:songid; 
 				}
-				var url='../../music/'+songid+'.mp3';
+				var url='../../music/song/'+song[songid]+'.MP3';
 				$('#music').attr('src',url);
 				$('#music').attr('val',songid);
 				var i=Math.floor(Math.random()*7);
@@ -94,7 +179,7 @@ function next()
 		val=parseInt(val);//将字符串转换为数字，因为从html中获得值都是字符串形式的
 		var songid=val+1;
 		var songid=(songid>=song.length)?0:songid; 
-		var url='../../music/'+songid+'.mp3';
+		var url='../../music/song/'+song[songid]+'.MP3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
 		var a=Math.floor(Math.random()*7);
@@ -109,7 +194,7 @@ function pre()
 		val=parseInt(val);
 		var songid=val-1;
 		var songid=(songid<0)?(song.length-1):songid; 
-		var url='../../music/'+songid+'.mp3';
+		var url='../../music/song/'+song[songid]+'.MP3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
 		var a=Math.floor(Math.random()*7);
@@ -124,7 +209,10 @@ function time_transfer(length) //s时间格式转换，由秒转换为分+秒
 		var time_str=time.toString();
 		var time_array=time_str.split('.');
 		var time_m=time_array[0];
+		time_m=(time_m.length<2)?('0'+time_m):time_m;
 		var time_s=Math.round((time_array[1]/100)*60);
+		time_s=time_s.toString();
+		time_s=(time_s.length<2)?('0'+time_s):time_s;
 		var res=time_m+':'+time_s+'';
 		return  res;
 }
@@ -136,6 +224,13 @@ $(document).on('click','#scroll_full',function(e){
 		x=x-left;
 		audio.currentTime=x/600*length_full;
 		}) 
+$(document).on('mouseover','#scroll_full',function(){
+		$('#scroll_full').addClass('shine_blue');
+		})
+$(document).on('mouseout','#scroll_full',function(){
+		$('#scroll_full').removeClass();
+		})
+
 function menu_bar()
 {
 		var a=$('#cool').attr('val');
@@ -171,4 +266,21 @@ function shuffle()
 		shuffle_on=a;
 		var m=song.length;
 		var i=Math.floor(Math.random()*m);
+}
+function building()
+{
+		alert('施工中!');
+}
+function list_nav()
+{
+		var i=$('#list_nav').attr('val');
+		if (i==1) {
+				$('#list_one').css({'display':'none'});
+				$('#list_two').css({'display':'block'});
+				$('#list_nav').text('上一页').attr('val','0');
+		} else {
+				$('#list_one').css({'display':'block'});
+				$('#list_two').css({'display':'one'});
+				$('#list_nav').text('下一页').attr('val','1');
+		}
 }

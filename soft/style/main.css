@@ -115,6 +115,9 @@ body {
 		display:none;
 		color:#b3b3b1;
 }
+#list_two {
+		display:none;
+}
 a.icon-home {
 		cursor:pointer;
 }
@@ -132,6 +135,7 @@ a#list-menu {
 		margin-top:2%;
 }
 #banner {
+		position:relative;
 		height:150px;
 }
 #img {
@@ -141,6 +145,9 @@ a#list-menu {
 }
 #img:hover a{
 		display:block;
+}
+#img:hover img {
+		opacity:.5;
 }
 a.icon-play {
 		position: absolute;
@@ -230,7 +237,7 @@ a.icon-pause {
 		background-color:#61a64b;
 }
 #name {
-		font-size:32px;
+		font-size:28px;
 		width:200px;
 		margin:0 auto;
 		margin-top:40px;
@@ -252,4 +259,20 @@ a.icon-pause {
 }
 #line a:hover {
 		color:#000;
+}
+#title {
+		position:absolute;
+		top:75px;
+		left:37%;
+		width:300px;
+}
+@-webkit-keyframes shineBlue {
+		from { -webkit-box-shadow: 0 0 9px #333; }
+		50% { -webkit-box-shadow: 0 0 18px blue; }
+		to { -webkit-box-shadow: 0 0 9px #333; }
+}
+.shine_blue{
+		-webkit-animation-name: shineBlue; 
+		-webkit-animation-duration: 3s;
+		-webkit-animation-iteration-count: infinite; 
 }
