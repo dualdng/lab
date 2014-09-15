@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'>
+<script type='text/javascript' src='../js/jquery.js'></script>
+<script type='text/javascript' src='../js/jarallax-0.2.4b.js'></script>
+<script type="text/javascript">
+var jarallax
+init = function() {
+		jarallax = new Jarallax(new ControllerScroll(true));
+		var currentProgress = 0;
+		var progressSteps = 1 / 5;
+
+		jarallax.setDefault('.container',{opacity:0, display:'none'})
+
+				jarallax.addAnimation('.logo',[{progress:'0', opacity:'1', backgroundPositionY:'50%'},
+								{progress:'10', opacity:'0', backgroundPositionY:'0%'},
+								{progress:'100%', opacity:'0', backgroundPositionY:'0%'}]);
+
+		var animation = jarallax.addAnimation('#slide1',[{progress:'0', display:'block', opacity:'0', top:'100%'},
+						{progress:'10', display:'block', opacity:'1', top:'20%'},
+						{progress:'20', display:'block', opacity:'0', top:'0%'}]);
+
+		jarallax.cloneAnimation('#slide2',{progress:'+10'}, animation);
+		jarallax.cloneAnimation('#slide3',{progress:'+20'}, animation);
+		jarallax.cloneAnimation('#slide4',{progress:'+30'}, animation);
+}
+    </script>
+<style type='text/css'>
+body{
+		display:block;
+		padding:0;
+		margin:0;
+		height:2000px;
+}
+
+h1, .logo, .container{
+		margin:0;
+		padding:0;
+		position:fixed;
+		z-index:2;
+		width:100%;
+		font-family:verdana;
+}
+
+h2{
+		top:40%;
+		color:black;
+		font-size: 40px;
+}
+
+.container{
+		opacity:0;
+		width:600px;
+		left:50%;
+		margin-left:-300px;
+		overflow:hidden;
+		height:100%;
+
+}
+
+.logo{
+		display:block;
+		text-indent:10000px;
+		overflow:hidden;
+		background: white url(../image/brague_logo.png) center center no-repeat;
+		background-position-y:50%;
+		height:100%;
+		width:100%;
+}
+
+nav{
+		background:white;
+		border-bottom:2px solid black;
+		position:fixed;
+		left:0;
+		top:0;
+		z-index:10;
+		width:100%;
+}
+
+nav ul{
+		overflow:auto;
+		list-style:none;
+		margin:0;
+}
+
+nav li{
+		float:left;
+}
+
+nav a{
+		color:#253652;
+		font-family:verdana;
+		display:block;
+		padding:20px;
+		text-decoration:none;
+		font-weight:bold;
+}
+
+nav a:hover{
+		background:#253652;
+		color:white;
+}
+
+a{
+		color:#253652;
+		font-family:verdana;
+		text-decoration:none;
+		font-weight:bold;
+}
+#mail .input_text {
+		border:1px solid #ebeaea;
+}
+input.submit {
+		background:#b14c6a;
+		width:150px;
+		height:30px;
+		cursor:pointer;
+}
+input.submit:hover {
+		background:#61a64b;
+}
+</style>
+</head>
+<body onload="init()">
+<a href='http://www.uuuuj.com'><h1 class='logo'></h1></a>
+<div class='container' id='slide1'>
+<h2>ABOUT</h2>
+<p>博客始建于世界末日前的光棍节，用以慰藉心灵、陶冶情操、提升逼格、改善伙食。</p>
+<p>起初觉得emlog小资文艺逼格高，于是最初的站是emlog。<br />
+记不得啥时候了，估计是在2013年的5-6月份吧，发现我要各种插件，各种漂亮主题都没有，于是我选择了高端大气上档次的wordpress，顺便还与国际接了轨。<br />
+几乎同期，我从168一年的虚拟机上搬到了我的vps上，又是国际化的hostigation！<br />
+于2013年底谋划着把wp也抛弃了，于是现在你见到的这个站搭好了，正式搬家应该是在2014年6月份。<br />
+</p>
+<p>特点1：没有太多技术文章，有不少的影评，我也想能写出技术文章，我也想写好影评，所以影评全当是一个电影推荐了，你可以通过我的推荐去豆瓣上看影评，博主保证推荐的电影都是质高无上的。</p>
+<p>特点2：博主也会推荐一些好听的歌！</p>
+<p>特点3：博客含有茫茫海的个人心情文章，请自动无视。</p>
+</div>
+<div class='container' id='slide2'>
+<h2>SKILL</h2>
+<p>满分10星</p>
+<ul>
+<li>PHP:★★★★★</li>
+<li>HTML:★★★★★</li>
+<li>CSS:★★★★★</li>
+<li>JQUERY:★★★★★</li>
+<li>JS:★★★★★</li>
+<li>MYSQL:★★★★★</li>
+<li>LINUX:★★★★★</li>
+<li>ENGLISH:★★★★★</li>
+<li>Tips:寻觅工作</li>
+</ul>
+</div>
+<div class='container' id='slide3'>
+<h2>CONTACT</h2>
+<p>EMAIL:dualdng@gmail.com</p>
+<p>EMAIL:admin@uuuuj.com</p>
+</div>
+<div class='container' id='slide4'>
+<h2>CONTACT</h2>
+<p></p>
+<form id='mail' method='POST' action='mail_me.php'>
+		<input class='iput_text' name='name' type='text' placeholder='Your Name(Needed)' requied='requied'></input>
+		<input class='iput_text' name='email' type='text' placeholder='Your Email'></input>
+		<input class='iput_text' name='my_email' type='hidden' value='admin@uuuuj.com'></input>
+		<textarea class='iput_text' name='content' placeholder='Your Content(Needed)' cols='80' rows='5' requied='requied'></textarea>
+		<input class='submit' type='submit' value='Submit'></input>
+		</form>
+</div>
+</body>
+</html>

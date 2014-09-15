@@ -7,14 +7,14 @@
 <li>
 <a href='#'>Category</a>
 <ul>
-<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=LifeTime'>LifeTime</a></li>
-<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Codes'>Codes</a></li>
-<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Movies'>Movies</a></li>
-<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page?category=Themes'>Themes</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?category=LifeTime'>LifeTime</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?category=Codes'>Codes</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?category=Movies'>Movies</a></li>
+<li><a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?category=Themes'>Themes</a></li>
 </ul>
 </li>
 <li>
-<a href='http://line.uuuuj.com'>Line</a>
+<a href='http://soft.uuuuj.com'>Muisc</a>
 <ul>
 </ul>
 </li>

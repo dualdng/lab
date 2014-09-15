@@ -1,43 +1,6 @@
 $(document).ready(function($){
 		$('a:has(img)').phzoom({});
 /**var H=$('nav').offset().top;*/
-		$(window).scroll(function()
-			{
-				var scroh=$(this).scrollTop();
-				if(scroh>=0)
-		{
-		$('.bg-img:first-child').css({'-webkit-transform':'translateY(-80%)','-moz-transform':'translateY(-80%)','-o-transform':'translateY(-80%)','transform':'translateY(-80%)','border-bottom':'1px solid #ebeaea'});
-		$('.bg-img:last-child').css({'-webkit-transform':'translateY(100%)','-moz-transform':'translateY(100%)','-o-transform':'translateY(100%)','transform':'translateY(100%)'});
-		$('.main_title').css({'top':'1%'});
-		$('.main_title span').html('<span style=\'color:#61a64b\'>L</span>ife <span style=\'color:#66ccff\'>i</span>s <span style=\'color:pink\'>a</span> <span style=\'color:red\'>c</span>olor <span style=\'color:yellow\'>b</span>lind');
-		}
-			})
-/**				var thread_key=58;
-				var comval='';
-				var res='';
-		$.ajax({
-				url:'http://api.duoshuo.com/threads/counts.jsonp?short_name=tinty&threads=59&callback=?',
-				dataType:'json',
-				success:function(data)
-		{
-
-				$.each(data.response, function(i, item) {
-                     comval += item.comments;
-				})
-				res=data.response;
-				alert(res.comments);
-				alert(comval);
-				$('span.views').append(data);
-		}
-		})
-		**/
-			
-		
-		/**			else
-		  {
-		  $('#navibar2').css({'display':'none'})
-		  }
-		 */
 });
 window.onload=function(){
 			$('.wipe-overlay').css({'width':'0px'});

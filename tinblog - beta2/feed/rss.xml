@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0"> 
+<channel>
+<title>Brague</title>
+<link>127.0.0.1</link>
+<description>Brague,PHP,wordpress,emlog,html5,css3,js</description>
+<language>zh_CN</language>
+<pubDate>2014-05-17 13:54:49</pubDate>
+<lastBuildDate>2014-05-17 13:54:49</lastBuildDate>
+<generator>RedFox RSS Generator</generator>
+<item>
+<title>Hello!</title>
+<link><![CDATA[127.0.0.1/single.php?no=0&id=48]]></link>
+<description><![CDATA[这是一篇初始文章！]]></description>
+<pubDate>2014-05-15 22:47:19</pubDate>
+</item>
+</channel>
+</rss>

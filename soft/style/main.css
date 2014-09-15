@@ -118,6 +118,9 @@ body {
 #list_two {
 		display:none;
 }
+#list_three {
+		display:none;
+}
 a.icon-home {
 		cursor:pointer;
 }

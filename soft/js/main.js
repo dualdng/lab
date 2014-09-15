@@ -4,7 +4,6 @@ $(document).ready(function()
 song=new Array(
 		'Life Is Like A Cup of Coffee',
 		'Promise',
-		'The Ludlows',
 		'Eternal Hope',
 		'2003',
 		'A Little Story',
@@ -13,6 +12,7 @@ song=new Array(
 		'Rain of Love',
 		'The Righteous Path',
 		'Hope',
+		'The Ludlows',
 		'Dirk Ehlert - Excelsior',
 		'DJ Okawari - Flower Dance',
 		'DJ Sly - ジブリ？メドレー',
@@ -71,34 +71,39 @@ song=new Array(
 		'Determine纯音乐(暴力街区2超经典音乐)',
 		'悠久の翼アレンジVer （加长）',
 		'DJ电音：萧恒嘉---雷光'
-				)
+				);
+/** 歌曲评分 **/
+like=new Array(
+				);
 		var i=Math.floor(Math.random()*7);
 		$('#img img').attr('src','img/'+(i+1)+'.jpg');
 		$('#line').load('line.php');
 		var i=0;
 		var length=song.length;
-		for (i;i<40;i++) {
+		for (i;i<25;i++) {
 				$('#list_one').append('<li><a id=\'list\' href=\'#\' val=\''+i+'\'>'+song[i]+'</a></li>');
 		}
-		for (i=40;i<length;i++) {
+		for (i=25;i<50;i++) {
 				$('#list_two').append('<li><a id=\'list\' href=\'#\' val=\''+i+'\'>'+song[i]+'</a></li>');
+		}
+		for (i=50;i<length;i++) {
+				$('#list_three').append('<li><a id=\'list\' href=\'#\' val=\''+i+'\'>'+song[i]+'</a></li>');
 		}
 /**		var m=song.length;
 		var songid=Math.floor(Math.random()*m);
 		**/
 		var songid=0; //第一首 不随机 放promise
-		var url='../../music/song/'+song[songid]+'.MP3';
+		var url='http://music.uuuuj.com/song/'+song[songid]+'.MP3';
 		$('#music').attr('src',url);
 		$('#name').text(song[songid]);
 		play_pause();
 		shuffle_on=0;
-		}
-)
+		})
 $(document).on('click','a#list',function(){ //歌曲点击播放
 //		var audio=document.getElementById('music');
 		var audio=$('#music')[0];
 		var songid=$(this).attr('val');
-		var url='../../music/song/'+song[songid]+'.MP3';
+		var url='http://music.uuuuj.com/song/'+song[songid]+'.MP3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
 		var name=$(this).text();
@@ -126,7 +131,6 @@ function play_pause()
 }
 function duration()
 {
-		clearInterval(a);
 		/** javascript 的写法
 		var audio=document.getElementById('music');
 		audio.addEventListener('loadedmetadata', function() {
@@ -138,11 +142,9 @@ function duration()
 		/** jquery 写法**/
 		var audio=$('#music')[0];
 		$('#music').on('loadedmetadata', function() {
-						length_full=audio.duration;
-						var time_full=time_transfer(length_full);
-						$('#time').text(time_full);
-		});
-
+				length_full=audio.duration;
+				var time_full=time_transfer(length_full);
+				$('#time').text(time_full);
 		var a=setInterval(function(){
 //		var length_2=$('#music')[0].played.end(0);
 		var length_pass=audio.currentTime;
@@ -162,7 +164,7 @@ function duration()
 				var songid=val+1;
 				var songid=(songid>=song.length)?0:songid; 
 				}
-				var url='../../music/song/'+song[songid]+'.MP3';
+				var url='http://music.uuuuj.com/song/'+song[songid]+'.MP3';
 				$('#music').attr('src',url);
 				$('#music').attr('val',songid);
 				var i=Math.floor(Math.random()*7);
@@ -172,6 +174,7 @@ function duration()
 				play_pause();
 		}
 		},1000);
+		});
 }
 function next()
 {
@@ -179,7 +182,7 @@ function next()
 		val=parseInt(val);//将字符串转换为数字，因为从html中获得值都是字符串形式的
 		var songid=val+1;
 		var songid=(songid>=song.length)?0:songid; 
-		var url='../../music/song/'+song[songid]+'.MP3';
+		var url='http://music.uuuuj.com/song/'+song[songid]+'.MP3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
 		var a=Math.floor(Math.random()*7);
@@ -194,7 +197,7 @@ function pre()
 		val=parseInt(val);
 		var songid=val-1;
 		var songid=(songid<0)?(song.length-1):songid; 
-		var url='../../music/song/'+song[songid]+'.MP3';
+		var url='http://music.uuuuj.com/song/'+song[songid]+'.MP3';
 		$('#music').attr('src',url);
 		$('#music').attr('val',songid);
 		var a=Math.floor(Math.random()*7);
@@ -277,10 +280,23 @@ function list_nav()
 		if (i==1) {
 				$('#list_one').css({'display':'none'});
 				$('#list_two').css({'display':'block'});
-				$('#list_nav').text('上一页').attr('val','0');
+				$('#list_nav').text('下一页').attr('val','2');
+		} else if (i==2) {
+				$('#list_one').css({'display':'none'});
+				$('#list_two').css({'display':'none'});
+				$('#list_three').css({'display':'block'});
+				$('#list_nav').text('第一页').attr('val','0');
 		} else {
 				$('#list_one').css({'display':'block'});
-				$('#list_two').css({'display':'one'});
+				$('#list_two').css({'display':'none'});
+				$('#list_three').css({'display':'none'});
 				$('#list_nav').text('下一页').attr('val','1');
 		}
+}
+function likeit()
+{
+		var val=$('#music').attr('val');
+		var origin_like=(typeof(like[val])=='undefined')?0:like[val];
+		like[val]=++origin_like;
+		alert('施工');
 }

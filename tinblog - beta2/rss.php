@@ -1,0 +1,25 @@
+<?php
+include('include/rss_class.php');
+include('include/mysql_con.php');
+$result=show_option();
+$result=$result->fetch_assoc();
+$url=$_SERVER['SERVER_ADDR'];
+$res=list_post();
+$res=$res->fetch_all();
+$num=count($res);
+$rss=new RSS($result['title'],$url,$result['keywords']);
+for($i=0;$i<$num;$i++)
+{
+		$post_url=$url.'/single.php?no='.$i.'&id='.$res[$i][0];
+		if(!empty($res[$i][8]))
+		{
+				$excerpt=$res[$i][8];
+		}
+		else
+		{
+				$excerpt=$res[$i][7];
+		}
+		$rss->AddItem($res[$i][1],$post_url,$excerpt,$res[$i][6]);
+		$rss->SaveToFile('feed/rss.xml');
+}
+?>

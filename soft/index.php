@@ -39,16 +39,26 @@ MM########MBBBBHBMMM########################################@@Xi.,,,,,,,, i3ii  
 <html>
 <head>
 <meta charset='utf-8' />
-<title>Hellow Music | Brague</title>
+<title>Hello Music | Brague</title>
 <script typt='text/javascript' src='js/jquery-2.1.0.min.js'></script>
 <script typt='text/javascript' src='js/main.js'></script>
 <link rel='stylesheet' type='text/css' href='style/main.css' />
+<!--[if IE]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lt IE 8]>
+<script>    
+{    
+alert("Please Upgrade [?!!IE6!!?] versions!"); 
+}    
+</script>
+<![endif]-->
 </head>
 <body>
 <div id='menu'>
  <a class='icon-home' href='http://www.uuuuj.com' title='Brague'></a><br />
 <a  class='icon-alarm' val='1' href='javascript:void(0)' onclick='javascript:building()'></a><br />
-<a  class='icon-heart' val='1' href='javascript:void(0)'onclick='javascript:building()'></a><br />
+<a  class='icon-heart' val='1'  onclick='javascript:likeit()'></a><br />
  <a id='cool' class='icon-cool' val='1' onclick='javascript:menu_bar()' title='播放菜单'></a><br />
 <div id='menu-bar'>
 <a class='icon-first' onclick='javascript:pre();'></a>
@@ -64,6 +74,8 @@ MM########MBBBBHBMMM########################################@@Xi.,,,,,,,, i3ii  
 </ul>
 <ul id='list_two'>
 </ul>
+<ul id='list_three'>
+</ul>
 <a id='list_nav' val='1' href='javascript:void(0);' onclick='javascript:list_nav()'>下一页</a>
 </div>
 </div>
@@ -71,7 +83,7 @@ MM########MBBBBHBMMM########################################@@Xi.,,,,,,,, i3ii  
 </div>
 <div id='wrapper'>
 <div id='banner'>
-<div id='title'><h1>Hellow Music<h1></div>
+<div id='title'><h1>Hello Music<h1></div>
 </div>
 <div id='img'><img src='img/1.jpg' /><a id='button' class='icon-play' onclick='javascript:play_pause();'></a></div>
 <audio preload='preload' id='music'  src='#' val='0'> 
