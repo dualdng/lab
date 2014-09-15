@@ -31,6 +31,6 @@
 </ul>
 </nav>
 </footer>
-
+</div><!-- body end-->
 </body>
 </html>

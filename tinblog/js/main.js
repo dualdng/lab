@@ -1,6 +1,14 @@
 $(document).ready(function($){
-		$('a:has(img)').phzoom({});
+//		$('a:has(img)').phzoom({});
 /**var H=$('nav').offset().top;*/
+$(window).scroll(function(){
+		var h=$(this).scrollTop();
+		if (h>=0) {
+				$('.bg_img').css({'height':'0'});
+				$('.main_title').css({'display':'none'});
+				$('#nav_top').css({'visibility':'visible','position':'fixed','top':'0','background':'#fff'});
+		}
+		})
 });
 window.onload=function(){
 			$('.wipe-overlay').css({'width':'0px'});
