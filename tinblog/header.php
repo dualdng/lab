@@ -77,16 +77,18 @@ if($url=='index.php'||$url=='about.php')
 <span><?php line_api();?></span>
 </div>
 </header>
+<?php }?>
 <nav id='nav_top'>
 <div id='nav_logo'>
 <a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>' title='Brague'><img src='image/logo.png' /></a>
 </div>
 <div id='nav_right'>
-<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?cate=Codes' title='科学分类'>Codes</a>
+<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?cate=Codes' title='科学分类'>Codes</a>&nbsp
+<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?cate=LiftTime' title='关于你'>LifeTime</a>&nbsp
+&nbsp
 <a href='http://soft.uuuuj.com' title='Soft Music'>Music</a>
 </div>
 </nav>
 <div id='body'>
-<?php }?>
 
 

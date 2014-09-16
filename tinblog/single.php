@@ -14,18 +14,7 @@ hit_count($id,$no);
 include('banner.php');
 ?>
 <article class="main_content">
-<div class='double'><button class='button arrowleft icon' onclick='javascript:double();'></button>
-<button class='button arrowright icon' onclick='javascript:one();'></button></div>
-<div id='page'>
 <div id='article'><?php single_post($no);?>
-<div id='vote'><?php echo show_rank($id,$no);?></div>
-<div id='vote_star'>
-<a href='javascript:void(0);' id='abel' class='default' rate='1' onclick='javascript:vote(4,<?php echo $id;?>,<?php echo $no;?>);'>★</a>
-<a  href='javascript:void(0);' id='baker'  class='default' rate='2' onclick='javascript:vote(4);'>★</a>
-<a  href='javascript:void(0);' id='charlie'  class='default' rate='3' onclick='javascript:vote(6);'>★</a>
-<a  href='javascript:void(0);' id='dog'  class='default' rate='4' onclick='javascript:vote(8);'>★</a>
-<a  href='javascript:void(0);' id='easy'  class='default' rate='5' onclick='javascript:vote(10);'>★</a>
-</div>
 <!--comments start-->
 <div id='ajax_comments'>
 </div>
@@ -38,8 +27,5 @@ include('banner.php');
 </div>
 <!--comments end-->
 </div>
-<div id='side'><?php include('side.php');?></div>
-<div id='share'></div>
 </article>
-</div>
 <?php include('footer.php');?>
