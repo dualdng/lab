@@ -89,6 +89,28 @@ if($url=='index.php'||$url=='about.php')
 <a href='http://soft.uuuuj.com' title='Soft Music'>Music</a>
 </div>
 </nav>
+<!-- 载入动画-->
+<div class="spinner">
+<div class="spinner-container container1">
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+<div class="circle4"></div>
+</div>
+<div class="spinner-container container2">
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+<div class="circle4"></div>
+</div>
+<div class="spinner-container container3">
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+<div class="circle4"></div>
+</div>
+</div>
+<!-- 载入动画-->
 <div id='body'>
 
 

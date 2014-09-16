@@ -63,6 +63,7 @@ $('#most_pop').append(data);
 
 $(document).on('click','#pagenavi a',function()
 				{
+				$('.spinner').css({'display':'block'});
 				$('#article').fadeOut();
 				var	url=$(this).attr('href');
 				$.ajax
@@ -72,6 +73,8 @@ url:url,
 type:'POST',
 success:function(data)
 {
+		
+$('.spinner').css({'display':'none'});
 var result1=$(data).find('.article');
 var result2=$(data).find('#pagenavi');
 $('#article').empty();

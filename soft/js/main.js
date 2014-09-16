@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+
 		/** 歌曲编号数组 **/
 song=new Array(
 		'Life Is Like A Cup of Coffee',
@@ -95,7 +96,7 @@ like=new Array(
 		var songid=0; //第一首 不随机 放promise
 		var url='http://music.uuuuj.com/song/'+song[songid]+'.MP3';
 		$('#music').attr('src',url);
-		$('#name').text(song[songid]);
+		$('#name span').text(song[songid]);
 		play_pause();
 		shuffle_on=0;
 		})
@@ -152,6 +153,11 @@ function duration()
 		$('#time_p').text(time_pass);
 		var width=(length_pass/length_full)*600;
 		$('#scroll').css({'width':width});
+		if(audio.readyState) {
+				$('.spinner').css({'display':'none'});
+		}else {
+				$('.spinner').css({'display':'block'});
+		}
 		/** 判断是否播放结束，如果结束则继续下一首 **/
 		if (audio.ended) {
 				if(shuffle_on==1){ //判断shuffles是否打开
@@ -300,3 +306,4 @@ function likeit()
 		like[val]=++origin_like;
 		alert('施工');
 }
+

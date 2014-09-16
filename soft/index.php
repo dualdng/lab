@@ -84,6 +84,29 @@ alert("Please Upgrade [?!!IE6!!?] versions!");
 <div id='wrapper'>
 <div id='banner'>
 <div id='title'><h1>Hello Music<h1></div>
+<!-- 载入动画 -->
+<div class="spinner">
+<div class="spinner-container container1">
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+<div class="circle4"></div>
+</div>
+<div class="spinner-container container2">
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+<div class="circle4"></div>
+</div>
+<div class="spinner-container container3">
+<div class="circle1"></div>
+<div class="circle2"></div>
+<div class="circle3"></div>
+<div class="circle4"></div>
+</div>
+</div>
+<!-- end -->
+
 </div>
 <div id='img'><img src='img/1.jpg' /><a id='button' class='icon-play' onclick='javascript:play_pause();'></a></div>
 <audio preload='preload' id='music'  src='#' val='0'> 
