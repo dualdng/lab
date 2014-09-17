@@ -1,6 +1,4 @@
 $(document).ready(function($){
-//		$('a:has(img)').phzoom({});
-/**var H=$('nav').offset().top;*/
 $(window).scroll(function(){
 		var h=$(this).scrollTop();
 		if (h>=0) {
@@ -272,5 +270,27 @@ $.ajax({
     } 
 });
 **/
+
+$(document).on('click','#pagenavi_comments a',function()
+				{
+				$('.spinner').css({'display':'block'});
+				$('#comments').fadeOut();
+				var	url=$(this).attr('href');
+				$.ajax
+				(
+				 {
+url:url,
+type:'POST',
+success:function(data)
+{
+		
+$('.spinner').css({'display':'none'});
+$('#comments').empty();
+$('#comments').append(data);
+$('#comments').fadeIn();
+}
+})
+return false;
+})
 
 

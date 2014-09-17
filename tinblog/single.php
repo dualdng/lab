@@ -19,10 +19,10 @@ include('banner.php');
 <div id='ajax_comments'>
 </div>
 <div id='comments'>
-<?php show_comments($id);?>
+<?php include('comments_page.php');?>
 </div>
 <div class='comments_form'> 
-<div class='comments_title'>Post your comments here:</div>
+<div class='comments_title'><span class='icon-pencil'>&nbsp&nbspPost your comments here:</span></div>
 <?php comments_fields($id,0);?>
 </div>
 <!--comments end-->

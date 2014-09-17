@@ -133,7 +133,7 @@ function the_list($temp,$res,$pagesize=5) //show post_list
 						$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
 						$str=$res[$i][7];
 						preg_match($ruls,$str,$matches);
-						echo '<div id=\'standard\'><div class=\'title\'><span class=\'icon-pencil\' >&nbsp&nbsp</span><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.date('d M,y',strtotime($res[$i][6])).'</span></div>';
+						echo '<div id=\'standard\'><div class=\'title\'><span class=\'icon-file\' >&nbsp&nbsp</span><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><span class=\'views\'>'.$res[$i][9].' Views<br />'.date('d M,y',strtotime($res[$i][6])).'</span></div>';
 						if(empty($res[$i][8]))
 						{
 								echo '<div class=\'content\'>'.$res[$i][7].'</div>';
@@ -485,9 +485,9 @@ function comments_fields($id,$pre_post_id=0)
 				echo '<input type=\'text\' name=\'url\' class=\'url\' placeholder=\'Your Website\'></input><br />';
 		}
 				echo '<textarea type=\'text\' rows=\'6\' name=\'text\' class=\'textarea\' placeholder=\'Something Here\' required=\'required\'></textarea><br />';
-				echo '<input type=\'submit\' name=\'submit\' class=\'submit\' value=\'submit\'></input>';
+				echo '<input type=\'submit\' name=\'submit\' class=\'submit\' value=\'提交\'></input>';
 				echo '</form>';
-				echo '<div class=\'qq_login\'><img src=\'qq/Connect_logo_1.png\'/><a href=\'javascript:void(0);\'>使用QQ登录</a></div>';
+				echo '<div class=\'qq_login\'><a href=\'javascript:void(0);\'>QQ登录</a></div>';
 }
 
 function post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text)
@@ -499,16 +499,30 @@ function post_comments($id,$pre_post_id,$user_id,$name,$email,$url,$text)
 		$result=$db->_insert($query);
 }
 		
-function show_comments($id)//this is not in use
+function show_comments($id)
 {
 		global $db;
 		$query='select * from b_comments where no=\''.$id.'\' and pre_post_id=0 order by post_id asc';
 		$result=$db->fetch_all($query);
+		global $rows;
 		$rows=count($result);
 		$pre_post_id=array();
 		$post_id=array();
-		for($i=0;$i<$rows;$i++)
+		if (isset($_GET['page'])) {
+				$page=$_GET['page'];
+		}
+		else {
+				$page=1;
+		}
+		$page_size=5;
+		$page_start=($page-1)*$page_size;
+		$page_end=$page_start+5;
+		for($i=$page_start;$i<$page_end;$i++)
 		{
+				if (empty($result[$i])) {
+						echo '';
+						exit;
+				}
 								echo '<div class=\'comments\'>';
 								if(strpos($result[$i][3],'qq')!==false)
 								{
@@ -571,6 +585,24 @@ function children_comments($post_id)
 				}
 		}
 }
+function pagenavi_comments($id) 
+{
+		global $res;
+		global $rows;
+		if(!isset($_GET['page']))
+		{
+				$page=1;
+		}
+		else
+		{
+				$page=$_GET['page'];
+		}
+		$pagesize=5;
+		$pagenum=ceil($rows/$pagesize);//获取总页数，取整
+		$url='comments_page.php?id='.$id.'&';
+		$pagenavi=pagenavi::getInstance();//调用pagenavi_class
+		$pagenavi->_pagenavi($page,$pagesize,$url,$pagenum);
+}
 function show_archive()
 {
 		$month_arr=array('12','11','10','09','08','07','06','05','04','03','02','01');
@@ -582,7 +614,7 @@ function show_archive()
 				if(!empty($arrResult))
 				{
 						$strTime=empty($arrResult)?'':'2014-'.$value;
-						echo '<div class=\'archive_date\'>'.$strTime.'</div>';
+						echo '<div class=\'archive_date\'><span class=\'icon-paragraph-justify\'>&nbsp&nbsp'.$strTime.'</span></div>';
 						echo '<div class=\'archive_content\'>';
 						foreach($arrResult as $strValues)
 						{
