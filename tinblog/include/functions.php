@@ -504,8 +504,11 @@ function show_comments($id)
 		global $db;
 		$query='select * from b_comments where no=\''.$id.'\' and pre_post_id=0 order by post_id asc';
 		$result=$db->fetch_all($query);
-		global $rows;
-		$rows=count($result);
+		if (empty($result)) {
+				echo '<div class=\'no_comments\'>';
+				echo 'No comments!';
+				echo '</div>';
+		}
 		$pre_post_id=array();
 		$post_id=array();
 		if (isset($_GET['page'])) {
@@ -519,10 +522,7 @@ function show_comments($id)
 		$page_end=$page_start+5;
 		for($i=$page_start;$i<$page_end;$i++)
 		{
-				if (empty($result[$i])) {
-						echo '';
-						exit;
-				}
+				if (!empty($result[$i])) {
 								echo '<div class=\'comments\'>';
 								if(strpos($result[$i][3],'qq')!==false)
 								{
@@ -547,6 +547,7 @@ function show_comments($id)
 								children_comments($result[$i][1]);
 						}
 								echo '</div>';
+				}
 		}
 }
 function children_comments($post_id)
@@ -587,8 +588,11 @@ function children_comments($post_id)
 }
 function pagenavi_comments($id) 
 {
-		global $res;
-		global $rows;
+		global $db;
+		$query='select * from b_comments where no=\''.$id.'\' and pre_post_id=0 order by post_id asc';
+		$result=$db->fetch_all($query);
+		$rows=count($result);
+		if (!empty($result)) {
 		if(!isset($_GET['page']))
 		{
 				$page=1;
@@ -602,6 +606,7 @@ function pagenavi_comments($id)
 		$url='comments_page.php?id='.$id.'&';
 		$pagenavi=pagenavi::getInstance();//调用pagenavi_class
 		$pagenavi->_pagenavi($page,$pagesize,$url,$pagenum);
+		}
 }
 function show_archive()
 {

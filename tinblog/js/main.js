@@ -194,6 +194,7 @@ function cancel_reply(post_id)
 }
 function post_comments()
 {
+		$('input.submit').attr('value','发送中!');
 		var id=$(':input[name=\'id\']').val();
 		var pre_post_id=$(':input[name=\'pre_post_id\']').val();
 		var user_id=$(':input[name=\'user_id\']').val();
@@ -211,6 +212,7 @@ function post_comments()
 				data:parastr,
 				dataType:'json',
 				success:function(data){
+				$('input.submit').attr('value','提交');
 						if(data.error==0) {
 								alert('邮箱格式错误');
 								exit;
@@ -236,10 +238,10 @@ function post_comments()
 								exit;
 						}
 						else if (data.success==-1) {
-						$('.comments_field').css({'display':'none'});
-						$('.comments_form').css({'display':'none'});
-						$('#ajax_comments').html(text);
-						$("html,body").animate({scrollTop:$("#ajax_comments").offset().top-100},1000);
+								$('.comments_field').css({'display':'none'});
+								$('.comments_form').css({'display':'none'});
+								$('#ajax_comments').html('<span class=\'icon-cool\'>&nbspYour comments here:</span><br />'+text);
+								$("html,body").animate({scrollTop:$("#ajax_comments").offset().top-100},1000);
 						}
 								//输出每个root子对象的名称和值 
 
