@@ -425,7 +425,7 @@ function links()//show the links on sidebar
 		$rows=count($result);
 		for($i=0;$i<$rows;$i++)
 		{
-				echo '<li><a class=\'icon-heart2\' href=\''.$result[$i][2].'\' title=\''.$result[$i][3].'\'>'.$result[$i][1].'</a></li>';
+				echo '<li><span class=\'icon-heart2\'></span>&nbsp<a href=\''.$result[$i][2].'\' title=\''.$result[$i][3].'\'>'.$result[$i][1].'</a></li>';
 		}
 }
 function show_user()//show the user's information on sidebar

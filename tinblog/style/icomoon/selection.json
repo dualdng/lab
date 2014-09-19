@@ -17,7 +17,7 @@
 			},
 			"properties": {
 				"id": 6,
-				"order": 23,
+				"order": 4,
 				"prevSize": 32,
 				"code": 58880,
 				"name": "pencil",
@@ -41,7 +41,7 @@
 			},
 			"properties": {
 				"id": 12,
-				"order": 21,
+				"order": 2,
 				"prevSize": 32,
 				"code": 58881,
 				"name": "image",
@@ -65,7 +65,7 @@
 			},
 			"properties": {
 				"id": 14,
-				"order": 20,
+				"order": 1,
 				"prevSize": 32,
 				"code": 58882,
 				"name": "images",
@@ -90,7 +90,7 @@
 			},
 			"properties": {
 				"id": 17,
-				"order": 27,
+				"order": 8,
 				"prevSize": 32,
 				"code": 58893,
 				"name": "headphones",
@@ -113,7 +113,7 @@
 			},
 			"properties": {
 				"id": 22,
-				"order": 28,
+				"order": 9,
 				"prevSize": 32,
 				"code": 58883,
 				"name": "pacman",
@@ -138,7 +138,7 @@
 			},
 			"properties": {
 				"id": 34,
-				"order": 22,
+				"order": 3,
 				"prevSize": 32,
 				"code": 58884,
 				"name": "file",
@@ -146,6 +146,125 @@
 			},
 			"setIdx": 0,
 			"iconIdx": 34
+		},
+		{
+			"icon": {
+				"paths": [
+					"M256 128v896l320-320 320 320v-896zM768 0h-640v896l64-64v-768h576z"
+				],
+				"tags": [
+					"bookmarks",
+					"favorite",
+					"ribbon"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 202,
+				"order": 24,
+				"prevSize": 32,
+				"code": 58901,
+				"name": "bookmarks",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 202
+		},
+		{
+			"icon": {
+				"paths": [
+					"M1024 397.050l-353.78-51.408-158.22-320.582-158.216 320.582-353.784 51.408 256 249.538-60.432 352.352 316.432-166.358 316.432 166.358-60.434-352.352 256.002-249.538zM512 753.498l-223.462 117.48 42.676-248.83-180.786-176.222 249.84-36.304 111.732-226.396 111.736 226.396 249.836 36.304-180.788 176.222 42.678 248.83-223.462-117.48z"
+				],
+				"tags": [
+					"star",
+					"rate",
+					"favorite",
+					"bookmark"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 206,
+				"order": 22,
+				"prevSize": 32,
+				"code": 58902,
+				"name": "star",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 206
+		},
+		{
+			"icon": {
+				"paths": [
+					"M1024 397.050l-353.78-51.408-158.22-320.582-158.216 320.582-353.784 51.408 256 249.538-60.432 352.352 316.432-166.358 316.432 166.358-60.434-352.352 256.002-249.538z"
+				],
+				"tags": [
+					"star",
+					"rate",
+					"favorite",
+					"bookmark"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 208,
+				"order": 23,
+				"prevSize": 32,
+				"code": 58903,
+				"name": "star2",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 208
+		},
+		{
+			"icon": {
+				"paths": [
+					"M1024 358.156c0 86.362-37.218 164.030-96.49 217.844h0.49l-320 320c-32 32-64 64-96 64s-64-32-96-64l-319.51-320c-59.272-53.814-96.49-131.482-96.49-217.844 0-162.458 131.698-294.156 294.156-294.156 86.362 0 164.030 37.218 217.844 96.49 53.814-59.272 131.482-96.49 217.844-96.49 162.456 0 294.156 131.698 294.156 294.156z"
+				],
+				"tags": [
+					"heart",
+					"like",
+					"love",
+					"favorite"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 209,
+				"order": 21,
+				"prevSize": 32,
+				"code": 58900,
+				"name": "heart",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 209
+		},
+		{
+			"icon": {
+				"paths": [
+					"M1024 358.156c0-162.458-131.7-294.156-294.156-294.156-86.362 0-164.030 37.218-217.844 96.49-53.814-59.272-131.482-96.49-217.844-96.49-162.458 0-294.156 131.698-294.156 294.156 0 86.362 37.218 164.030 96.49 217.844h-0.49l320 320c32 32 64 64 96 64s64-32 96-64l319.51-320c59.272-53.814 96.49-131.482 96.49-217.844zM841.468 481.232l-323.978 324.258c-1.678 1.678-3.532 3.532-5.49 5.48-1.96-1.95-3.814-3.802-5.49-5.48l-323.978-324.256c-35.166-31.928-54.532-75.638-54.532-123.078 0-91.618 74.538-166.156 166.156-166.156 47.44 0 91.15 19.366 123.076 54.532l94.768 104.38 94.768-104.378c31.928-35.168 75.636-54.534 123.076-54.534 91.618 0 166.156 74.538 166.156 166.156 0 47.44-19.368 91.15-54.532 123.076z"
+				],
+				"tags": [
+					"heart",
+					"like",
+					"love",
+					"favorite"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 210,
+				"order": 20,
+				"prevSize": 32,
+				"code": 58899,
+				"name": "heart2",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 210
 		},
 		{
 			"icon": {
@@ -162,7 +281,7 @@
 			},
 			"properties": {
 				"id": 226,
-				"order": 26,
+				"order": 7,
 				"prevSize": 32,
 				"code": 58887,
 				"name": "cool",
@@ -186,7 +305,7 @@
 			},
 			"properties": {
 				"id": 236,
-				"order": 24,
+				"order": 5,
 				"prevSize": 32,
 				"code": 58885,
 				"name": "neutral",
@@ -211,7 +330,7 @@
 			},
 			"properties": {
 				"id": 238,
-				"order": 25,
+				"order": 6,
 				"prevSize": 32,
 				"code": 58886,
 				"name": "wondering",
@@ -234,7 +353,7 @@
 			},
 			"properties": {
 				"id": 288,
-				"order": 38,
+				"order": 19,
 				"prevSize": 32,
 				"code": 58888,
 				"name": "arrow-up",
@@ -257,7 +376,7 @@
 			},
 			"properties": {
 				"id": 343,
-				"order": 32,
+				"order": 13,
 				"prevSize": 32,
 				"code": 58889,
 				"name": "paragraph-justify",
@@ -280,7 +399,7 @@
 			},
 			"properties": {
 				"id": 368,
-				"order": 33,
+				"order": 14,
 				"prevSize": 32,
 				"code": 58890,
 				"name": "feed",
@@ -303,7 +422,7 @@
 			},
 			"properties": {
 				"id": 369,
-				"order": 34,
+				"order": 15,
 				"prevSize": 32,
 				"code": 58891,
 				"name": "feed2",
@@ -326,7 +445,7 @@
 			},
 			"properties": {
 				"id": 370,
-				"order": 35,
+				"order": 16,
 				"prevSize": 32,
 				"code": 58892,
 				"name": "feed3",
@@ -349,7 +468,7 @@
 			},
 			"properties": {
 				"id": 394,
-				"order": 31,
+				"order": 12,
 				"prevSize": 32,
 				"code": 58894,
 				"name": "github",
@@ -372,7 +491,7 @@
 			},
 			"properties": {
 				"id": 397,
-				"order": 36,
+				"order": 17,
 				"prevSize": 32,
 				"code": 58895,
 				"name": "wordpress",
@@ -395,7 +514,7 @@
 			},
 			"properties": {
 				"id": 398,
-				"order": 37,
+				"order": 18,
 				"prevSize": 32,
 				"code": 58896,
 				"name": "wordpress2",
@@ -417,7 +536,7 @@
 			},
 			"properties": {
 				"id": 442,
-				"order": 29,
+				"order": 10,
 				"prevSize": 32,
 				"code": 58897,
 				"name": "html5",
@@ -439,7 +558,7 @@
 			},
 			"properties": {
 				"id": 443,
-				"order": 30,
+				"order": 11,
 				"prevSize": 32,
 				"code": 58898,
 				"name": "html52",

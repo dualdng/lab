@@ -1,4 +1,5 @@
 <div id='banner'>
+
 <?php 
 $url=$_SERVER['PHP_SELF'];
 $filename=end(explode('/',$url));
@@ -20,6 +21,9 @@ $filename=end(explode('/',$url));
 				break;
 				case 'themes.php':
 				echo '<a  href=\'http://'.$_SERVER['HTTP_HOST'].'\'>HOME</a>&nbsp>&nbspThemes';
+				break;
+				case 'links.php':
+				echo '<a  href=\'http://'.$_SERVER['HTTP_HOST'].'\'>HOME</a>&nbsp>&nbspFriends';
 				break;
 				default:
 				echo 'Brague';

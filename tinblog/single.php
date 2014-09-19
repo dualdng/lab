@@ -11,8 +11,13 @@ for($i=0;$i<$row;$i++)//转换文章id为数组res中的数字索引，主要目
 }
 
 hit_count($id,$no);
+?>
+
+
+<?php
 include('banner.php');
 ?>
+
 <article class="main_content">
 <div id='article'><?php single_post($no);?>
 <!--comments start-->

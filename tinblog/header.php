@@ -48,6 +48,7 @@ MM########MBBBBHBMMM########################################@@Xi.,,,,,,,, i3ii  
 <meta name="author" content="Tinty" />
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" type="text/css" href="style/main.css" />
+<link rel="stylesheet" type="text/css" href="style/icomoon/style.css" />
 <link rel="stylesheet" type="text/css" href="image/github/gh-buttons.css" />
 <link rel='stylesheet' href='phzoom/phzoom.css' />
 <link rel="stylesheet" href="admin/editor/plugins/code/prettify.css" />
@@ -77,6 +78,7 @@ if($url=='index.php'||$url=='about.php')
 <span><?php line_api();?></span>
 </div>
 </header>
+
 <?php }?>
 <nav id='nav_top'>
 <div id='nav_logo'>
@@ -89,6 +91,22 @@ if($url=='index.php'||$url=='about.php')
 <a href='http://soft.uuuuj.com' title='Soft Music'>Music</a>
 </div>
 </nav>
+<?php
+if($url=='single.php'||$url=='category_page.php'||$url=='tag_page.php')
+{?>
+<nav id='nav_top_two'>
+<div id='nav_logo'>
+<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>' title='Brague'><img src='image/logo.png' /></a>
+</div>
+<div id='nav_right'>
+<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?cate=Codes' title='科学分类'>Codes</a>&nbsp
+<a href='<?php echo 'http://'.$_SERVER['HTTP_HOST'];?>/category_page.php?cate=LiftTime' title='关于你'>LifeTime</a>&nbsp
+&nbsp
+<a href='http://soft.uuuuj.com' title='Soft Music'>Music</a>
+</div>
+</nav>
+
+<?php }?>
 <!-- 载入动画-->
 <div class="spinner">
 <div class="spinner-container container1">

@@ -1,8 +1,10 @@
 <?php include('header.php');
 include('banner.php');
 ?>
-<article class='themes_content'>
+<article class="main_content">
+<div id='link'>
 <?php links();?>
-</article>
+</div>
+		</article>
 <?php include('footer.php');?>
 
