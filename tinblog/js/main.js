@@ -276,7 +276,6 @@ $.ajax({
 $(document).on('click','#pagenavi_comments a',function()
 				{
 				$('.spinner').css({'display':'block'});
-				$('#comments').fadeOut();
 				var	url=$(this).attr('href');
 				$.ajax
 				(

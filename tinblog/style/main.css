@@ -32,9 +32,6 @@ body {
 		font-size:16px;
 		color:#69606b;
 }
-body a {
-		cursor:url('../favicon.ico'),auto;
-}
 
 @media screen and (max-width:1366px) {
 .bg_img {
@@ -160,7 +157,9 @@ span.views {
 		float:right;
 		font-size:12px;
 }
-.content {
+.content img {
+		width:100%;
+		height:auto;
 }
 .user {
 		font-size:12px;

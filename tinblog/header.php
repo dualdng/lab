@@ -92,7 +92,7 @@ if($url=='index.php'||$url=='about.php')
 </div>
 </nav>
 <?php
-if($url=='single.php'||$url=='category_page.php'||$url=='tag_page.php')
+if($url!='index.php'&&$url!='about.php')
 {?>
 <nav id='nav_top_two'>
 <div id='nav_logo'>

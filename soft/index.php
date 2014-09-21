@@ -1,4 +1,4 @@
-<!doctypehtml>
+<!doctype html>
 <!--
 XXG988XXGG8993SSS333SSS553G&AHHHHHHHHBBBBBBMBHBBBBBBHBBBBBBBBBBBBBBBBBMX&MBBBBM#9;:,,.iBMMMBMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
 &XX888GXXGG8993SSSSS555hh59GX&HHHHHHHHBBBBBBHHBBBBBHHHHHBBBBBBBBBBBBBMX9BBBBBMHS:.    5MBBBBBMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
@@ -83,7 +83,7 @@ alert("Please Upgrade [?!!IE6!!?] versions!");
 </div>
 <div id='wrapper'>
 <div id='banner'>
-<div id='title'><h1>Hello Music<h1></div>
+<div id='title'><h1>Hello Music</h1></div>
 <!-- 载入动画 -->
 <div class="spinner">
 <div class="spinner-container container1">
