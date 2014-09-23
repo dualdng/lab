@@ -20,6 +20,7 @@ include('banner.php');
 
 <article class="main_content">
 <div id='article'><?php single_post($no);?>
+<div id='relative'><?php rand_single_post();?></div>
 <!--comments start-->
 <div id='ajax_comments'>
 </div>

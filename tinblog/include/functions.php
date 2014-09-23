@@ -879,4 +879,28 @@ function akismet_check($user_ip,$user_agent,$comment_author,$comment_author_emai
 		$res=curl_exec($curl);
 		return $res;
 }
+//同分类下的随即一篇文章
+function rand_single_post () {
+		global $res;
+		$rows=count($res);
+		$rand_array=range(0,$rows-1);
+		shuffle($rand_array);
+		$rand_array=array_slice($rand_array,0,1);
+		$i=$rand_array[0];
+		if_image ($i);
+		echo'<a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><br />';
+}
+
+//判断文章是否有图片o
+function if_image($i) {
+		global $res;
+		$ruls="/<[img|IMG].*?src=[\'|\"](.*?(?:[\.gif|\.jpg|\.jpeg|\.bmp|\.png]))[\'|\"].*?[\/]?>/";
+		$str=$res[$i][7];
+		$result=preg_match($ruls,$str,$matches);
+		if ($result===1) {
+				echo $matches[0];
+		} else {
+				echo '<img src=\'image/8.jpg\' />';
+		}
+}
 ?>

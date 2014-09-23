@@ -538,3 +538,12 @@ input.submit:hover {
 #link li {
 		list-style:none;
 }
+/** 相关文章 **/
+#relative {
+		width:800px;
+		height:150px;
+}
+#relative img {
+		width:800px;
+		max-height:150px;
+}
