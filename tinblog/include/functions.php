@@ -888,7 +888,7 @@ function rand_single_post () {
 		$rand_array=array_slice($rand_array,0,1);
 		$i=$rand_array[0];
 		if_image ($i);
-		echo'<a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a><br />';
+		echo'<div class=\'rand_pak\'><a href=\'single.php?id='.$res[$i][0].'\'>'.$res[$i][1].'</a></div>';
 }
 
 //判断文章是否有图片o
