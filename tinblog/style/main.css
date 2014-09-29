@@ -595,5 +595,10 @@ input.submit:hover {
 #relative .rand_pak {
 		position:absolute;
 		top:40%;
-		left:45%;
+		left:0;
+		text-align:center;
+		width:100%;
+}
+#relative:hover {
+		opacity:.7;
 }
