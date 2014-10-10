@@ -28,7 +28,7 @@ include('banner.php');
 <?php include('comments_page.php');?>
 </div>
 <div class='comments_form'> 
-<div class='comments_title'><span class='icon-pencil'>&nbsp&nbspPost your comments here:</span></div>
+<div class='comments_title'><span class='icon-pencil'>&nbspPost your comments here:</span></div>
 <?php comments_fields($id,0);?>
 </div>
 <!--comments end-->
