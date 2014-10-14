@@ -1,0 +1,18 @@
+# 
+
+# deb cdrom:[Debian GNU/Linux 7.2.0 _Wheezy_ - Official i386 DVD Binary-1 20131012-12:56]/ wheezy contrib main
+
+# deb cdrom:[Debian GNU/Linux 7.2.0 _Wheezy_ - Official i386 DVD Binary-1 20131012-12:56]/ wheezy contrib main
+deb http://ftp.hk.debian.org/debian/ stable main 
+deb-src http://ftp.hk.debian.org/debian/ stable main
+deb http://security.debian.org/ stable/updates main
+deb http://dl.google.com/linux/deb/ stable main
+deb http://mirrors.sohu.com/debian/ wheezy main
+deb-src http://mirrors.sohu.com/debian/ wheezy main
+
+deb http://security.debian.org/ wheezy/updates main contrib
+deb-src http://security.debian.org/ wheezy/updates main contrib
+
+# wheezy-updates, previously known as 'volatile'
+deb http://mirrors.sohu.com/debian/ wheezy-updates main contrib
+deb-src http://mirrors.sohu.com/debian/ wheezy-updates main contrib
